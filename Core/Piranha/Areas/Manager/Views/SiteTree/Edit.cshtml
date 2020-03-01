@@ -1,0 +1,135 @@
+﻿@model Piranha.Areas.Manager.Models.SiteTreeEditModel
+@section Head {
+    <script type="text/javascript" src="~/res.ashx/areas/manager/content/js/jquery.form.js"></script>
+    <script type="text/javascript" src="~/res.ashx/areas/manager/content/js/jquery.regiontemplate.js"></script>
+    <script type="text/javascript" src="~/res.ashx/areas/manager/content/js/ext/json2.js"></script>
+    <script type="text/javascript">
+        /**
+         * This var is needed by the regiontemplate script.
+         */
+        var templateid = '@Model.Template.Id';
+
+        $(document).ready(function () {
+            $('#Name').focus();
+        });
+    </script>
+}
+@section Toolbar {
+@Html.Partial("Partial/Tabs")
+<div class="toolbar">
+    <div class="inner">
+        <ul>
+            <li><a class="save submit">@Piranha.Resources.Global.ToolbarSave</a></li>
+            @if (Model.CanDelete && Model.Id != Piranha.Config.DefaultSiteTreeId) {
+            <li><a href="@Url.Action("delete", new { id = Model.Id })" class="delete">@Piranha.Resources.Global.ToolbarDelete</a></li>
+            }
+            <li><a href="@Url.Action("index", "sitetree")" class="back">@Piranha.Resources.Global.ToolbarBack</a></li>
+            <li><a href="@Url.Action("edit", new { id = Model.Id })" class="refresh">@Piranha.Resources.Global.ToolbarReload</a></li>
+            @Piranha.WebPages.Hooks.Manager.Toolbar.Render(Url, Model)
+        </ul>
+        <div class="clear"></div>
+    </div>
+</div>
+}
+@{ Html.BeginForm() ; }
+@Html.HiddenFor(m => m.Id)
+@Html.HiddenFor(m => m.NamespaceId)
+@Html.HiddenFor(m => m.CanDelete)
+<div class="grid_12">
+    <div class="box">
+        <div class="title"><h2>@Piranha.Resources.Global.Information</h2></div>
+        <div class="inner">
+            <ul class="form">
+                <li>
+                    @Html.LabelFor(m => m.Name, Piranha.Resources.Global.Name)
+                    <div class="input">
+                        @Html.TextBoxFor(m => m.Name)</div>
+                    @Html.ValidationMessageFor(m => m.Name)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.InternalId, Piranha.Resources.Global.InternalId)
+                    <div class="input">
+                        @if (Model.Id != Piranha.Config.DefaultSiteTreeId) {
+                        @Html.TextBoxFor(m => m.InternalId, new { @placeholder = Piranha.Resources.Global.Optional })
+                        } else {
+                        @Html.TextBoxFor(m => m.InternalId, new { @disabled = true })
+                        @Html.HiddenFor(m => m.InternalId)
+                        }
+                    </div>
+                    @Html.ValidationMessageFor(m => m.InternalId)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Description, Piranha.Resources.Global.Description)
+                    <div class="input">
+                        @Html.TextAreaFor(m => m.Description, new { @placeholder = Piranha.Resources.Global.Optional })</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="box main-content content-editor">
+        <table>
+            <tr>
+                <td class="tools">
+                    <ul>
+                        <li class="btn-settings active"><a href="#" data-id="pnl-settings">@Piranha.Resources.Global.Settings</a></li>
+                        <li class="btn-regions"><a href="#" data-id="pnl-regions">@Piranha.Resources.Global.Regions</a></li>
+                    </ul>
+                </td>
+                <td>
+                    <div id="pnl-settings" class="main">
+                        <div class="title"><h2>@Piranha.Resources.Global.Settings</h2></div>
+                        <div class="inner">
+                            <ul class="form">
+                                <li>
+                                    @Html.LabelFor(m => m.HostNames, Piranha.Resources.SiteTree.HostNames)
+                                    <div class="input">
+                                        @Html.TextBoxFor(m => m.HostNames, new { @placeholder = Piranha.Resources.Global.Optional })</div>
+                                </li>
+                                <li>
+                                    @Html.LabelFor(m => m.Template.Preview, Piranha.Resources.Page.HtmlPreview)
+                                    <div class="input">
+                                        @Html.TextAreaFor(m => m.Template.Preview, new { @rows = 6 })</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="pnl-regions" class="main hidden">
+                        <div class="title"><h2>@Piranha.Resources.Global.Regions</h2></div>
+                        <div class="inner">
+                            <table class="list region-editor">
+                                <tbody>
+                                    <tr>
+                                        <th>@Piranha.Resources.Global.Name</th>
+                                        <th>@Piranha.Resources.Global.InternalId</th>
+                                        <th>@Piranha.Resources.Global.Type</th>
+                                        <th></th>
+                                    </tr>
+                                    @Html.EditorFor(m => m.Regions)
+                                    <tr class="dark">
+                                        <td class="form">
+                                            <div class="input">
+                                                <input type="text" id="newregionName" /></div>
+                                        </td>
+                                        <td class="form">
+                                            <div class="input">
+                                                <input type="text" id="newregionInternalId" /></div>
+                                        </td>
+                                        <td class="form">
+                                            <div class="input">
+                                                @Html.DropDownList("newregionType",
+                                                    new SelectList(Model.RegionTypes, "Type", "Name"))</div>
+                                        </td>
+                                        <td class="buttons four">
+                                            <button id="btnAddRegion" class="btn marg-big">@Piranha.Resources.Global.Add</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+@{ Html.EndForm() ; }

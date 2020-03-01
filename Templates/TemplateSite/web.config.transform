@@ -1,0 +1,14 @@
+﻿<configuration>
+  <configSections>
+    <section name="piranha" type="Piranha.ConfigFile, Piranha" allowLocation="true" allowDefinition="Everywhere" />
+  </configSections>
+  <piranha>
+    <settings>
+      <disableMethodBinding value="false" />
+      <disableModelStateBinding value="false" />
+    </settings>
+  </piranha>
+  <appSettings>
+    <add key="webPages:Version" value="3.0.0"/>
+  </appSettings>
+</configuration>

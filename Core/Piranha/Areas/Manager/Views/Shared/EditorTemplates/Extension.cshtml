@@ -1,0 +1,23 @@
+﻿@model Piranha.Models.Extension
+@using Piranha.Extend;
+@{
+    var folder = Model.Type.LastIndexOf('.') > -1 ? Model.Type.Substring(0, Model.Type.LastIndexOf('.')) : "" ;
+    folder = folder != "" ? folder + "/" : "" ;
+    var view = Model.Type.Substring(folder.Length) ;
+    
+    var menu = Piranha.WebPages.Manager.GetActiveMenuItem() ;
+    var compat = menu != null && (menu.InternalId == "Categories" || menu.InternalId == "Media" || menu.InternalId == "Users") ;
+}
+<div id="pnl-@ExtensionManager.Current.GetInternalIdByType(Model.Type).ToLower()" class="@(!compat ? "main hidden" : "box")">
+    <div class="title"><h2>@Piranha.Extend.ExtensionManager.Current.GetNameByType(Model.Type)</h2></div>
+    <div class="inner">
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.IsDraft)
+        @Html.HiddenFor(m => m.IsNew)
+        @Html.HiddenFor(m => m.ParentId)
+        @Html.HiddenFor(m => m.Type)
+        @Html.HiddenFor(m => m.Created)
+        @Html.HiddenFor(m => m.CreatedBy)
+        @Html.PartialFor(view, m => m.Body)
+    </div>
+</div>

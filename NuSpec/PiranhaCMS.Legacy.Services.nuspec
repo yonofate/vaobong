@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+	<metadata>
+		<id>PiranhaCMS.Legacy.Services</id>
+		<version>1.0.0</version>
+		<title>Piranha CMS Legacy Services</title>
+		<authors>Håkan Edling</authors>
+		<licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+		<projectUrl>http://github.com/piranhacms/piranha/</projectUrl>
+		<iconUrl>http://piranhacms.org/content/img/nuget.png</iconUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>Legacy REST services for backwards compability.</description>
+		<summary>Legacy REST services for backwards compability.</summary>
+		<releaseNotes>See the changelog available at:
+https://github.com/piranhacms/piranha/wiki/changelog
+		</releaseNotes>
+		<copyright>Håkan Edling</copyright>
+		<dependencies>
+			<group targetFramework=".NETFramework4.5">
+				<dependency id="EntityFramework" version="[6.1.3, 6.2.0)" />
+				<dependency id="PiranhaCMS.Core" version="[2.2.5, 2.3.0)" />
+			</group>
+		</dependencies>
+		<frameworkAssemblies>
+			<frameworkAssembly assemblyName="System.ServiceModel" targetFramework=".NETFramework4.5" />
+			<frameworkAssembly assemblyName="System.ServiceModel.Activation" targetFramework=".NETFramework4.5" />
+			<frameworkAssembly assemblyName="System.ServiceModel.Web" targetFramework=".NETFramework4.5" />
+		</frameworkAssemblies>
+	</metadata>
+	<files>
+		<file src="..\Legacy\Piranha.Legacy.Services\web.config.transform" target="content\web.config.transform" />
+		<file src="..\Legacy\Piranha.Legacy.Services\bin\release\Piranha.Legacy.Services.dll" target="lib\net45\Piranha.Legacy.Services.dll" />
+	</files>
+</package>

@@ -1,0 +1,59 @@
+﻿.buttons .edit {
+  width: 16px;
+  height: 16px;
+  border: none;
+  margin: 0;
+  background: url('../../img/ico-edit-16.png') no-repeat 0 0;
+}
+.icon {
+  width: 16px;
+  height: 16px;
+  float: left;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+}
+.icon.disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.delete,
+.btn.delete {
+  background: url('../../img/ico-delete-16.png') no-repeat 0 0;
+}
+.btn.delete {
+  padding: 0 6px;
+}
+.up {
+  background: url('../../img/ico-arrow-up-16.png') no-repeat 0 0;
+}
+.down {
+  background: url('../../img/ico-arrow-down-16.png') no-repeat 0 0;
+}
+.add {
+  background: url('../../img/ico-add-16.png') no-repeat 0 0;
+}
+.add-folder {
+  background: url('../../img/ico-add-folder-16.png') no-repeat 0 0;
+}
+.add-below {
+  background: url('../../img/ico-add-below-16.png') no-repeat 0 0;
+}
+.add-after {
+  background: url('../../img/ico-add-after-16.png') no-repeat 0 0;
+}
+ul.list .delete,
+ul.list .arrow-right,
+ul.list arrow-down {
+  margin-top: 6px;
+}
+.marg,
+.buttons .marg {
+  margin-right: 10px;
+}
+.marg-big,
+.buttons .marg-big {
+  margin-right: 20px;
+}

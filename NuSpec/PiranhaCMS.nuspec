@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+	<metadata>
+		<id>PiranhaCMS</id>
+		<version>2.2.5</version>
+		<title>Piranha CMS template for ASP.NET WebPages</title>
+		<authors>Håkan Edling</authors>
+		<owners />
+		<licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+		<projectUrl>http://github.com/piranhacms/piranha/</projectUrl>
+		<iconUrl>http://piranhacms.org/content/img/nuget.png</iconUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>Template for creating a Piranha CMS website with ASP.NET Web Pages. It installs the base templates for pages, posts and sets up the database with some default data. It is dependent on the PiranhaCMS.Core and PiranhaCMS.WebPages packages.</description>
+		<summary>Template for creating a Piranha CMS website with ASP.NET Web Pages.</summary>
+		<releaseNotes>See the changelog available at:
+https://github.com/piranhacms/piranha/wiki/changelog
+		</releaseNotes>
+		<copyright>Håkan Edling</copyright>
+		<dependencies>
+			<group targetFramework=".NETFramework4.5">
+				<dependency id="PiranhaCMS.Core" version="[2.2.5,2.3.0)" />
+				<dependency id="PiranhaCMS.WebPages" version="[2.2.5,2.3.0)" />
+			</group>
+		</dependencies>
+	</metadata>
+	<files>
+		<file src="..\Templates\TemplateSite\Content\Css\bootstrap.min.css" target="content\Content\Css\bootstrap.min.css" />
+		<file src="..\Templates\TemplateSite\Content\Css\style.css" target="content\Content\Css\style.css" />
+		<file src="..\Templates\TemplateSite\Content\_Layout.cshtml" target="content\Content\_Layout.cshtml" />
+		<file src="..\Templates\TemplateSite\Shared\Sidebar.cshtml" target="content\Shared\Sidebar.cshtml" />
+		<file src="..\Templates\TemplateSite\Templates\index.html" target="content\Templates\index.html" />
+		<file src="..\Templates\TemplateSite\Page.cshtml" target="content\Page.cshtml" />
+		<file src="..\Templates\TemplateSite\Post.cshtml" target="content\Post.cshtml" />
+		<file src="..\Templates\TemplateSite\robots.txt" target="content\robots.txt" />
+		<file src="..\Templates\TemplateSite\web.config.transform" target="content\web.config.transform" />
+	</files>
+</package>

@@ -1,0 +1,43 @@
+﻿.floatbox {
+  display: none;
+  z-index: 70000;
+}
+.floatbox,
+.floatbox .bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.floatbox h2,
+.floatbox .bg h2 {
+  text-align: center;
+}
+.floatbox .content,
+.floatbox .bg .content {
+  margin: 0;
+}
+.floatbox .bg,
+.floatbox .bg .bg {
+  background: #000;
+  filter: alpha(opacity=60);
+  background: rgba(0, 0, 0, 0.6);
+}
+.floatbox .box,
+.floatbox .bg .box {
+  position: relative;
+  float: left;
+  border: solid 6px #fff;
+  margin: 0 auto;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+}
+.floatbox .list-box .inner,
+.floatbox .bg .list-box .inner {
+  padding: 0;
+}

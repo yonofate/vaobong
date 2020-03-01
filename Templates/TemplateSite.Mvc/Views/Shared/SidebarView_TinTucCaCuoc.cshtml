@@ -1,0 +1,48 @@
+﻿@*@model List<Piranha.Entities.PostModel>*@
+   
+        @{
+            Layout = "";
+            List<Piranha.Entities.Post> posts = null;
+            using (var db = new Piranha.DataContext())
+            {
+                posts = db.Posts.Where(x => x.TemplateId.ToString() == "5017DBE4-5685-4941-921B-CA922EDC7A12").OrderByDescending(p => p.Published).Take((int)Model).ToList();
+            }
+            //var posts = Model as List<Piranha.Entities.PostModel>;
+        }
+        <link href="~/Content/Css/out.css" rel="stylesheet" />
+
+        @if (posts.Count > 0)
+        {
+            <div class="popularposts ">
+                <ul>
+                    @foreach (var f in posts)
+                    {
+                        <li>
+                            <a title="@f.Title" href="@UI.Permalink(f.PermalinkId)">
+                                @*@foreach (var att in f.Attachments)
+                                {
+                                    @UI.Thumbnail(att, 150);
+                                }*@
+                                @if (f.Attachments != null && f.Attachments.Count > 0)
+                                {
+                                    var att = f.Attachments.First();
+                                    @UI.Thumbnail(att, 72);
+                                    @*<img src="@UI.Content(att.Id)" alt="@att.AltText">*@
+                                }
+                                else
+                                {
+                                    <img src="~/Content/images/preview.jpg" class="img-responsive" alt="@f.Title" />
+                                }
+                            </a>
+                            <a title="@f.Title" href="@UI.Permalink(f.PermalinkId)">@f.Title</a>
+                        </li>
+                        <div class="clear"></div>
+                    }
+                </ul>
+            </div>
+
+        }
+        else
+        {
+            <p>Hiện chưa có bài viết nào</p>
+        }

@@ -1,0 +1,78 @@
+﻿@model Piranha.Models.PostModel
+@{  
+    ViewBag.Title = Model.Post.Title;
+}
+
+<div id="fb-root"></div>
+<script>
+(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.5&appId=475069592608867";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<script>window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+ 
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+ 
+  return t;
+}(document, "script", "twitter-wjs"));</script>
+
+<!-- Đặt thẻ này vào phần đầu hoặc ngay trước thẻ đóng phần nội dung của bạn. -->
+<script src="https://apis.google.com/js/platform.js" async defer>
+  {lang: 'vi'}
+</script>
+
+<!-- Đặt thẻ này vào nơi bạn muốn Nút +1 kết xuất. -->
+
+<div class="main-banner">
+    <img src="~/content/images/banner.jpg" alt="banner" />
+</div>
+<div class="main-cont-page">
+    <div class="main-left">
+        <div class="page-content">
+            <h1>@Model.Post.Title</h1>
+            <p></p>
+                <div style="">
+                    <small>@Model.Post.Published.ToString("dd/MM/yyyy H:m") GMT+7</small>
+                </div>
+			<div style="display:block;margin:5px 0px 10px 2px;">
+            <div class="fb-like" data-href="http://vaobong.com/@Model.Post.Permalink" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
+			<div class="g-plusone" data-size="medium" data-annotation="none" data-href="http://vaobong.com"></div>
+			<a class="twitter-share-button" href="http://vaobong.com">Tweet</a>
+			</div>
+            <p></p>
+            <div class="contentfull" style="margin:14px 4px 15px 4px;">@Model.Post.Body</div>
+            <div class="comment-block">
+                <div data-width="100%" class="fb-comments" data-href="http://vaobong.com/@Model.Post.Permalink" data-numposts="5"></div>
+            </div>
+        </div>
+    </div>
+    <div class="main-right">
+        <section class="group_sidebar">
+            <aside class="sidebar">
+                <section class="widget">
+                    <h3 class="title-bar">
+                        <span>Xem nhiều nhất</span>
+                    </h3>
+                    <!-- .title-bar -->
+                    
+                        @Html.Partial("SidebarNew", Model.Post)
+                </section>
+
+            </aside>
+        </section>
+    </div>
+</div>

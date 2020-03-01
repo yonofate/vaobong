@@ -1,0 +1,278 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="content-language" content="vi">
+    <link rel="alternate" href="http://vaobong.com" hreflang="vi-vn" />
+    <meta name="google-site-verification" content="tiOJQzKBkhIr7eILOZpMexvKCcgALSJR21ZwIRgkls4" />
+    @UI.Head()
+    <link rel="dns-prefetch" href="http://vaobong.com">
+    <link href="https://plus.google.com/102969367128356734413" rel="publisher" />
+    <link href="~/Content/Css/basic.css" rel="stylesheet" />
+    <link href="~/Content/Css/update.css" rel="stylesheet" />
+    <link href="~/Content/Css/stylepage.css" rel="stylesheet" />
+    <link href="~/Content/Css/animate.css" rel="stylesheet" />
+
+    @RenderSection("head", required: false)
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-71826368-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+    <script type='text/javascript'>
+
+    var expdate = new Date(); expdate.setTime(expdate.getTime() + (24 * 60 * 60 * 1000 * 365));
+
+    function getCookieVal(offset) {
+        var endstr = document.cookie.indexOf(";", offset); if (endstr == -1)
+            endstr = document.cookie.length;
+        return unescape(document.cookie.substring(offset, endstr));
+    }
+
+    function GetCookie(name) {
+        var arg = name + "="; var alen = arg.length;
+        var clen = document.cookie.length; var i = 0; while (i < clen) {
+            var j = i + alen; if (document.cookie.substring(i, j) == arg)
+                return getCookieVal(j); i = document.cookie.indexOf(" ", i) + 1;
+            if (i == 0) break;
+        } return null;
+    }
+
+    function SetCookie(name, value) {
+        var argv = SetCookie.arguments;
+        var argc = SetCookie.arguments.length;
+        var expires = (2 < argc) ? argv[2] : null;
+
+        var path = (3 < argc) ? argv[3] : null;
+        var domain = (4 < argc) ? argv[4] : null;
+        var secure = (5 < argc) ? argv[5] : false;
+        document.cookie = name + "=" + escape(value) +
+        ((expires == null) ? "" : ("; expires=" + expires.toGMTString())) +
+        ((path == null) ? "" : ("; path=" + path)) +
+        ((domain == null) ? "" : ("; domain=" + domain)) +
+        ((secure == true) ? "; secure" : "");
+    }
+
+
+    function DeleteCookie(name, path, domain) {
+        if (GetCookie(name)) {
+            document.cookie = name + "=" +
+            ((path) ? "; path=" + path : "") +
+            ((domain) ? "; domain=" + domain : "") +
+            "; expires=Thur, 01-Jan-70 00:00:01 GMT";
+        }
+    }
+
+    function set_href_cookie(href_val) {
+
+        SetCookie('href_location', href_val, expdate, '/', null, false);
+        document.location.href = href_val;
+    }
+
+    </script>
+</head>
+<body>
+    <div class="container home-page">
+        <div class="header" id="header">
+            <div class="logo">
+                <a href="/" title="Vao Bong88 | Sbobet | Ibet888 | W88 | M88 | S128">
+                    <img src="~/content/images/logo.png" alt="Vao Bong88 | Sbobet | Ibet888 | W88 | M88 | S128" />
+                </a>
+            </div>
+
+            <div class="menu-mobile">
+                <span>&nbsp;</span>
+                <span>&nbsp;</span>
+                <span>&nbsp;</span>
+            </div>
+            <div class="main-menu">
+                @UI.Menu(StopLevel: 1)
+            </div>
+        </div>
+
+        <div class="container content-page">
+            @RenderBody()
+        </div>
+
+        <div class="floating-banner banner--left">
+            <a href="http://bit.ly/23Phzkt" title="m88cvf.com" target="_blank">
+                <img src="~/content/images/floating-banner.gif" alt="m88" />
+            </a>
+        </div>
+
+        <div class="floating-banner banner--right">
+            <a href="http://bit.ly/23PhFZs" title="m88cvf.com" target="_blank">
+                <img src="~/content/images/floating-banner.gif" alt="m88" />
+            </a>
+        </div>
+    </div>
+    <div class="footer" id="footer">
+        <div class="footer-contact">
+            <div class="container">
+                <h2><a href="/link-vao-bong88" title="Link vào Bong88" class="">BONG88</a></h2>
+                <h2>
+                    <a href="/link-vao-sbobet" title="Link vào Sbobet" class="">SBOBET</a>
+                </h2>
+                <h2>
+                    <a href="/link-vao-3in1bet" title="Link vào 3in1bet" class="">3IN1BET</a>
+                </h2>
+                <h2>
+                    <a href="/link-vao-m88" title="Link vào M88" class="">M88</a>
+                </h2>
+                <h3><a href="javascript:" onclick="setHomepage(this, 'http://vaobong.com', 'Xin lỗi, Trình duyệt của quý khách đã thiết lập bảo mật riêng nên không cho phép sử dụng chức năng này', ''); return false;" title="Đặt vaobong.com làm trang chủ">Đặt vaobong làm trang chủ </a></h3>
+                <h3>
+                    <a href="javascript:" onclick="addBookmark('vaobong.com', 'http://vaobong.com', 'Xin lỗi, Trình duyệt của quý khách không cho phép tự động thêm web này vào danh mục yêu thích, Vui lòng sử dụng chức năng &quot;Bookmark&quot; trong trình duyệt để thêm vào danh mục yêu thích', 'Nếu quý khách sử dụng trình duyệt Firefox, Vui lòng nhấn tổ hợp phím CTRL+D để lưu trang web này vào danh mục yêu thích'); return false;" title="Thêm vaobong vào danh mục yêu thích">Thêm vaobong vào danh mục yêu thích</a>
+                </h3>
+                <span class="scroll-top">Top</span>
+            </div>
+        </div>
+        <div class="main-footer container">
+            <div class="cols-footer">
+                <div class="cont-ft_">
+                    <div class="ttl-ft">
+                        Hỗ trợ kỹ thuật
+                    </div>
+                    <div class="cont_">
+                        Cảm ơn bạn đã ghé thăm
+                        <br />
+                        website <a href="/" title="vaobong.com"><b>vaobong.com</b></a>
+                        <br />
+                        Chúng tôi rất hoan nghênh các ý kiến đóng góp giúp chúng tôi hoàn thiện sân chơi này.  Vui
+                        <br />
+                        lòng góp ý về  địa chỉ:
+                        <br />
+                        <a href="mailto: vaobong.com@gmail.com"><b>vaobong.com@gmail.com</b></a>
+                    </div>
+                </div>
+            </div>
+            <div class="cols-footer">
+                <div class="cont-ft_">
+                    <div class="ttl-ft">
+                        Truy cập nhanh
+                    </div>
+                    <div class="cont_">
+                        <ul class="nav-footer">
+                            <li><a href="/7mcn" title="7m.cn">7m.cn</a></li>
+                            <li><a href="/ty-le-keo" title="Tỉ lệ kèo">Tỉ lệ kèo</a></li>
+                            <li><a href="/xo-so" title="Trực tiếp kết quả xổ số">Trực tiếp kết quả xổ số</a></li>
+                            <li><a href="/sopcast" title="SopCast">SopCast</a></li>
+                            <li><a href="/kho-du-lieu-7m" title="Kho dữ liệu 7m">Kho dữ liệu 7m</a></li>
+                            <li><a href="/live-bong-da" title="Live bóng đá">Live bóng đá</a></li>
+                            <li><a href="/giai-tri" title="Người đẹp">Người đẹp</a></li>
+                            <li><a href="/tong-hop" title="Live bóng đá">Tổng hợp</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="cols-footer cols-img-gallery">
+                <div class="cont-ft_">
+                    <div class="ttl-ft">
+                        Thư viện hình đẹp
+                    </div>
+                    <div class="cont_">
+                        <ul class="gallery-footer">
+                            <li>
+                                <a href="/nu-sinh-khong-mac-noi-y-gay-sot-cong-dong-mang" title="">
+                                    <img src="content/images/temp/girl1.jpg" alt="" />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/bong-mat-voi-sieu-mau-sieu-vong-1-xu-dai" title="">
+                                    <img src="content/images/temp/girl2.jpg" alt="" />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/gai-xinh-nude-cuc-quyen-ru-voi-hoa-hong" title="">
+                                    <img src="content/images/temp/girl3.jpg" alt="" />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/sao-c-thich-con-gai-mc-th-nay" title="">
+                                    <img src="content/images/temp/girl4.jpg" alt="" />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/chun-vi-3-vong-cc-sexy-xem-la-sng" title="">
+                                    <img src="content/images/temp/girl5.jpg" alt="" />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/hi-th-gian-co-my-ngi-h-c-bng-em" title="">
+                                    <img src="content/images/temp/girl6.jpg" alt="" />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/em-gai-cap-3-ngay-tho-trong-sang-nhu-thien-than" title="">
+                                    <img src="content/images/temp/girl1.jpg" alt="" />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/maria-ozawa-trong-bo-phim-tu-te-dau-tien" title="">
+                                    <img src="content/images/temp/girl2.jpg" alt="" />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/bc-nh-nghin-like-gy-xn-xao-va-s-nhm-ln-v-tui-tac" title="">
+                                    <img src="content/images/temp/girl3.jpg" alt="" />
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="cols-footer cols-tags-link">
+                <div class="cont-ft_">
+                    <div class="ttl-ft">
+                        Tags link
+                    </div>
+                    <div class="cont_ tags-link">
+                        <a href="/link-vao-bong88-khong-bi-chan-moi-cap-nhat-2016" title="Cách vào ibet">Cách vào ibet</a>
+                        <a href="/link-vao-bong88-khong-bi-chan-moi-cap-nhat-2016" title="Vao bong88">Vào bóng</a>
+                        <a href="/huong-dan-ca-cuoc" title="Kinh nghiệm cá cược">Hướng dẫn cá cược</a>
+                        <a href="/kinh-nghiem-ca-cuoc" title="FCChelsea FCMu">Kinh nghiệm cá cược</a>
+                        <a href="/link-vao-casino-link-quan-tri-casino-moi-nhat" title="Vào Casino trực tuyến">Casino trực tuyến</a>
+                        <a href="/vao-ibet888-khong-bi-chan-nhanh-nhat" title="Vao 188betting">188betting</a>
+                        <a href="/live-bong-da" title="Trực tiếp bóng đá">Trực tiếp bóng đá</a>
+                        <a href="/vao-ibet888-khong-bi-chan-nhanh-nhat" title="Vao Ibet888">Ibet8887m</a>
+                        <a href="/m88" title="Huong dan ca cuoc nha cai M88">M88</a>
+                        <a href="/link-vao-sbobet-khong-bi-chan-cap-nhat-moi-nhat-2016" title="Vào Sbobet không bị chặn">Cách vào Sbobet</a>
+                        <a href="/link-vao-trang-ga-s128-cap-nhat-moi-nhat" title="Vào gà s128">Vào gà s128</a>
+                        <a href="/chon-dung-nha-cai-bong-da" title="Hướng dẫn chọn nhà cái bóng đá">Chọn nhà cái</a>
+                        <a href="/sopcast" title="link sopcast">Link sopcast</a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="coppy-right container">
+            Các thông tin trên <a href="#" title="vaobong.com"><b>Website vaobong.com</b></a> bao gồm: Banner, Link, hình ảnh, biểu tượng, Icon…không hạn chế mà trang web này cung cấp đều thuộc sở hữu của bên thứ ba, đồng thời không có sự ràng buộc với bất kỳ phương thức hoặc hình thức nào với vaobong.com nên chúng tôi không chịu trách nhiệm với bất kỳ hình thức nào.
+            <p>Copyright © 2013 vaobong.com  "The Huffington Post" is a registered trademark of vaobong.com All rights reserved. Powered by Hong Kong</p>
+        </div>
+    </div>
+
+    <script src="content/js/jquery-1.11.1.min.js"></script>
+    <script src="content/js/wow.min.js"></script>
+    <script src="content/js/owl.carousel.min.js"></script>
+    <script src="content/js/basic.js"></script>
+    <script src="content/js/stickyfloat.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            sliderGameAggregate();
+
+            $('.floating-banner').stickyfloat({ duration: 200, offsetY: 70, easing: 'swing' });
+        });
+    </script>
+</body>
+@RenderSection("script", required: false)
+</html>

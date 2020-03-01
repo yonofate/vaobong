@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+	<metadata>
+		<id>PiranhaCMSMvc</id>
+		<version>2.2.5</version>
+		<title>Piranha CMS template for ASP.NET MVC</title>
+		<authors>Håkan Edling</authors>
+		<owners />
+		<licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+		<projectUrl>http://github.com/piranhacms/piranha/</projectUrl>
+		<iconUrl>http://piranhacms.org/content/img/nuget.png</iconUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>Template for creating a Piranha CMS website with ASP.NET MVC. It installs the base controllers and views for pages and posts and sets up the database with some default data. It is dependent on the PiranhaCMS and PiranhaCMS.Mvc packages.</description>
+		<summary>Template for creating a Piranha CMS website with ASP.NET MVC.</summary>
+		<releaseNotes>See the changelog available at:
+https://github.com/piranhacms/piranha/wiki/changelog
+		</releaseNotes>
+		<copyright>Håkan Edling</copyright>
+		<dependencies>
+			<group targetFramework=".NETFramework4.5">
+				<dependency id="PiranhaCMS.Core" version="[2.2.5,2.3.0)" />
+				<dependency id="PiranhaCMS.Mvc" version="[2.2.5,2.3.0)" />
+			</group>
+		</dependencies>
+	</metadata>
+	<files>
+		<file src="..\Templates\TemplateSite.Mvc\App_Start\RouteConfig.PiranhaCMS.cs.pp" target="content\App_Start\RouteConfig.PiranhaCMS.cs.pp" />
+		<file src="..\Templates\TemplateSite.Mvc\App_Start\RouteConfig.cs.pp" target="content\App_Start\RouteConfig.cs.pp" />
+		<file src="..\Templates\TemplateSite.Mvc\Content\Css\bootstrap.min.css" target="content\Content\Css\bootstrap.min.css" />
+		<file src="..\Templates\TemplateSite.Mvc\Content\Css\style.css" target="content\Content\Css\style.css" />
+		<file src="..\Templates\TemplateSite.Mvc\Controllers\PageController.cs.pp" target="content\Controllers\PageController.cs.pp" />
+		<file src="..\Templates\TemplateSite.Mvc\Controllers\PostController.cs.pp" target="content\Controllers\PostController.cs.pp" />
+		<file src="..\Templates\TemplateSite.Mvc\Views\Page\Index.cshtml" target="content\Views\Page\Index.cshtml" />
+		<file src="..\Templates\TemplateSite.Mvc\Views\Post\Index.cshtml" target="content\Views\Post\Index.cshtml" />
+		<file src="..\Templates\TemplateSite.Mvc\Views\Shared\_Layout.cshtml" target="content\Views\Shared\_Layout.cshtml" />
+		<file src="..\Templates\TemplateSite.Mvc\Views\Shared\Sidebar.cshtml" target="content\Views\Shared\Sidebar.cshtml" />
+		<file src="..\Templates\TemplateSite.Mvc\Views\_ViewStart.cshtml" target="content\Views\_ViewStart.cshtml" />
+		<file src="..\Templates\TemplateSite.Mvc\Views\web.config.transform" target="content\Views\web.config.transform" />
+		<file src="..\Templates\TemplateSite.Mvc\robots.txt" target="content\robots.txt" />
+	</files>
+</package>

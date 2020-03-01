@@ -1,0 +1,133 @@
+﻿@{
+	ViewBag.Title = Piranha.Resources.Account.InstallTitle;
+	Layout = "";
+}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Wecome to Piranha CMS</title>
+
+	<link href="~/res.ashx/areas/manager/content/img/icon.ico" rel="icon" type="image/x-icon">
+	<link href="~/res.ashx/areas/manager/content/img/icon.ico" rel="shortcut icon" type="image/x-icon">
+	<link href="~/res.ashx/areas/manager/content/css/style.min.css" rel="stylesheet" type="text/css" />
+
+	<style type="text/css">
+		.grid_12.welcome {
+			font-size: 108%;
+		}
+
+		.welcome .title {
+			padding: 20px 34px;
+		}
+		.welcome .title h2 {
+			font-size: 24px;
+		}
+
+		.welcome .inner hr {
+			color: #ddd;
+			background: #ddd;
+			border: 0;
+			height: 1px;
+			margin-bottom: 14px;
+		}
+
+		.welcome .inner {
+			padding: 24px 34px;
+			background: url('@Href("~/res.ashx/areas/manager/content/img/logo-big.png")') no-repeat 190% -10%;
+		}
+
+		.welcome .inner p {
+			padding-bottom: 14px;
+			line-height: 1.4em;
+		}
+
+		.welcome .inner h2 {
+			border-bottom: 1px solid #DDDDDD;
+			font-size: 20px;
+			font-weight: bold;
+			margin: 10px 0;
+			padding-bottom: 8px;
+		}
+
+		.welcome .inner pre {
+			padding-bottom: 14px;
+		}
+
+		.welcome .inner code {
+			font-size: 14px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container_12">
+		<div class="grid_12 box welcome">
+			<div class="title"><h2>Welcome to Piranha CMS</h2></div>
+			<div class="inner">
+				<p>
+					Hi, and welcome to Piranha CMS. We're assuming that this is the <strong>first</strong> time
+					you start your application since there's no connection string configured with the
+					name <code>piranha</code>.
+				</p>
+
+				<p>
+					If you take a look in your web.config you'll see that there's example connection
+					strings included for <code>SqlCE</code>, <code>SqlExpress</code>, <code>LocalDb</code> and
+					<code>SqlServer</code>.
+				</p>
+
+				<h2>SqlCE</h2>
+
+				<p>
+					If you want to use SqlCE, which is a file-based database hosted in your web
+					application you have to start by installing the following package from NuGet:
+				</p>
+
+				<pre><code>&gt; Install-Package EntityFramework.SqlServerCompact</code></pre>
+
+				<p>
+					After this is done, rename the connection string named <strong>piranha-ce</strong>
+					to <strong>piranha</strong> and if you wish, modify the name and location of
+					your <code>.sdf</code> file.
+				</p>
+
+				<h2>SqlExpress</h2>
+
+				<p>
+					If you want to use SqlExpress, which is a free, out-of-process database, rename the
+					connection string named <strong>piranha-express</strong> to <strong>piranha</strong>
+					and change the credentials to real values. Make sure you <strong>create</strong> the database
+					before continuing as the installer only installs the Schema and default data, it does not
+					create the database for you.
+				</p>
+
+				<h2>LocalDb</h2>
+
+				<p>
+					If you want to use LocalDb, which is a free, in-process development database, rename the
+					connection string named <strong>piranha-local</strong> to <strong>piranha</strong> and
+					change the credentials to real values. Make sure you <strong>create</strong> the database
+					before continuing as the installer only installs the Schema and default data, it does not
+					create the database for you.
+				</p>
+
+				<h2>SqlServer</h2>
+
+				<p>
+					If you want to use SqlServer, which is Microsofts production-line database, rename the
+					connection string named <strong>piranha-sql</strong> to <strong>piranha</strong> and change
+					the credentials to real values. Make sure you <strong>create</strong> the database before
+					continuing as the installer only installs the Schema and default data, it does not create
+					the database for you.
+				</p>
+
+				<hr />
+				<p>
+					After you have configured your database you can <a href="@Url.Action("index")">continue</a> to the installation.
+				</p>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

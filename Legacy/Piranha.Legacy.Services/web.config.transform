@@ -1,0 +1,12 @@
+﻿<configuration>
+	<system.serviceModel>
+		<behaviors>
+			<serviceBehaviors>
+				<behavior>
+					<serviceAuthorization serviceAuthorizationManagerType="Piranha.Web.APIKeyAuthorization, Piranha" />
+				</behavior>
+			</serviceBehaviors>
+		</behaviors>
+		<serviceHostingEnvironment aspNetCompatibilityEnabled="true"/>
+	</system.serviceModel>
+</configuration>

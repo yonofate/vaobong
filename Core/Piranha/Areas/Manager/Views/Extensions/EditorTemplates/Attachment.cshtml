@@ -1,0 +1,25 @@
+﻿@model Piranha.Extend.Regions.AttachmentRegion.Attachment
+@{
+    Layout = "";
+}
+<tr>
+    <td>
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.Updated)
+        @Html.HiddenFor(m => m.LastPublished)
+        @Html.HiddenFor(m => m.Name)
+        @Html.HiddenFor(m => m.Type)
+        <img src="@Url.GetThumbnailUrl((Guid)Model.Id, 50)" /></td>
+    <td><a href="@Url.Action("edit", "content", new { @id = Model.Id, @returl = Url.Action("edit", "page") })">
+        @Model.Name
+        <div class="list-info">
+            @Html.Raw(Model.LastPublished == DateTime.MinValue ? "<span class=info-unpublished></span>" : 
+                (Model.Updated > Model.LastPublished ? "<span class=info-draft></span>" : ""))
+        </div>
+    </a></td>
+    <td>@Model.Type</td>
+    <td class="buttons three">
+        <a class="icon up marg"></a>
+        <a class="icon down marg"></a>
+        <a class="icon delete"></a></td>
+</tr>

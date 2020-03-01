@@ -1,0 +1,119 @@
+﻿@model Piranha.Models.PageModel
+@{
+    ViewBag.Title = Model.Page.Title;
+    List<Piranha.Entities.PostModel> postG = Model.Regions.Girlxinh;
+    List<Piranha.Entities.PostModel> postS = Model.Regions.Sao;
+    List<Piranha.Entities.PostModel> postC = Model.Regions.Clipvui;
+}
+<link href="~/Content/Css/out.css" rel="stylesheet" />
+<div class="main-banner">
+    <img src="~/content/images/banner_vaobong.jpg" alt="Vao Bong88, Sbobet, Ibet888 nhanh nhất" />
+</div>
+<div class="main-cont-page">
+    @if (postG.Count > 0 && postS.Count > 0)
+    {
+        var f = postG.First();
+        var fs = postS.First();
+        <div class="slider-baiviethot">
+            <div class="cot-hot-2">
+                <div class="topnews">
+                    <div class="firstpost">
+                        <a title="@f.Post.Title" href="@UI.Permalink(f.Post.PermalinkId)">
+                            @foreach (var att in f.Attachments)
+                            {
+                                <img src="@UI.Content(att.Id)" alt="@att.AltText">
+                            }
+                        </a>
+                        <h3>
+                            <a title="@f.Post.Title" href="@UI.Permalink(f.Post.PermalinkId)">@f.Post.Title</a>
+                        </h3>
+                    </div>
+
+                    <ul class="listpost evenPosts">
+                        @foreach (var p in postG.Skip(1).Take(5))
+                        {
+                            <li>
+                                <h3>
+                                    <a title="@p.Post.Title" href="@UI.Permalink(p.Post.PermalinkId)">@p.Post.Title</a>
+                                </h3>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="cot-hot-1">
+                <div class="top-left-content">
+                    <div class="firstpost">
+                        <a title="@fs.Post.Title" href="@UI.Permalink(fs.Post.PermalinkId)">
+                            @foreach (var att in fs.Attachments)
+                            {
+                                <img src="@UI.Content(att.Id)" alt="@att.AltText">
+                            }
+                        </a>
+                        <h3>
+                            <a title="@fs.Post.Title" href="@UI.Permalink(fs.Post.PermalinkId)">@fs.Post.Title</a>
+                        </h3>
+                        <p>@fs.Post.Excerpt</p>
+                    </div>
+
+                    @foreach (var p in postS.Skip(1).Take(5))
+                    {
+                        <ul class="listpost">
+                            <li>
+                                <a title="@p.Post.Title" href="@UI.Permalink(p.Post.PermalinkId)">
+                                    @foreach (var att in p.Attachments)
+                                    {
+                                        <img src="@UI.Content(att.Id)" alt="@att.AltText">
+                                    }
+                                </a>
+                                <h3>
+                                    <a title="@p.Post.Title" href="@UI.Permalink(p.Post.PermalinkId)">@p.Post.Title</a>
+                                </h3>
+                            </li>
+                        </ul>
+                    }
+
+                </div>
+            </div>
+            <div class="cot-hot-3">
+                <div class="mar20">
+                    <a href="http://bit.ly/1YrsCyP" target="_blank">
+                        <img src="~/content/images/banner-enter.gif" alt='m88'>
+                    </a>
+                    <p>
+					<a style='border:none' href='http://lmbf88.hypertrackeraff.com/Affiliate/station.aspx?affapp=w5Gm5hLgFVRGmzgI6s3Qi5I24eUjMrByJa2VZ0prknmTM6DdQ6s9Vehct2XET5X55bi7ogNjP00yrv6iLt%2fzDEp1HaQzojfkbswrs16brr0%3d' target='_blank'><img height='250' width='300' style='border:none;padding:0px;margin:0px;' src='http://lmbf88.hypertrackeraff.com/Banner/2560/4151ec5a-bc91-4b8e-8db2-f76caa6216e0.gif?affapp=6I5oUc5gmn1jOvkXC977vtvWMKfiq7312EeXHsvw93Sjxq3DtpjaCtTtdCIGhZcAwR6mMHUcAryMu%2b0b77%2bSH4fgiogAbYsIB442Dyc6qdU%3d' /></a>
+					</p>
+                </div>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+    }
+
+    @if (postC.Count > 0)
+    {
+        <div id="multimedia">
+            <div class="tieudeanh">
+                <h2>Clip hot</h2>
+            </div>
+            @foreach (var p in postC)
+            {
+                <div class="picture">
+                    <div class="cover">
+                        <a title="@p.Post.Title" href="@UI.Permalink(p.Post.PermalinkId)">
+                            @foreach (var att in p.Attachments)
+                            {
+                                <img src="@UI.Content(att.Id)" alt="@att.AltText">
+                            }
+                        </a>
+                    </div>
+                    <div class="title-anh">
+                        <h3>
+                            <a title="@p.Post.Title" href="@UI.Permalink(p.Post.PermalinkId)">@p.Post.Title</a>
+                        </h3>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

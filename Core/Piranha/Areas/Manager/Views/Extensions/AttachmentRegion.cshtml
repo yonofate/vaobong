@@ -1,0 +1,113 @@
+﻿@model Piranha.Extend.Regions.AttachmentRegion
+@{
+    Layout = "";
+    
+    var btnAttach = ViewData.TemplateInfo.GetFullHtmlFieldId("btnAttach") ;
+    var tblId = ViewData.TemplateInfo.GetFullHtmlFieldId("tblAttachments") ;
+    var boxId = ViewData.TemplateInfo.GetFullHtmlFieldId("box") ;
+    var thumbUrl = Piranha.WebPages.WebPiranha.ApplicationPath + Piranha.Application.Current.Handlers.GetUrlPrefix("THUMBNAIL") + "/";
+
+    var varObj = @ViewData.TemplateInfo.GetFullHtmlFieldId("obj") ;
+}
+<script type="text/javascript">
+    var thumbpath = '@Url.GetThumbnailBaseUrl()';
+
+    if (!extensions)
+        var extensions = {};
+    if (!extensions.@varObj)
+        extensions.@varObj = {
+            count: @(Model.Items.Count),
+            add: function(data) {
+                $('#@tblId').append(
+                    '<tr>' +
+                        '<td>' +
+                            '<input type="hidden" name="@(ViewData.TemplateInfo.HtmlFieldPrefix).Items[' + extensions.@(varObj).count + '].Id" value="' + data.Id + '" />' +
+                            '<input type="hidden" name="@(ViewData.TemplateInfo.HtmlFieldPrefix).Items[' + extensions.@(varObj).count + '].Updated" value="' + data.Updated + '" />' +
+                            '<input type="hidden" name="@(ViewData.TemplateInfo.HtmlFieldPrefix).Items[' + extensions.@(varObj).count + '].DisplayName" value="' + data.DisplayName + '" />' +
+                            '<input type="hidden" name="@(ViewData.TemplateInfo.HtmlFieldPrefix).Items[' + extensions.@(varObj).count + '].Type" value="' + data.Type + '" />' +
+                            '<img src="@thumbUrl' + data.Id + '/50" /></td>' +
+                        '<td>' +
+                            data.DisplayName +
+                            '<div class="list-info"></div></td>' +
+                        '<td>' + data.Type + '</td>' +
+                        '<td class="buttons three">' +
+                            '<a class="icon up marg"></a>' +
+                            '<a class="icon down marg"></a>' +
+                            '<a class="icon delete"></a></td>' +
+                    '</tr>');
+
+                extensions.@(varObj).count++;
+            },
+            delete: function(e) {
+                $(e).remove();
+                extensions.@(varObj).count--;
+                extensions.@(varObj).updateSeqnos();
+            },
+            updateSeqnos: function() {
+                var rows = $('#@tblId tr') ;
+
+                for (var n = 1; n < rows.length; n++) {
+                    $(rows.get(n)).find('input, textarea').attr('id', function (i, val) {
+                        if (val)
+                            return val.replace(/Items_\d+/, 'Items_' + (n - 1));
+                    });
+                    $(rows.get(n)).find('input, textarea').attr('name', function (i, val) {
+                        if (val)
+                            return val.replace(/Items\[\d+/, 'Items[' + (n - 1));
+                    });
+                    $(rows.get(n)).find('label').attr('for', function (i, val) {
+                        if (val)
+                            return val.replace(/Items_\d+/, 'Items_' + (n -1));
+                    });
+                }
+            },
+            moveUp: function(e) {
+                if (e.parent().children().index(e) > 1) {
+                    e.insertBefore(e.prev());
+                    extensions.@(varObj).updateSeqnos();
+                }
+            },
+            moveDown: function(e) {
+                if (e.parent().children().index(e) < e.parent().children().length - 1) {
+                    e.insertAfter(e.next());
+                    extensions.@(varObj).updateSeqnos();
+                }
+            }
+        };
+
+    $(document).ready(function () {
+        new piranha.media('@btnAttach', '@boxId', extensions.@(varObj).add);
+
+        $('#@tblId .delete').live('click', function() {
+            extensions.@(varObj).delete($(this).parent().parent());
+            return false;
+        });
+        $('#@tblId .up').live('click', function() {
+            extensions.@(varObj).moveUp($(this).parent().parent());
+            return false;
+        });
+        $('#@tblId .down').live('click', function() {
+            extensions.@(varObj).moveDown($(this).parent().parent());
+            return false;
+        });
+
+    });
+</script>
+<table id="@tblId" class="list attachments">
+    <tbody>
+        <tr>
+            <td class="thumb">
+                <a id="@btnAttach" class="add"></a>
+            </td>
+            <td colspan="4">
+                <p><i>@Piranha.Resources.Page.AttachmentDescription</i></p>
+            </td>
+        </tr>
+        @Html.EditorFor(m => m.Items)
+    </tbody>
+</table>
+<div id="@boxId" class="floatbox">
+    <div class="bg"></div>
+    <div class="box" style="min-width:510px;min-height:260px;">
+    </div>
+</div>

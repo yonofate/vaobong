@@ -1,0 +1,16 @@
+﻿<configuration>
+  <configSections>
+    <section name="piranha.azure" type="Piranha.Azure.ConfigFile, Piranha.Azure" allowLocation="true" allowDefinition="Everywhere" />
+  </configSections>
+  <piranha>
+    <providers>
+			<!--mediaProvider value="Piranha.Azure.IO.AzureMediaProvider, Piranha.Azure" /-->
+			<!--logProvider value="Piranha.Azure.Log.AzureLogProvider, Piranha.Azure" /-->
+    </providers>
+  </piranha>
+  <piranha.azure>
+    <settings>
+      <storageConnectionString value="" />
+    </settings>
+  </piranha.azure>
+</configuration>

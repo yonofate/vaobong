@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+	<metadata>
+		<id>PiranhaCMS.Core</id>
+		<version>2.2.6-beta4</version>
+		<title>Piranha CMS Core</title>
+		<authors>Håkan Edling</authors>
+		<owners />
+		<licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+		<projectUrl>http://github.com/piranhacms/piranha/</projectUrl>
+		<iconUrl>http://piranhacms.org/content/img/nuget.png</iconUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>This is the core package for Piranha CMS. It contains the binaries, manager interface, scripts for creating and maintaining the database, entity framework mappings and application models.
+
+It also creates the default folders needed for uploading, caching and scaling media uploaded with the manager interface.
+		</description>
+		<summary>This is the core package for Piranha CMS. It contains the binaries and manager interface.</summary>
+		<releaseNotes>See the changelog available at:
+https://github.com/piranhacms/piranha/wiki/changelog
+		</releaseNotes>
+		<copyright>Håkan Edling</copyright>
+		<dependencies>
+			<group targetFramework=".NETFramework4.5">
+				<dependency id="AutoMapper" version="[4.1.1,4.2)" />
+				<dependency id="EntityFramework" version="[6.1.3,6.2)" />
+				<dependency id="Microsoft.AspNet.Mvc" version="[5.2.3,5.3)" />
+				<dependency id="WebActivatorEx" version="2.0.6" />
+				<dependency id="MarkdownSharp" version="1.13.0.0" />
+			</group>
+		</dependencies>
+		<frameworkAssemblies>
+			<frameworkAssembly assemblyName="System.Linq" targetFramework=".NETFramework4.5" />
+			<frameworkAssembly assemblyName="System.Data.Linq" targetFramework=".NETFramework4.5" />
+			<frameworkAssembly assemblyName="System.ComponentModel.Composition" targetFramework=".NETFramework4.5" />
+		</frameworkAssemblies>
+	</metadata>
+	<files>
+		<file src="..\Templates\TemplateSite\App_Data\Cache\Content\index.html" target="content\App_Data\Cache\Content\index.html" />
+		<file src="..\Templates\TemplateSite\App_Data\Cache\Uploads\index.html" target="content\App_Data\Cache\Uploads\index.html" />
+		<file src="..\Templates\TemplateSite\App_Data\Cache\index.html" target="content\App_Data\Cache\index.html" />
+		<file src="..\Templates\TemplateSite\App_Data\Content\index.html" target="content\App_Data\Content\index.html" />
+		<file src="..\Templates\TemplateSite\App_Data\Uploads\index.html" target="content\App_Data\Uploads\index.html" />
+		<file src="..\Templates\TemplateSite\Areas\Manager\Content\Css\Editor.css" target="content\Areas\Manager\Content\Css\Editor.css" />
+		<file src="..\Templates\TemplateSite\Areas\Manager\Views\Extensions\index.html" target="content\Areas\Manager\Views\Extensions\index.html" />
+		<file src="..\Templates\TemplateSite\Areas\Manager\Views\Web.config" target="content\Areas\Manager\Views\Web.config" />
+		<file src="..\Core\Piranha\bin\de-DE\Piranha.resources.dll" target="lib\net45\de-DE\Piranha.resources.dll" />
+		<file src="..\Core\Piranha\bin\fa-IR\Piranha.resources.dll" target="lib\net45\fa-IR\Piranha.resources.dll" />
+		<file src="..\Core\Piranha\bin\fr-FR\Piranha.resources.dll" target="lib\net45\fr-FR\Piranha.resources.dll" />
+		<file src="..\Core\Piranha\bin\nl-NL\Piranha.resources.dll" target="lib\net45\nl-NL\Piranha.resources.dll" />
+		<file src="..\Core\Piranha\bin\pt-BR\Piranha.resources.dll" target="lib\net45\pt-BR\Piranha.resources.dll" />
+		<file src="..\Core\Piranha\bin\ru-RU\Piranha.resources.dll" target="lib\net45\ru-RU\Piranha.resources.dll" />
+		<file src="..\Core\Piranha\bin\sv-SE\Piranha.resources.dll" target="lib\net45\sv-SE\Piranha.resources.dll" />
+		<file src="..\Core\Piranha\bin\Piranha.dll" target="lib\net45\Piranha.dll" />
+		<file src="..\Core\Piranha\bin\RazorGenerator.Mvc.dll" target="lib\net45\RazorGenerator.Mvc.dll" />
+		<file src="..\Core\Piranha\web.config.transform" target="content\web.config.transform" />
+		<file src="..\LICENSE" target="content\LICENSE" />
+		<file src="..\RazorGenerator.LICENSE.md" target="content\RazorGenerator.LICENSE.md" />
+	</files>
+</package>

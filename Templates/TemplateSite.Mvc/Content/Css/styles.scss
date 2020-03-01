@@ -1,0 +1,156 @@
+﻿$menu-color: #212121;
+$orange-color: #ff460d;
+$mobile: 769px;
+$mobile-color: #78b43d;
+$sop-bg-color: #b2b2b2;
+$blue-color: #2196f3;
+
+@import 'stylepage';
+@import 'flags';
+@import 'loading';
+@import 'update';
+@import 'sopcast';
+@import 'livestream';
+
+.header {
+    overflow: auto;
+    background-color: #212121;
+    -webkit-background: linear-gradient(to right, #212121 30%, transparent);
+    -moz-background: linear-gradient(to right, #212121 30%, transparent);
+    -ms-background: linear-gradient(to right, #212121 30%, transparent);
+    background: linear-gradient(to right, #212121 30%, transparent);
+
+    .header--top {
+        margin-top: 10px;
+
+        .banners {
+            // padding-right: 10px;
+            min-width: 754px; // net size
+        }
+    }
+
+    .main-menu {
+        height: 50px;
+        background-color: $menu-color;
+
+        li {
+            display: block;
+            float: left;
+            height: 50px;
+            line-height: 50px;
+            font-size: 12px;
+            text-transform: uppercase;
+
+            &.active {
+                background-color: $orange-color !important;
+            }
+
+            a {
+                display: block;
+                height: 50px;
+                line-height: 50px;
+                color: #fff;
+                padding: 0 10px;
+                position: relative;
+                text-decoration: none;
+                overflow: hidden;
+                -webkit-transition: .25s ease-in-out;
+                -moz-transition: .25s ease-in-out;
+                transition: .25s ease-in-out;
+
+                &:before {
+                    content: attr(data-title);
+                    font-size: 12px;
+                    text-transform: uppercase;
+                    color: #fff;
+                    display: block;
+                    background-color: #ff460d;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    width: 100%;
+                    line-height: 50px;
+                    text-align: center;
+                    font-family: inherit;
+                    -webkit-transition: .25s ease-in-out;
+                    -moz-transition: .25s ease-in-out;
+                    transition: .25s ease-in-out;
+                    transform: translateY(-50%);
+                    opacity: 0;
+                }
+
+                &:hover {
+                    padding-top: 50px;
+
+                    &:before {
+                        transform: translateY(0);
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: $mobile) {
+        background: $menu-color;
+
+        .header--top {
+            margin-top: 0;
+        }
+
+        .main-menu {
+            height: auto;
+            margin: 0;
+            padding: 0 !important;
+            display: none;
+
+            li {
+                width: 50%;
+                height: 32px;
+                line-height: 32px;
+                //border: 1px solid red;
+                margin: 0;
+                list-style: disc;
+
+                a {
+                    color: $menu-color;
+                    background-color: #fff;
+                    height: 32px;
+                    line-height: 32px;
+                    //border: 1px solid blue;
+                    padding-left: 32px;
+
+                    &:before {
+                        display: none;
+                    }
+
+                    &:after {
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        left: 10px;
+                        width: 8px;
+                        height: 8px;
+                        background-color: $mobile-color;
+                        top: 12px;
+                        border-radius: 50%;
+                    }
+                }
+
+                &.active {
+                    border-left: 5px solid $orange-color;
+                }
+            }
+
+            &.mobile-show {
+                display: block;
+            }
+        }
+    }
+}
+
+.main-banner {
+    display: none !important;
+    visibility: collapse;
+}

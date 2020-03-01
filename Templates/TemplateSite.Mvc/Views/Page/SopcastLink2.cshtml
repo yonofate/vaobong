@@ -1,0 +1,71 @@
+﻿@{ 
+    ViewBag.Title = Model == null || Model.Page == null ? "Sopcast" : Model.Page.Title;
+}
+
+<h2 class="mv16 text-uppercase page__title">Link sopcast tổng hợp các giải đấu lớn</h2>
+
+<ul class="sopcast-tab clearfix" data-bind="foreach: tabs">
+    <li data-bind="text: text,
+                   click: $root.goToTab,
+                   css: {active: $data == $root.chosenTabId()}"></li>
+</ul>
+<div data-bind="visible: loadingData()" class="text-uppercase text-center mv16">
+    <div class="spinner">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+    </div>
+</div>
+<h5 class="text-center ph" data-bind="visible: champions().length === 0 && !loadingData()">Không có trận đấu nào!</h5>
+<div id="sopcast" class="sopcast-collection" data-bind="foreach: champions">
+    <div class="sopcast-item">
+        <h3 class="sop__champion clearfix">
+            <span data-bind="attr: {class: flag}"></span>
+            <span data-bind="text: champ"></span>
+        </h3>
+        <div class="sop__matches" data-bind="foreach: matches">
+            <div class="match" data-bind="css: {playing: isPlaying}">
+                <div class="match__info clearfix">
+                    <div class="match-time" data-bind="text: date"></div>
+                    <div class="match-team clearfix">
+                        <div class="team team1" data-bind="text: team1"></div>
+                        <div class="score"><span data-bind="text: time"></span><a href="#" data-bind="text: score"></a></div>
+                        <div class="team team2" data-bind="text: team2">lorem ipsum dolor</div>
+                    </div>
+                    <div class="match-sopcast">
+                        <a href="#" class="btn-sopcast-link" 
+                           data-bind="attr: {'data-id': id,  'data-href': url} ,
+                                     click: $root.findSopcastLink"><span class="flag fl_sopcast"></span></a>
+                    </div>
+                </div>
+                <div class="match__links" data-bind="visible: $data.isShowLink">
+                    <div data-bind="visible: $data.loadingLink">
+                        <div class="spinner spinner-sm">
+                            <div class="rect1"></div>
+                            <div class="rect2"></div>
+                            <div class="rect3"></div>
+                            <div class="rect4"></div>
+                            <div class="rect5"></div>
+                        </div>
+                    </div>
+                    <div class="text-center white-text pt16" data-bind="visible: links().length === 0 && !$data.loadingLink()">
+                        Links sopcast của trận đấu sẽ được cập nhật <strong class="text-danger">30 phút</strong> trước khi trận đấu bắt đầu!
+                    </div>
+                    <div class="link-collection" data-bind="foreach: links">
+                        <div class="link-item clearfix">
+                            <div class="link">
+                                <a href="#" data-bind="attr: {href: url}, text: url"></a>
+                            </div>
+                            <div class="info">
+                                <span data-bind="text: lang"></span>
+                                <span data-bind="text: bitrate"></span>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

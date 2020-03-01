@@ -1,0 +1,22 @@
+﻿@model Piranha.Models.Region
+@{
+    var folder = Model.Type.LastIndexOf('.') > -1 ? Model.Type.Substring(0, Model.Type.LastIndexOf('.')) : "" ;
+    folder = folder != "" ? folder + "/" : "" ;
+    var view = Model.Type.Substring(folder.Length) ;
+}
+<div id="@Model.InternalId" class="region-body @(Model.Body.GetType().Name == "HtmlRegion" ? "fixed" : "")" style="display:none">
+    @Html.HiddenFor(m => m.IsNew)
+    @Html.HiddenFor(m => m.Id)
+    @Html.HiddenFor(m => m.IsDraft)
+    @Html.HiddenFor(m => m.Name)
+    @Html.HiddenFor(m => m.InternalId)
+    @Html.HiddenFor(m => m.Type)
+    @Html.HiddenFor(m => m.PageId)
+    @Html.HiddenFor(m => m.RegiontemplateId)
+    @Html.HiddenFor(m => m.IsPageDraft)
+    @Html.HiddenFor(m => m.Created)
+    @Html.HiddenFor(m => m.Updated)
+    @Html.HiddenFor(m => m.CreatedBy)
+    @Html.HiddenFor(m => m.UpdatedBy)
+    @Html.PartialFor(view, m => m.Body)
+</div>

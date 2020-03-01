@@ -1,0 +1,104 @@
+﻿#boxTemplates .inner {
+  max-width: 660px;
+}
+.edit,
+.templates .preview {
+  margin: 0 auto 10px;
+  width: 190px;
+  height: 160px;
+  overflow: hidden;
+  border: 1px solid #dddddd;
+}
+.edit.block {
+  height: 110px;
+}
+.grid_3 .edit,
+.templates .preview {
+  margin-bottom: 5px;
+}
+.templates {
+  padding: 10px;
+  width: 200px;
+  height: 190px;
+  margin-bottom: 20px;
+}
+.templates h3 {
+  display: block;
+  text-align: center;
+}
+.templates p {
+  margin-top: 10px;
+  font-size: 12px;
+  text-align: center;
+}
+.templates .preview {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+}
+.templates.compressed {
+  width: 145px;
+  height: 160px;
+}
+.templates.compressed h3 {
+  font-size: 14px;
+}
+.templates.compressed p {
+  font-size: 11px;
+}
+.templates.compressed .preview {
+  width: 100px;
+  height: 100px;
+}
+.templates.one {
+  width: 270px;
+  height: 210px;
+}
+.templates.one .preview {
+  width: 140px;
+  height: 140px;
+}
+.templates table.template td.locked {
+  cursor: pointer;
+}
+table.template,
+div.edit table {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  margin-left: 1px;
+}
+table.template td,
+div.edit table td {
+  background: #99d3de;
+  border: 4px solid #fff;
+  cursor: pointer;
+}
+table.template td.active,
+div.edit table td.active {
+  background: #55a812;
+}
+table.template td.locked,
+div.edit table td.locked {
+  background: #99d3de url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAIAAABvrngfAAAAI0lEQVQIW2OYefkeHP0HAwY0PpDBgMaHCiHzQUJofKgQmg0AMpJazRePtmQAAAAASUVORK5CYII=);
+  cursor: default;
+}
+#boxTemplates fieldset {
+  background: none;
+  border-width: 1px 0 0 0;
+  padding: 14px 0 0;
+  margin-bottom: 0;
+}
+#boxTemplates fieldset legend {
+  color: #444;
+  padding: 0 8px;
+}
+#boxTemplates .filter {
+  border-bottom: 1px solid #e2e2e2;
+  margin-bottom: 10px;
+  padding: 0 0 15px;
+}
+#boxTemplates .filter .btn {
+  text-decoration: none;
+  padding: 4px 14px;
+}

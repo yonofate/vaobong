@@ -1,0 +1,64 @@
+﻿@model Piranha.Areas.Manager.Models.CommentEditModel
+@{
+    ViewBag.Title = @Piranha.Resources.Comment.EditTitleExisting ;
+}
+@section Toolbar {
+@Html.Partial("Partial/Tabs")
+<div class="toolbar">
+    <div class="inner">
+        <ul>
+            <li><a class="save submit">@Piranha.Resources.Global.ToolbarSave</a></li>
+            <li><a href="@Url.Action("delete", new { id = Model.Id })" class="delete">@Piranha.Resources.Global.ToolbarDelete</a></li>
+            <li><a href="@Url.Action("index", "comment")" class="back">@Piranha.Resources.Global.ToolbarBack</a></li>
+            <li><a href="@Url.Action("edit", new { id = Model.Id })" class="refresh">@Piranha.Resources.Global.ToolbarReload</a></li>
+        </ul>
+        <div class="clear"></div>
+    </div>
+</div>
+}
+@{ Html.BeginForm() ; }
+@Html.HiddenFor(m => m.Id)
+@Html.HiddenFor(m => m.AuthorName)
+@Html.HiddenFor(m => m.AuthorEmail)
+<div class="grid_9">
+    <div class="box">
+        <div class="title"><h2>@Piranha.Resources.Global.Information</h2></div>
+        <div class="inner">
+            <ul class="form">
+                <li>@Html.LabelFor(m => m.Title)
+                    <div class="input">
+                        @Html.TextBoxFor(m => m.Title)</div>
+                    @Html.ValidationMessageFor(m => m.Title)
+                </li>
+                <li>@Html.LabelFor(m => m.Status)
+                    <div class="input">
+                        @Html.DropDownListFor(m => m.Status, Model.Statuses)</div>
+                </li>
+                <li>@Html.LabelFor(m => m.Body)
+                    <div class="input">
+                        @Html.TextAreaFor(m => m.Body, new { @rows = 10 })</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="grid_3">
+    <div class="box">
+        <div class="title"><h2>@Piranha.Resources.Comment.Author</h2></div>
+        <div class="inner">
+            <ul class="form">
+                <li>@Html.LabelFor(m => m.AuthorName)
+                @if (Model.CreatedById.HasValue) {
+                    <p><a href="@Url.Action("user", "settings", new { @id = Model.CreatedById.Value })">@Model.AuthorName</a></p>
+                } else {
+                    <p>@Model.AuthorName</p>
+                }
+                </li>
+                <li>@Html.LabelFor(m => m.AuthorEmail)
+                    <p><a href="mailto:@Model.AuthorEmail">@Model.AuthorEmail</a></p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+@{ Html.EndForm() ; }

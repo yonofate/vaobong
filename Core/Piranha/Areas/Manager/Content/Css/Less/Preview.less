@@ -1,0 +1,139 @@
+﻿//
+// Copyright (c) 2011-2015 Håkan Edling
+//
+// This software may be modified and distributed under the terms
+// of the MIT license.  See the LICENSE file for details.
+// 
+// http://github.com/piranhacms/piranha
+// 
+
+@import "variables.less";
+@import "mixins.less";
+
+#boxTemplates .inner {
+    max-width: 660px;
+}
+
+.edit, .templates .preview {
+    margin: 0 auto 10px;
+    width: 190px;
+    height: 160px;
+    overflow: hidden;
+    border: 1px solid @primay-border-color;
+}
+
+.edit {
+	&.block {
+		height: 110px;
+	}
+}
+
+.grid_3 .edit, .templates .preview {
+    margin-bottom: 5px;
+}
+
+.templates {
+    padding: 10px;
+    width: 200px;
+    height: 190px;
+    margin-bottom: 20px;
+
+    h3 {
+        display: block;
+        text-align: center;
+    }
+
+    p {
+        margin-top: 10px;
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .preview {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto;
+    }
+
+    &.compressed {
+        width: 145px;
+        height: 160px;
+
+        h3 {
+            font-size: 14px;
+        }
+
+        p {
+            font-size: 11px;
+        }
+
+        .preview {
+            width: 100px;
+            height: 100px;
+        }
+    }
+
+    &.one {
+        width: 270px;
+        height: 210px;
+
+        .preview {
+            width: 140px;
+            height: 140px;
+        }
+    }
+
+    table.template {
+        td.locked {
+            cursor: pointer;
+        }
+    }
+}
+
+table.template,
+div.edit table {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    margin-left: 1px;
+
+    td {
+        background: #99d3de;
+        border: 4px solid #fff;
+        cursor: pointer;
+
+        &.active {
+            background: @color-active;
+        }
+
+        &.locked {
+            background: #99d3de url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAIAAABvrngfAAAAI0lEQVQIW2OYefkeHP0HAwY0PpDBgMaHCiHzQUJofKgQmg0AMpJazRePtmQAAAAASUVORK5CYII=);
+            cursor: default;
+        }
+    }
+}
+
+#boxTemplates {
+	fieldset {
+		background: none;
+		border-width: 1px 0 0 0;
+		padding: 14px 0 0;
+		margin-bottom: 0;
+
+		legend {
+			color: #444;
+			padding: 0 8px;
+		}
+	}
+
+	.filter {
+		border-bottom: 1px solid @form-border-color;
+		margin-bottom: 10px;
+		padding: 0 0 15px;
+	
+		.btn {
+			text-decoration: none;
+			padding: 4px 14px;
+		}
+	}
+}

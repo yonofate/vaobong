@@ -1,0 +1,32 @@
+﻿@{
+    var controller = Piranha.WebPages.Manager.GetActiveMenuItem().Controller ;
+}
+<div id="attachment_data"></div>
+<table id="tbl-attachments" class="list attachments">
+    <tbody>
+        <tr>
+            <td class="thumb">
+                <a id="btn_attach" class="add"></a>
+            </td>
+            <td colspan="4">
+                <p><i>@Piranha.Resources.Page.AttachmentDescription</i></p>
+            </td>
+        </tr>
+        @foreach (var c in Model.AttachedContent) {
+        <tr data-id="@c.Id">
+            <td><img src="@Url.GetThumbnailUrl((Guid)c.Id, 50)" /></td>
+            <td><a href="@Url.Action("edit", "content", new { @id = c.Id, @returl = Url.Action("edit", controller) + "?action=attachments" })">
+                @c.DisplayName
+                <div class="list-info">
+                    @Html.Raw(c.LastPublished == DateTime.MinValue ? "<span class=info-unpublished></span>" : (c.Updated > c.LastPublished ? "<span class=info-draft></span>" : ""))
+                </div>
+            </a></td>
+            <td>@c.Type</td>
+            <td class="buttons three">
+                <a class="icon up marg"></a>
+                <a class="icon down marg"></a>
+                <a class="icon delete"></a></td>
+        </tr>
+        }
+    </tbody>
+</table>

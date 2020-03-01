@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+	<metadata>
+		<id>PiranhaCMS.Azure</id>
+		<version>2.2.5</version>
+		<title>Piranha CMS Azure</title>
+		<authors>Håkan Edling</authors>
+		<licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+		<projectUrl>http://github.com/piranhacms/piranha/</projectUrl>
+		<iconUrl>http://piranhacms.org/content/img/nuget.png</iconUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>Library for adding Windows Azure features to Piranha CMS.</description>
+		<summary>Library for adding Windows Azure features to Piranha CMS.</summary>
+		<releaseNotes>See the changelog available at:
+https://github.com/piranhacms/piranha/wiki/changelog
+		</releaseNotes>
+		<copyright>Håkan Edling</copyright>
+		<dependencies>
+			<group targetFramework=".NETFramework4.5">
+				<dependency id="Microsoft.Data.Edm" version="[5.6.4, 5.7.0)" />
+				<dependency id="Microsoft.Data.OData" version="[5.6.4, 5.7.0)" />
+				<dependency id="Microsoft.Data.Services.Client" version="[5.6.4, 5.7.0)" />
+				<dependency id="Microsoft.WindowsAzure.ConfigurationManager" version="[3.1.0, 3.2.0)" />
+				<dependency id="Newtonsoft.Json" version="[6.0.8, 6.1.0)" />
+				<dependency id="System.Spatial" version="[5.6.4, 5.7.0)" />
+				<dependency id="WindowsAzure.Storage" version="[4.3.0, 4.4.0)" />
+				<dependency id="PiranhaCMS.Core" version="[2.2.5, 2.3.0)" />
+			</group>
+		</dependencies>
+	</metadata>
+	<files>
+		<file src="..\Modules\Piranha.Azure\web.config.transform" target="content\web.config.transform" />
+		<file src="..\Modules\Piranha.Azure\bin\release\Piranha.Azure.dll" target="lib\net45\Piranha.Azure.dll" />
+	</files>
+</package>

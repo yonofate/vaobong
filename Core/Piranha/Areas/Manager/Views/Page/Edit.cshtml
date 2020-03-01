@@ -1,0 +1,463 @@
+﻿@model Piranha.Models.Manager.PageModels.EditModel
+@using Piranha.Extend;
+@using Piranha.Models.Manager.PageModels;
+@section Head {
+    <script type="text/javascript" src="~/res.ashx/areas/manager/content/js/jquery.form.js"></script>
+    <script type="text/javascript" src="~/res.ashx/areas/manager/content/js/jquery.regions.js"></script>
+    <script type="text/javascript" src="~/res.ashx/areas/manager/content/js/jquery.attachment.js"></script>
+    <script type="text/javascript" src="~/res.ashx/areas/manager/content/js/jquery.media.dialog.js"></script>
+    <script type="text/javascript" src="~/res.ashx/areas/manager/content/js/jquery.comments.js"></script>
+    <script type="text/javascript" src="~/res.ashx/areas/manager/content/js/ext/jquery.equalheights.js"></script>
+    @Html.Partial("~/Areas/Manager/Views/Shared/Partial/TinyMCE.cshtml")
+    <script type="text/javascript">
+		var folderId = "";
+		var deletemsg = "@Piranha.Resources.Page.MessageDeleteConfirm";
+
+        $(document).ready(function () {
+            // UI Stuff
+            $("#Page_Title").focus();
+            $('.first-row .box').equalHeights();
+
+            @if (Model.Action == EditModel.ActionType.ATTACHMENTS) {
+            <text>
+            $('#btn_attachments').click();
+            </text>
+            }
+
+            $("#Page_ParentId").change(function () {
+                var page_id = $("#Page_Id").val();
+                var page_parentid = $("#org_parentid").val();
+                var page_seqno = $("#Page_Seqno").val();
+                var parentid = $("#Page_ParentId").val();
+                var site_tree = $("#Page_SiteTreeInternalId").val();
+
+                $.get("@Url.Action("siblings")?page_id=" + page_id + "&page_parentid=" + page_parentid + "&page_seqno=" + page_seqno + "&parentid=" + parentid + "&site_tree=" + site_tree, function (data) {
+                    $("#div-seqno").html(data);
+                });
+            });
+
+            $('#Page_GroupId').change(function() {
+                var page_id = $("#Page_Id").val();
+                var group_id = $(this).val();
+
+                $.get("@Url.Action("grouplist")?page_id=" + page_id + "&group_id=" + group_id, function(data) {
+                    $("#disable-groups").html(data);
+                });
+            });
+
+            $('#btnMove').click(function () {
+                $('#placement-edit').slideToggle('fast');
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            new piranha.comment('@Model.Page.Id', 'comment-notification', 'pnl-comments .inner');
+            
+            new piranha.media('btn_attach', 'boxContent', function (a) {
+                // Store folder id so we can open the same folder next time.
+                folderId = a.ParentId;
+
+                // Add the attachment
+                $("#tbl-attachments").append(
+                    '<tr data-id="' + a.Id + '">' +
+                        '<td><img src="' + a.ThumbnailUrl + '/50" /></td>' +
+                        '<td>' + a.DisplayName + '</td>' +
+                        '<td>' + a.Type + '</td>' +
+                        '<td class="buttons three">' +
+                            '<a class="icon up marg"></a>' +
+                            '<a class="icon down marg"></a>' +
+                            '<a class="icon delete"></a></td>' +
+                    '</tr>');
+            });
+
+            $(".toolbar .delete").click(function () {
+            	return confirm(deletemsg);
+            });
+        });
+
+        //
+        // Hides all editors on the page. This callback is called from jquery.attachments.js
+        //
+        function hideEditors() {
+            $("#pageregions .input, #globalregions .input").hide();
+            $("#regionbuttons button").removeClass("active");
+            $("#attachments").hide();
+
+            $("#regions .region-body").hide();
+            $("#regionbuttons button").removeClass("active");
+            $("#attachments").hide();
+        }
+
+        //
+        // This callback is called from jquery.attachments.js before form submit.
+        //
+        function addAttachmentData(index, val) {
+            $("#attachment_data").append(
+                    '<input id="Page_Attachments_' + index +
+                    '_" name="Page.Attachments[' + index +
+                    ']" type="hidden" value="' + $(val).attr("data-id") + '" />');
+        }
+    </script>
+}
+
+@section Toolbar {
+@Html.Partial("Partial/Tabs")
+<div class="toolbar">
+    <div class="inner">
+        <ul>
+            <li><a class="save submit">@Piranha.Resources.Global.ToolbarSaveDraft</a></li>
+            @if (!Model.Page.IsNew && !Model.Page.IsBlock) {
+            <li><a href="@Piranha.WebPages.WebPiranha.GetSiteUrl()@Url.GetPermalink(Model.Page.Permalink, true)" target="preview" class="preview">@Piranha.Resources.Global.ToolbarPreview</a></li>
+            }
+            @if (User.HasAccess("ADMIN_PAGE_PUBLISH")) {
+            <li><a class="publish">@(Model.Page.Published == DateTime.MinValue ? Piranha.Resources.Global.ToolbarPublish : Piranha.Resources.Global.ToolbarUpdate)</a></li>
+            }
+            @if (Model.Page.Published > DateTime.MinValue && !Model.IsSite && User.HasAccess("ADMIN_PAGE_PUBLISH")) {
+            <li><a href="@Url.Action("unpublish", new { id = Model.Page.Id })" class="unpublish">@Piranha.Resources.Global.ToolbarUnpublish</a></li>
+            }
+            @if (Model.Page.Published > DateTime.MinValue && Model.Page.Updated > Model.Page.LastPublished) {
+            <li><a href="@Url.Action("revert", new { id = Model.Page.Id })" class="revert">@Piranha.Resources.Global.ToolbarRevert</a></li>
+            }
+            @if (!Model.Page.IsNew && Model.CanDelete && !Model.IsSite && User.HasAccess("ADMIN_PAGE_PUBLISH")) {
+            <li><a href="@Url.Action("delete", new { id = Model.Page.Id })" class="delete">@Piranha.Resources.Global.ToolbarDelete</a></li>
+            }
+            @if (String.IsNullOrEmpty(ViewBag.ReturnUrl)) {
+            <li><a href="@Url.Action("index", new { id = Model.Page.Id })" class="back">@Piranha.Resources.Global.ToolbarBack</a></li>
+            } else {
+            <li><a href="@ViewBag.ReturnUrl" class="back">@Piranha.Resources.Global.ToolbarBack</a></li>
+            }
+            <li><a href="@Url.Action("edit", new { id = Model.Page.Id })" class="refresh">@Piranha.Resources.Global.ToolbarReload</a></li>
+            @Piranha.WebPages.Hooks.Manager.Toolbar.Render(Url, Model)
+        </ul>
+        <div class="clear"></div>
+    </div>
+</div>
+}
+
+@{ Html.BeginForm("edit", (string)ViewContext.RouteData.Values["Controller"]) ; }
+<div>
+    @Html.HiddenFor(m => m.Page.IsNew)
+    @Html.HiddenFor(m => m.Page.SiteTreeId)
+    @Html.HiddenFor(m => m.Page.SiteTreeInternalId)
+    @Html.HiddenFor(m => m.Page.OriginalId)
+    @Html.HiddenFor(m => m.Page.Id)
+    @Html.HiddenFor(m => m.Page.IsDraft)
+    @Html.HiddenFor(m => m.Page.Permalink)
+    @Html.HiddenFor(m => m.Page.TemplateId)
+    @Html.HiddenFor(m => m.Page.PermalinkId)
+    @Html.HiddenFor(m => m.Page.Permalink)
+	@Html.HiddenFor(m => m.Page.IsBlock)
+    @Html.HiddenFor(m => m.Page.Created)
+    @Html.HiddenFor(m => m.Page.Updated)
+    @Html.HiddenFor(m => m.Page.Published)
+    @Html.HiddenFor(m => m.Page.LastPublished)
+    @Html.HiddenFor(m => m.Page.CreatedBy)
+    @Html.HiddenFor(m => m.Page.UpdatedBy)
+    @Html.HiddenFor(m => m.Permalink.IsNew)
+    @Html.HiddenFor(m => m.Permalink.Id)
+    @Html.HiddenFor(m => m.Permalink.NamespaceId)
+    @Html.HiddenFor(m => m.Permalink.Type)
+    @Html.HiddenFor(m => m.Permalink.Created)
+    @Html.HiddenFor(m => m.Permalink.CreatedBy)
+    @if (Model.IsSite) {
+    @Html.HiddenFor(m => m.Page.Title)
+    @Html.HiddenFor(m => m.Page.ParentId)
+    @Html.HiddenFor(m => m.Page.Seqno)
+    @Html.HiddenFor(m => m.Permalink.Name)
+    }
+    @if (!Piranha.Application.Current.IsMvc) {
+    @Html.HiddenFor(m => m.Page.PageView)
+    }
+    @Html.Hidden("returl", (string)ViewBag.ReturnUrl)
+    <input type="hidden" id="draft" name="draft" value="true" />
+    <input type="hidden" id="org_parentid" value="@Model.Page.ParentId" />
+</div>
+<div class="first-row">
+    <div class="@(!String.IsNullOrEmpty(Model.Template.Preview.ToString()) ? "grid_9" : "grid_12")">
+        <div class="box">
+            <div class="title"><h2>@Piranha.Resources.Global.Information</h2></div>
+            <div class="inner">
+                @if (!Model.IsSite) {
+                <ul class="form">
+                    <li>@Html.LabelFor(m => m.Page.Title)
+                        <div class="input">
+                            @Html.TextBoxFor(m => m.Page.Title)</div>
+                        @Html.ValidationMessageFor(m => m.Page.Title)
+                    </li>
+					@if (!Model.Page.IsBlock) {
+						<li>@Html.LabelFor(m => m.Page.NavigationTitle)
+							<div class="input">
+								@Html.TextBoxFor(m => m.Page.NavigationTitle, new { @placeholder = Piranha.Resources.Global.Optional })</div>
+							@Html.ValidationMessageFor(m => m.Page.NavigationTitle)
+						</li>
+					}
+                    <li class="protected">@Html.LabelFor(m => m.Page.Permalink)
+                        @if (Model.Permalink != null && !String.IsNullOrEmpty(Model.Permalink.Name)) {
+                        <p>@Piranha.WebPages.WebPiranha.GetSiteUrl()@Url.GetPermalink(Model.Permalink.Name)</p>
+                        } else {
+                        <p><i>@Piranha.Resources.Page.PermalinkDescription</i></p>
+                        }
+                        <div class="input">
+                            @Html.TextBoxFor(m => m.Permalink.Name)</div>
+                        @Html.ValidationMessageFor(m => m.Permalink)
+                        <a class="locked"></a>
+                    </li>
+                    <li>
+                        <label>@Piranha.Resources.Global.Placement</label>
+                        <button class="btn right" id="btnMove">@Piranha.Resources.Global.Move</button>
+                        @if (!Model.Page.IsStartpage) {
+                        <p>@Piranha.Resources.Global.PlacementPage <strong>@(Model.Page.Seqno > 1 ? @Piranha.Resources.Global.PlacementAfter : @Piranha.Resources.Global.PlacementBelow)</strong> &quot;@Model.PlaceRef&quot;</p>
+                        } else {
+                        <p>@Piranha.Resources.Global.PlacementStart</p>
+                        }
+                        <div id="placement-edit" style="display:none">
+                            @Html.LabelFor(m => m.Page.ParentId)
+                            <div class="input">
+                                <select id="Page_ParentId" name="Page.ParentId">
+                                    @foreach (var p in Model.Parents) {
+                                    <option value="@p.Id"@(p.IsSelected ? " selected=selected" : "")>
+                                        @Html.Raw(p.Title)</option>
+                                    }
+                                </select>
+                            </div>
+                            @Html.LabelFor(m => m.Page.Seqno)
+                            <div class="input" id="div-seqno">
+                                <select id="Page_Seqno" name="Page.Seqno">
+                                @foreach (var s in Model.Siblings) {
+                                <option value="@s.Seqno"@(s.IsSelected ? " selected=selected" : "")>@s.Title</option>
+                                }
+                                </select>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                } else {
+                <ul class="form">
+                    <li>
+                        @Html.LabelFor(m => m.SiteTree.MetaTitle, Piranha.Resources.SiteTree.MetaTitle)
+                        <div class="input">
+                            @Html.TextBoxFor(m => m.SiteTree.MetaTitle)
+                            @if (String.IsNullOrEmpty(Model.SiteTree.MetaTitle)) {
+                                <span class="notification">@Piranha.Resources.Page.KeywordsNotification</span>
+                            }
+                        </div>
+                    </li>
+                    <li>
+                        @Html.LabelFor(m => m.SiteTree.MetaDescription, Piranha.Resources.SiteTree.MetaDescription)
+                        <div class="input">
+                            @Html.TextAreaFor(m => m.SiteTree.MetaDescription, new { @rows = 5 })
+                            @if (String.IsNullOrEmpty(Model.SiteTree.MetaDescription)) {
+                                <span class="notification">@Piranha.Resources.Page.DescriptionNotification</span>
+                            }
+                        </div>
+                    </li>
+                </ul>
+                }
+            </div>
+        </div>
+    </div>
+    @if (!String.IsNullOrEmpty(Model.Template.Preview.ToString())) {
+    <div class="grid_3">
+        <div class="box pagetemplate">
+            <div class="title"><h2>@(!Model.IsSite ? Model.Template.Name : Model.SiteTree.Name)</h2></div>
+            <div class="inner">
+                <div class="edit @(Model.Page.IsBlock ? "block" : "")">
+                    @Model.Template.Preview
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+</div>
+<div>
+    <div class="grid_12">
+        <div class="box main-content">
+            <table>
+                <tr>
+                    <td class="tools">
+                        <ul>
+                            <li class="btn-content @(Model.Action != EditModel.ActionType.SEO ? "active" : "")"><a href="#" data-id="pnl-content">@Piranha.Resources.Global.Content</a></li>
+                            @if (!Model.IsSite && !Model.Page.IsBlock) {
+                            <li class="btn-settings @(Model.Action == EditModel.ActionType.SEO ? "active" : "")"><a href="#" data-id="pnl-settings">@Piranha.Resources.Global.Settings</a></li>
+                            }
+                            @if (Model.Properties.Count > 0) {
+                            <li class="btn-properties"><a href="#" data-id="pnl-properties">@Piranha.Resources.Global.Properties</a></li>
+                            }
+                            @if (Model.EnableComments) {
+                            <li class="btn-comments">
+                                @{
+                                    var count = Model.Comments.Where(c => c.Status == Piranha.Entities.Comment.CommentStatus.New).Count() ;
+                                }
+                                <span @(count == 0 ? "style=display:none" : "") id="comment-notification" class="notification">@count</span>
+                                <a href="#" data-id="pnl-comments">@Piranha.Resources.Global.Comments</a>
+                            </li>
+                            }
+                            @foreach (var ext in Model.Extensions) {
+                            <li>
+                                <a href="#"@(ExtensionManager.Current.GetIconPathByType(ext.Type) != "" ? "style=background-image:url('" + 
+                                Url.Content(ExtensionManager.Current.GetIconPathByType(ext.Type)) + "')" : "") data-id="pnl-@ExtensionManager.Current.GetInternalIdByType(ext.Type).ToLower()">
+                                    @ExtensionManager.Current.GetNameByType(ext.Type)
+                                </a>
+                            </li>
+                            }
+                        </ul>
+                    </td>
+                    <td>
+                        <div id="pnl-content" class="main content-editor @(Model.Action != EditModel.ActionType.SEO ? "" : "hidden")">
+                            <div class="title">
+                                <div id="regionbuttons" class="buttons">
+                                    @for (int n = 0; n < Model.Regions.Count; n++) {
+                                        <button id="@Html.Raw("btn_" + Model.Regions[n].InternalId)" class="btn@(n > 0 ? "" : " active") region">@Model.Regions[n].Name</button>
+                                    }
+                                    <button id="btn_attachments" class="btn@(Model.Regions.Count == 0 ? " active" : "")">@Piranha.Resources.Page.Attachments</button>
+                                </div>
+                                <h2 id="section-title">@Piranha.Resources.Global.Content</h2>
+                            </div>
+                            <div class="inner">
+                                @if (Model.Regions.Count > 0) {
+                                <div id="regions">
+                                    @Html.EditorFor(m => m.Regions)
+                                </div>
+                                }
+                                <div id="attachments" @(Model.Regions.Count > 0 ? "style=display:none" : "")>
+                                    @Html.Partial("Partial/Attachments")
+                                </div>
+                            </div>
+                        </div>
+                        @if (!Model.IsSite) {
+                        <div id="pnl-settings" class="main @(Model.Action == EditModel.ActionType.SEO ? "" : "hidden")">
+                            <div class="title"><h2>@Piranha.Resources.Global.Settings</h2></div>
+                            <div class="inner">
+								<ul class="form">
+									<li>
+										@Html.LabelFor(m => m.Page.GroupId)
+										<div class="input">
+											@Html.DropDownListFor(m => m.Page.GroupId, Model.Groups)
+										</div>
+										@Html.LabelFor(m => m.Page.DisabledGroups)
+										<div id="disable-groups" class="block">
+											@{ var dGroups = Model.Groups.Where(g => g.Value != Guid.Empty.ToString()).ToList(); }
+											@Html.Partial("Partial/GroupList", new Piranha.Models.Manager.PageModels.GroupListModel() {
+										   Groups = Model.DisableGroups, Page = Model.Page
+									   })
+										</div>
+									</li>
+									<li>
+										@Html.LabelFor(m => m.Page.IsHidden)
+										<p>@Html.CheckBoxFor(m => m.Page.IsHidden) (@Piranha.Resources.Page.HiddenDescription)</p>
+									</li>
+									<li>
+										@Html.LabelFor(m => m.Page.Keywords)
+										<div class="input">
+											@Html.TextBoxFor(m => m.Page.Keywords, new { @placeholder = Piranha.Resources.Global.Optional })
+											@if (Model.Action == EditModel.ActionType.SEO && String.IsNullOrEmpty(Model.Page.Keywords)) {
+												<span class="notification">@Piranha.Resources.Page.KeywordsNotification</span>
+											}
+										</div>
+										@Html.ValidationMessageFor(m => m.Page.Keywords)
+									</li>
+									<li>
+										@Html.LabelFor(m => m.Page.Description)
+										<div class="input">
+											@Html.TextAreaFor(m => m.Page.Description, new { @rows = 3, @placeholder = Piranha.Resources.Global.Optional })
+											@if (Model.Action == EditModel.ActionType.SEO && String.IsNullOrEmpty(Model.Page.Description)) {
+												<span class="notification">@Piranha.Resources.Page.DescriptionNotification</span>
+											}
+										</div>
+										@Html.ValidationMessageFor(m => m.Page.Description)
+									</li>
+									@if (Model.Template.ShowController) {
+										<li>
+											@Html.LabelFor(m => m.Page.PageController,
+											Piranha.Application.Current.IsMvc ? Piranha.Resources.Page.Route : Piranha.Resources.Page.Template)
+										<div class="input">
+											@Html.TextBoxFor(m => m.Page.PageController, new { @placeholder = !String.IsNullOrEmpty(Model.Template.Controller) ? Model.Template.Controller : "Page" })
+										</div>
+										@Html.ValidationMessageFor(m => m.Page.PageController)
+									</li>
+									}
+									@if (Piranha.Application.Current.IsMvc && Model.Template.ShowView) {
+										<li>
+											@Html.LabelFor(m => m.Page.PageView)
+										<div class="input">
+											@Html.TextBoxFor(m => m.Page.PageView, new { @placeholder = !String.IsNullOrEmpty(Model.Template.View) ? Model.Template.View : "Index" })
+										</div>
+										@Html.ValidationMessageFor(m => m.Page.PageView)
+									</li>
+									}
+									@if (Model.Template.ShowRedirect) {
+										<li>
+											@Html.LabelFor(m => m.Page.PageRedirect)
+										<div class="input">
+											@Html.TextBoxFor(m => m.Page.PageRedirect, new { @placeholder = !String.IsNullOrEmpty(Model.Template.Redirect) ? Model.Template.Redirect : Piranha.Resources.Global.Optional })
+										</div>
+										@Html.ValidationMessageFor(m => m.Page.PageRedirect)
+									</li>
+									}
+								</ul>
+
+                            </div>
+                        </div>
+                        }
+                        @if (Model.Properties.Count > 0) {
+                        <div id="pnl-properties" class="main hidden">
+                            <div class="title"><h2>@Piranha.Resources.Global.Properties</h2></div>
+                            <div class="inner">
+                                <ul class="form">
+                                @for (int n = 0; n < Model.Properties.Count; n++) {
+                                    <li>@Html.LabelFor(m => m.Properties[n], Model.Properties[n].Name)
+                                        @Html.HiddenFor(m => m.Properties[n].Id)
+                                        @Html.HiddenFor(m => m.Properties[n].IsDraft)
+                                        @Html.HiddenFor(m => m.Properties[n].ParentId)
+                                        @Html.HiddenFor(m => m.Properties[n].Name)
+                                        @Html.HiddenFor(m => m.Properties[n].Created)
+                                        @Html.HiddenFor(m => m.Properties[n].CreatedBy)
+                                        @Html.HiddenFor(m => m.Properties[n].IsNew)
+                                        <div class="input">
+                                            @Html.TextBoxFor(m => m.Properties[n].Value)</div>
+                                    </li>
+                                }
+                                </ul>
+                            </div>
+                        </div>
+                        }
+                        @if (Model.EnableComments) {
+                        <div id="pnl-comments" class="main content-editor hidden">
+                            <div class="title"><h2>@Piranha.Resources.Global.Comments</h2></div>
+                            <div class="inner region-body">
+                                @Html.Partial("~/Areas/Manager/Views/Comment/List.cshtml", Model.Comments)
+                            </div>
+                        </div>
+                        }
+                        @Html.EditorFor(m => m.Extensions)
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="grid_3 hidden">
+    @if (!Model.Page.IsNew) {
+    <div class="box expandable">
+        <div class="title"><h2>@Piranha.Resources.Global.Versioning</h2></div>
+        <div class="inner optional">
+            <ul class="list">
+                <li>@Piranha.Resources.Global.LastPublished <small class="right">
+                    @(Model.Page.LastPublished > DateTime.MinValue ? Model.Page.LastPublished.ToShortDateString() : "")</small></li>
+                <li>@Piranha.Resources.Global.Published <small class="right">
+                    @(Model.Page.Published > DateTime.MinValue ? Model.Page.Published.ToShortDateString() : "")</small></li>
+                <li>@Piranha.Resources.Global.Updated <small class="right">@Model.Page.Updated.ToShortDateString()</small></li>
+                <li>@Piranha.Resources.Global.Created <small class="right">@Model.Page.Created.ToShortDateString()</small></li>
+            </ul>
+        </div>
+    </div>
+    }
+</div>
+@{ Html.EndForm() ; }
+@section Foot {
+ <div id="boxContent" class="floatbox">
+    <div class="bg"></div>
+    <div class="box" style="min-width: 510px;min-height:260px;">
+    </div>
+</div>
+}

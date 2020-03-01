@@ -1,0 +1,37 @@
+﻿@model Piranha.Models.RegionTemplate
+<tr>
+    <td class="form">
+        <span>@Model.Name</span>
+        <div class="input hidden">
+            @Html.TextBoxFor(m => m.Name)</div>
+        @Html.ValidationMessageFor(m => m.Name)
+    </td>
+    <td class="form">
+        <span>@Model.InternalId</span>
+        <div class="input hidden">
+            @Html.TextBoxFor(m => m.InternalId)</div>
+        <div style="position: relative">
+            @Html.ValidationMessageFor(m => m.InternalId)</div>
+    </td>
+    <td>
+        <span class="readonly">@Piranha.Extend.ExtensionManager.Current.GetNameByType(Model.Type)</span>
+    </td>
+    <td class="buttons four">
+        <a class="icon up marg"></a>
+        <a class="icon down marg"></a>
+        <a class="icon edit marg"></a>
+        <a class="icon delete"></a>
+        <div class="hidden">
+            @Html.HiddenFor(m => m.Id)
+            @Html.HiddenFor(m => m.IsNew)
+            @Html.HiddenFor(m => m.TemplateId)
+            @Html.HiddenFor(m => m.Seqno, new { @class = "region-seqno" })
+            @Html.HiddenFor(m => m.Type)
+            @Html.HiddenFor(m => m.Description)
+            @if (!Model.IsNew) {
+            @Html.HiddenFor(m => m.Created)
+            @Html.HiddenFor(m => m.CreatedBy)
+            }
+        </div>
+    </td> 
+</tr>

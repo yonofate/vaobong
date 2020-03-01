@@ -1,0 +1,240 @@
+﻿//
+// Copyright (c) 2011-2015 Håkan Edling
+//
+// This software may be modified and distributed under the terms
+// of the MIT license.  See the LICENSE file for details.
+// 
+// http://github.com/piranhacms/piranha
+// 
+
+@import "variables.less";
+@import "mixins.less";
+
+//
+// Main toolbar
+//
+.toolbar-container {
+    margin-top: 0px;
+}
+.toolbar {
+    background: #eee;
+    border: 1px solid @primay-border-color;
+    .border-radius(3px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+    z-index: 100;
+
+    .inner {
+        padding: 6px 14px 6px 1px;
+    }
+
+    li {
+        float: left;
+        border-right: dotted 1px @primay-border-color;
+        padding: 0 5px;
+        position: relative;
+    }
+
+    a {
+        display: block;
+        width: 56px;
+        .border-radius(4px);
+        font-size: 11px;
+        text-decoration: none;
+        text-align: center;
+        padding-top: 36px;
+        padding: 38px 0 2px;
+        color: #444;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+
+    a:hover {
+        background-color: #ddd;
+    }
+
+    .add, .attachments .add {
+        background: url('../../img/ico-add-24.png') no-repeat 50% 8px;
+    }
+
+    .addfolder {
+        background: url('../../img/ico-add-folder-24.png') no-repeat 50% 8px;
+    }
+
+    .back {
+        background: url('../../img/ico-back-24.png') no-repeat 50% 8px;
+    }
+
+    .save {
+        background: url('../../img/ico-save-24.png') no-repeat 50% 8px;
+    }
+
+    .publish {
+        background: url('../../img/ico-publish-24.png') no-repeat 50% 8px;
+    }
+
+    .unpublish {
+        background: url('../../img/ico-unpublish-24.png') no-repeat 50% 8px;
+    }
+
+    .revert {
+        background: url('../../img/ico-revert-24.png') no-repeat 50% 8px;
+    }
+
+    .delete {
+        background: url('../../img/ico-delete-24.png') no-repeat 50% 8px;
+    }
+
+    .refresh {
+        background: url('../../img/ico-reload-24.png') no-repeat 50% 8px;
+    }
+
+    .preview {
+        background: url('../../img/ico-preview-24.png') no-repeat 50% 8px;
+    }
+
+    .sync {
+        background: url('../../img/ico-sync-24.png') no-repeat 50% 8px;
+    }
+
+    .edit-site {
+        background: url('../../img/ico-edit-24.png') no-repeat 50% 8px;
+    }
+
+    .detach {
+        background: url('../../img/ico-detach-24.png') no-repeat 50% 8px;
+    }
+
+    .seo {
+        background: url('../../img/ico-seo-24.png') no-repeat 50% 8px;
+    }
+
+    button, input {
+        height: 40px;
+        float: right;
+        margin-top: 6px;
+    }
+
+    input {
+        width: 400px;
+        padding: 0 12px;
+        border: 1px solid @secondary-border-color;
+        border-right: none;
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        margin-right: -1px; /* Fix for iPad */
+    }
+
+    .search {
+        background: #fff url('../../img/ico-search-24.png') no-repeat 50% 50%;
+        border: 1px solid @secondary-border-color;
+        border-left: 0px none;
+        width: 40px;
+        height: 42px;
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+
+    &.fixed {
+        ul {
+            position: fixed;
+            background: #444;
+            padding: 4px;
+            .border-radius(3px);
+            z-index: 100;
+            top: 60px;
+            margin-left: -50px;
+
+            li {
+                float: none;
+                border-right: 0 none;
+                border-bottom: 1px dotted #222;
+                padding: 0;
+
+                a {
+                    width: 24px;
+                    height: 24px;
+                    color: transparent;
+                    font-size: 0;
+                    background-position: 50% 50%;
+                    padding: 6px;
+                }
+            }
+        }
+    }
+}
+
+//
+// Content toolbar
+//
+.main-content {
+    table {
+        width: 100%;
+    }
+
+    td {
+        vertical-align: top;
+    }
+
+    .list td {
+        vertical-align: middle;
+    }
+
+    .tools {
+        background: #eee;
+        width: 74px;
+        border-right: solid 1px @primay-border-color;
+
+        li {
+            position: relative;
+
+            a {
+                display: block;
+                font-size: 11px;
+                text-align: center;
+                width: 62px;
+                height: 26px;
+                color: #666;
+                padding-top: 38px;
+                margin: 6px;
+                text-decoration: none;
+                background-repeat: no-repeat;
+                background-position: 50% 9px;
+                border-radius: 3px;
+
+                &:hover {
+                    background-color: #ddd;
+                }
+            }
+
+            &.active a {
+                background-color: #b2dfe7;
+            }
+        }
+
+        .btn-content a {
+            background-image: url('../../img/ico-content-24.png');
+        }
+
+        .btn-properties a {
+            background-image: url('../../img/ico-properties-24.png');
+        }
+
+        .btn-settings a {
+            background-image: url('../../img/ico-settings-24.png');
+        }
+
+        .btn-comments a {
+            background-image: url('../../img/ico-comments-24.png');
+        }
+
+        .btn-regions a {
+            background-image: url('../../img/ico-regions-24.png');
+        }
+
+        &.fixed-toolbar ul {
+            position: fixed;
+            top: 55px;
+        }
+    }
+}

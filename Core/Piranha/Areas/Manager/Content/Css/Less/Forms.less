@@ -1,0 +1,277 @@
+﻿//
+// Copyright (c) 2011-2015 Håkan Edling
+//
+// This software may be modified and distributed under the terms
+// of the MIT license.  See the LICENSE file for details.
+// 
+// http://github.com/piranhacms/piranha
+// 
+
+@import "variables.less";
+@import "mixins.less";
+
+input, textarea {
+    -webkit-appearance: none;
+}
+input[type=checkbox] {
+    -webkit-appearance: checkbox;
+}
+input[type=radio] {
+	-webkit-appearance: radio;
+}
+
+.input input:focus,
+.input select:focus,
+.input textarea:focus {
+    outline: none;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    margin: 8px;
+}
+
+p input[type="checkbox"],
+p input[type="radio"] {
+    margin: 0;
+}
+
+.input {
+    background: #fff;
+    border: 1px solid @form-border-color;
+    padding: 6px 10px;
+    margin-bottom: 10px;
+    .border-radius(2px);
+    box-shadow: 0 0 4px #ececec;
+
+    input, textarea, select {
+        background: transparent;
+        font: normal 14px Arial;
+        border: none 0px;
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+.title input[type="checkbox"],
+.title input[type="radio"] {
+    margin: 4px 8px 8px;
+}
+
+.btn {
+    background: #666;
+    color: #eee;
+    cursor: pointer;
+    border: none 0px;
+    font-size: 13px;
+    height: 24px;
+    padding: 0 12px 2px;
+    margin: 0 0 0 4px;
+    .border-radius(3px);
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+
+    &.big {
+        font-size: 16px;
+        height: 40px;
+    }
+    &.active {
+        background: @color-active;
+        color: #fff;
+    }
+    &a {
+        text-decoration: none;
+        padding: 5px 10px;
+    }
+}
+
+.form {
+    .protected p,
+    .protected .input {
+        margin-right: 34px;
+        clear: none;
+    }
+
+    .protected .input {
+        display: none;
+    }
+
+    li {
+        position: relative;
+        background: @form-label-color;
+        border: 1px solid @form-border-color;
+        margin-bottom: 10px;
+        .border-radius(2px);
+        box-shadow: 0 0 4px rgba(0,0,0,0.02);
+
+        .btn {
+            margin: 3px 8px 0 0;
+        }
+
+        .file {
+            margin: 0;
+        }
+
+        .upload button {
+            float: right;
+            margin: 0 0 0 10px;
+        }
+    }
+
+    label {
+        float: left;
+        text-indent: 10px;
+        margin-top: 7px;
+        color: #666;
+    }
+
+    p {
+        display: block;
+        color: #666;
+        margin: 0 0 0 130px;
+        padding: 6px 0 6px 10px;
+        border: none;
+    }
+
+    .input {
+        margin: 0 0 0 130px;
+        border: none;
+    }
+
+    .half p {
+        margin-left: 0;
+    }
+
+    .checkbox label {
+        float: none;
+        margin: 0;
+    }
+
+    .short {
+        margin-right: 30px;
+    }
+
+    .block {
+        margin-left: 130px;
+        overflow: hidden;
+    }
+
+    .field-validation-error {
+        background: #2d2d2d;
+        color: #ccc;
+        padding: 8px 12px;
+        font-size: 13px;
+        border-radius: 6px;
+        white-space: nowrap;
+        position: absolute;
+        right: -10px;
+        top: -16px;
+        cursor: pointer;
+    }
+}
+
+.upload {
+    position: relative;
+
+    .input {
+        margin-right: 90px;
+    }
+    input[type="file"] {
+        position: absolute; 
+        
+        top: 0;
+        right: 0;
+        height: 24px;
+        width: 480px;
+	    filter: ~"alpha(opacity: 0)";
+	    opacity: 0;
+    }
+    button {
+        float: right;
+        width: 90px;
+        height: 30px;
+        border-radius: 1px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        margin: 0 0 0 10px;
+    }
+}
+
+.content-editor {
+    .form {
+        padding: 14px;
+    }
+
+    fieldset {
+        margin: 14px;
+        padding: 0;
+    }
+}
+
+button.full {
+    width: 100%;
+    margin: 0;
+    }
+.protected {
+    position: relative;
+    }  
+.protected .locked,
+.protected .unlocked {
+    background: url('../../img/ico-locked-24.png') no-repeat 0 0;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    right: 4px;
+    top: 2px;
+    cursor: pointer;
+    }
+.protected .unlocked {
+    background: url('../../img/ico-unlocked-24.png') no-repeat 0 0;
+    }
+
+.grid_3, .grid_4 {
+    label {
+        _margin: 0;
+        padding: 0 0 8px;
+        display: block;
+        float: none;
+    }
+    .form {
+        .field-validation-error {
+            top: auto;
+            bottom: 16px;
+        }
+        p {
+            margin-left: 0;
+        }
+    }
+    .input {
+        margin-left: 0;
+    }
+}
+.field-validation-valid,
+table.list .form .field-validation-valid {
+    display: none;
+}
+fieldset {
+    background: @form-fieldset-color;
+    padding: 14px;
+    border: 1px solid @form-border-color;
+    border-radius: 2px;
+    margin-bottom: 14px;
+
+    legend {
+        font-weight: bold;
+        margin-left: 10px;
+        padding: 0 6px;
+    }
+    .buttons {
+        float: right;
+        margin: 0 14px 14px 0;
+
+        .icon {
+            width: auto;
+            padding-left: 18px;
+            margin-left: 8px;
+        }
+    }
+}

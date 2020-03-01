@@ -1,0 +1,250 @@
+ERROR [2016-02-02 10:43:11] Origin [WebPiranha.BeginRequest] Message [Unhandled exception]
+System.Data.SqlClient.SqlException (0x80131904): Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding. ---> System.ComponentModel.Win32Exception (0x80004005): The wait operation timed out
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at Piranha.Data.ActiveRecord`1.Query(String query, Object[] args) in d:\A_PROJECT\VaoBong\Core\Piranha\Data\ActiveRecord.cs:line 431
+   at Piranha.Data.ActiveRecord`1.GetFields(String fields, String where, Object[] args) in d:\A_PROJECT\VaoBong\Core\Piranha\Data\ActiveRecord.cs:line 392
+   at Piranha.Data.ActiveRecord`1.GetSingle(String where, Object[] args) in d:\A_PROJECT\VaoBong\Core\Piranha\Data\ActiveRecord.cs:line 331
+   at Piranha.Models.Page.GetStartpage(Boolean draft) in d:\A_PROJECT\VaoBong\Core\Piranha\Entities\Internal\Page.cs:line 352
+   at Piranha.Mvc.RouteHandler.HandleStartpage(HttpContext context) in d:\A_PROJECT\VaoBong\Core\Piranha.Mvc\RouteHandler.cs:line 32
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, Boolean draft, String[] args) in d:\A_PROJECT\VaoBong\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 119
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, String[] args) in d:\A_PROJECT\VaoBong\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 32
+   at Piranha.WebPages.WebPiranha.BeginRequest(HttpContext context) in d:\A_PROJECT\VaoBong\Core\Piranha\WebPages\WebPiranha.cs:line 310
+ClientConnectionId:b0698676-aeba-43c7-86d7-38a5c5090662
+ERROR [2016-02-02 10:49:37] Origin [WebPiranha.BeginRequest] Message [Unhandled exception]
+System.Data.SqlClient.SqlException (0x80131904): Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding. ---> System.ComponentModel.Win32Exception (0x80004005): The wait operation timed out
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at Piranha.Data.ActiveRecord`1.Query(String query, Object[] args) in d:\A_PROJECT\VaoBong\Core\Piranha\Data\ActiveRecord.cs:line 431
+   at Piranha.Data.ActiveRecord`1.GetFields(String fields, String where, Object[] args) in d:\A_PROJECT\VaoBong\Core\Piranha\Data\ActiveRecord.cs:line 392
+   at Piranha.Data.ActiveRecord`1.GetSingle(String where, Object[] args) in d:\A_PROJECT\VaoBong\Core\Piranha\Data\ActiveRecord.cs:line 331
+   at Piranha.Models.Page.GetStartpage(Boolean draft) in d:\A_PROJECT\VaoBong\Core\Piranha\Entities\Internal\Page.cs:line 352
+   at Piranha.Mvc.RouteHandler.HandleStartpage(HttpContext context) in d:\A_PROJECT\VaoBong\Core\Piranha.Mvc\RouteHandler.cs:line 32
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, Boolean draft, String[] args) in d:\A_PROJECT\VaoBong\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 119
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, String[] args) in d:\A_PROJECT\VaoBong\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 32
+   at Piranha.WebPages.WebPiranha.BeginRequest(HttpContext context) in d:\A_PROJECT\VaoBong\Core\Piranha\WebPages\WebPiranha.cs:line 310
+ClientConnectionId:af9a69f5-19a5-4dfe-95ac-3eddfc9b7e2f
+ERROR [2016-02-02 10:56:21] Origin [WebPiranha.BeginRequest] Message [Unhandled exception]
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Piranha.Config.get_SiteTreeNamespaceId() in d:\A_PROJECT\VaoBong\Core\Piranha\Config.cs:line 298
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, Boolean draft, String[] args) in d:\A_PROJECT\VaoBong\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 52
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, String[] args) in d:\A_PROJECT\VaoBong\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 32
+   at Piranha.WebPages.WebPiranha.BeginRequest(HttpContext context) in d:\A_PROJECT\VaoBong\Core\Piranha\WebPages\WebPiranha.cs:line 328
+ERROR [2016-02-02 10:57:42] Origin [WebPiranha.BeginRequest] Message [Unhandled exception]
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Piranha.Config.get_SiteTreeNamespaceId() in d:\A_PROJECT\VaoBong\Core\Piranha\Config.cs:line 298
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, Boolean draft, String[] args) in d:\A_PROJECT\VaoBong\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 52
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, String[] args) in d:\A_PROJECT\VaoBong\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 32
+   at Piranha.WebPages.WebPiranha.BeginRequest(HttpContext context) in d:\A_PROJECT\VaoBong\Core\Piranha\WebPages\WebPiranha.cs:line 328
+ERROR [2016-02-02 10:58:46] Origin [WebPiranha.BeginRequest] Message [Unhandled exception]
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Piranha.Config.get_SiteTreeNamespaceId() in d:\A_PROJECT\VaoBong\Core\Piranha\Config.cs:line 298
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, Boolean draft, String[] args) in d:\A_PROJECT\VaoBong\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 52
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, String[] args) in d:\A_PROJECT\VaoBong\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 32
+   at Piranha.WebPages.WebPiranha.BeginRequest(HttpContext context) in d:\A_PROJECT\VaoBong\Core\Piranha\WebPages\WebPiranha.cs:line 328
+ERROR [2016-02-02 11:07:24] Origin [WebPiranha.BeginRequest] Message [Unhandled exception]
+System.Data.SqlClient.SqlException (0x80131904): Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding. ---> System.ComponentModel.Win32Exception (0x80004005): The wait operation timed out
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at Piranha.Data.ActiveRecord`1.Query(String query, Object[] args) in d:\A_PROJECT\VaoBong\Core\Piranha\Data\ActiveRecord.cs:line 431
+   at Piranha.Data.ActiveRecord`1.GetFields(String fields, String where, Object[] args) in d:\A_PROJECT\VaoBong\Core\Piranha\Data\ActiveRecord.cs:line 392
+   at Piranha.Data.ActiveRecord`1.GetSingle(String where, Object[] args) in d:\A_PROJECT\VaoBong\Core\Piranha\Data\ActiveRecord.cs:line 331
+   at Piranha.Models.Page.GetStartpage(Boolean draft) in d:\A_PROJECT\VaoBong\Core\Piranha\Entities\Internal\Page.cs:line 352
+   at Piranha.Mvc.RouteHandler.HandleStartpage(HttpContext context) in d:\A_PROJECT\VaoBong\Core\Piranha.Mvc\RouteHandler.cs:line 32
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, Boolean draft, String[] args) in d:\A_PROJECT\VaoBong\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 119
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, String[] args) in d:\A_PROJECT\VaoBong\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 32
+   at Piranha.WebPages.WebPiranha.BeginRequest(HttpContext context) in d:\A_PROJECT\VaoBong\Core\Piranha\WebPages\WebPiranha.cs:line 310
+ClientConnectionId:ceffcda3-46ad-4554-9fd6-87a839a61ffd
+ERROR [2016-02-02 11:09:39] Origin [WebPiranha.BeginRequest] Message [Unhandled exception]
+System.Data.SqlClient.SqlException (0x80131904): Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding. ---> System.ComponentModel.Win32Exception (0x80004005): The wait operation timed out
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at Piranha.Data.ActiveRecord`1.Query(String query, Object[] args) in d:\A_PROJECT\VaoBong\Core\Piranha\Data\ActiveRecord.cs:line 431
+   at Piranha.Data.ActiveRecord`1.GetFields(String fields, String where, Object[] args) in d:\A_PROJECT\VaoBong\Core\Piranha\Data\ActiveRecord.cs:line 392
+   at Piranha.Data.ActiveRecord`1.GetSingle(String where, Object[] args) in d:\A_PROJECT\VaoBong\Core\Piranha\Data\ActiveRecord.cs:line 331
+   at Piranha.Models.Page.GetStartpage(Boolean draft) in d:\A_PROJECT\VaoBong\Core\Piranha\Entities\Internal\Page.cs:line 352
+   at Piranha.Mvc.RouteHandler.HandleStartpage(HttpContext context) in d:\A_PROJECT\VaoBong\Core\Piranha.Mvc\RouteHandler.cs:line 32
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, Boolean draft, String[] args) in d:\A_PROJECT\VaoBong\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 119
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, String[] args) in d:\A_PROJECT\VaoBong\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 32
+   at Piranha.WebPages.WebPiranha.BeginRequest(HttpContext context) in d:\A_PROJECT\VaoBong\Core\Piranha\WebPages\WebPiranha.cs:line 310
+ClientConnectionId:639445d8-f39a-4cc9-8505-8aedd21f309c
+ERROR [2016-02-02 15:55:13] Origin [WebPiranha.BeginRequest] Message [Unhandled exception]
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Piranha.Config.get_SiteTreeNamespaceId() in d:\A_PROJECT\VaoBong\Core\Piranha\Config.cs:line 298
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, Boolean draft, String[] args) in d:\A_PROJECT\VaoBong\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 52
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, String[] args) in d:\A_PROJECT\VaoBong\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 32
+   at Piranha.WebPages.WebPiranha.BeginRequest(HttpContext context) in d:\A_PROJECT\VaoBong\Core\Piranha\WebPages\WebPiranha.cs:line 328
+ERROR [2016-02-26 15:47:28] Origin [WebPiranha.BeginRequest] Message [Unhandled exception]
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   at System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)
+   at Piranha.Models.Permalink.NamespaceDictionary.get_Item(Guid namespaceId) in d:\A_PROJECT\VaoBong\Core\Piranha\Entities\Internal\Permalink.cs:line 42
+   at Piranha.Models.Permalink.GetByName(Guid namespaceid, String name) in d:\A_PROJECT\VaoBong\Core\Piranha\Entities\Internal\Permalink.cs:line 135
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, Boolean draft, String[] args) in d:\A_PROJECT\VaoBong\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 52
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, String[] args) in d:\A_PROJECT\VaoBong\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 32
+   at Piranha.WebPages.WebPiranha.BeginRequest(HttpContext context) in d:\A_PROJECT\VaoBong\Core\Piranha\WebPages\WebPiranha.cs:line 328
+ERROR [2016-02-26 15:48:01] Origin [WebPiranha.BeginRequest] Message [Unhandled exception]
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   at System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)
+   at Piranha.Models.Permalink.NamespaceDictionary.get_Item(Guid namespaceId) in d:\A_PROJECT\VaoBong\Core\Piranha\Entities\Internal\Permalink.cs:line 42
+   at Piranha.Models.Permalink.GetByName(Guid namespaceid, String name) in d:\A_PROJECT\VaoBong\Core\Piranha\Entities\Internal\Permalink.cs:line 135
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, Boolean draft, String[] args) in d:\A_PROJECT\VaoBong\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 52
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, String[] args) in d:\A_PROJECT\VaoBong\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 32
+   at Piranha.WebPages.WebPiranha.BeginRequest(HttpContext context) in d:\A_PROJECT\VaoBong\Core\Piranha\WebPages\WebPiranha.cs:line 328
+ERROR [2016-02-27 12:20:29] Origin [WebPiranha.BeginRequest] Message [Unhandled exception]
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   at System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)
+   at Piranha.Models.Permalink.NamespaceDictionary.get_Item(Guid namespaceId) in d:\A_PROJECT\VaoBong\Core\Piranha\Entities\Internal\Permalink.cs:line 42
+   at Piranha.Models.Permalink.GetByName(Guid namespaceid, String name) in d:\A_PROJECT\VaoBong\Core\Piranha\Entities\Internal\Permalink.cs:line 135
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, Boolean draft, String[] args) in d:\A_PROJECT\VaoBong\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 52
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, String[] args) in d:\A_PROJECT\VaoBong\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 32
+   at Piranha.WebPages.WebPiranha.BeginRequest(HttpContext context) in d:\A_PROJECT\VaoBong\Core\Piranha\WebPages\WebPiranha.cs:line 328
+ERROR [2016-05-12 10:24:26] Origin [WebPiranha.BeginRequest] Message [Unhandled exception]
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Piranha.Config.get_SiteTreeNamespaceId() in D:\projects\vaobong_piranga\Core\Piranha\Config.cs:line 298
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, Boolean draft, String[] args) in D:\projects\vaobong_piranga\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 52
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, String[] args) in D:\projects\vaobong_piranga\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 32
+   at Piranha.WebPages.WebPiranha.BeginRequest(HttpContext context) in D:\projects\vaobong_piranga\Core\Piranha\WebPages\WebPiranha.cs:line 328
+ERROR [2016-05-12 10:27:58] Origin [WebPiranha.BeginRequest] Message [Unhandled exception]
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Piranha.Config.get_SiteTreeNamespaceId() in D:\projects\vaobong_piranga\Core\Piranha\Config.cs:line 298
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, Boolean draft, String[] args) in D:\projects\vaobong_piranga\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 52
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, String[] args) in D:\projects\vaobong_piranga\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 32
+   at Piranha.WebPages.WebPiranha.BeginRequest(HttpContext context) in D:\projects\vaobong_piranga\Core\Piranha\WebPages\WebPiranha.cs:line 328
+ERROR [2016-05-12 10:28:40] Origin [WebPiranha.BeginRequest] Message [Unhandled exception]
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Piranha.Config.get_SiteTreeNamespaceId() in D:\projects\vaobong_piranga\Core\Piranha\Config.cs:line 298
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, Boolean draft, String[] args) in D:\projects\vaobong_piranga\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 52
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, String[] args) in D:\projects\vaobong_piranga\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 32
+   at Piranha.WebPages.WebPiranha.BeginRequest(HttpContext context) in D:\projects\vaobong_piranga\Core\Piranha\WebPages\WebPiranha.cs:line 328
+ERROR [2016-05-12 10:34:29] Origin [WebPiranha.BeginRequest] Message [Unhandled exception]
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Piranha.Config.get_SiteTreeNamespaceId() in D:\projects\vaobong_piranga\Core\Piranha\Config.cs:line 298
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, Boolean draft, String[] args) in D:\projects\vaobong_piranga\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 52
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, String[] args) in D:\projects\vaobong_piranga\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 32
+   at Piranha.WebPages.WebPiranha.BeginRequest(HttpContext context) in D:\projects\vaobong_piranga\Core\Piranha\WebPages\WebPiranha.cs:line 328
+ERROR [2016-05-23 13:53:31] Origin [WebPiranha.BeginRequest] Message [Unhandled exception]
+System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at Piranha.Models.Page.GetByPermalinkId(Guid permalinkid, Boolean draft) in D:\projects\vaobong_piranga\Core\Piranha\Entities\Internal\Page.cs:line 404
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, Boolean draft, String[] args) in D:\projects\vaobong_piranga\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 83
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, String[] args) in D:\projects\vaobong_piranga\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 32
+   at Piranha.WebPages.WebPiranha.BeginRequest(HttpContext context) in D:\projects\vaobong_piranga\Core\Piranha\WebPages\WebPiranha.cs:line 327
+ERROR [2016-05-23 13:53:49] Origin [WebPiranha.BeginRequest] Message [Unhandled exception]
+System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at Piranha.Models.Page.GetByPermalinkId(Guid permalinkid, Boolean draft) in D:\projects\vaobong_piranga\Core\Piranha\Entities\Internal\Page.cs:line 404
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, Boolean draft, String[] args) in D:\projects\vaobong_piranga\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 83
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, String[] args) in D:\projects\vaobong_piranga\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 32
+   at Piranha.WebPages.WebPiranha.BeginRequest(HttpContext context) in D:\projects\vaobong_piranga\Core\Piranha\WebPages\WebPiranha.cs:line 327
+ERROR [2016-08-11 15:16:27] Origin [WebPiranha.BeginRequest] Message [Unhandled exception]
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Piranha.Config.get_SiteTreeNamespaceId() in D:\projects\vaobong_piranga\Core\Piranha\Config.cs:line 298
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, Boolean draft, String[] args) in D:\projects\vaobong_piranga\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 52
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, String[] args) in D:\projects\vaobong_piranga\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 32
+   at Piranha.WebPages.WebPiranha.BeginRequest(HttpContext context) in D:\projects\vaobong_piranga\Core\Piranha\WebPages\WebPiranha.cs:line 328
+ERROR [2016-08-11 15:17:26] Origin [WebPiranha.BeginRequest] Message [Unhandled exception]
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Piranha.Config.get_SiteTreeNamespaceId() in D:\projects\vaobong_piranga\Core\Piranha\Config.cs:line 298
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, Boolean draft, String[] args) in D:\projects\vaobong_piranga\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 52
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, String[] args) in D:\projects\vaobong_piranga\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 32
+   at Piranha.WebPages.WebPiranha.BeginRequest(HttpContext context) in D:\projects\vaobong_piranga\Core\Piranha\WebPages\WebPiranha.cs:line 328
+ERROR [2016-08-22 12:24:30] Origin [WebPiranha.BeginRequest] Message [Unhandled exception]
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   at System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)
+   at Piranha.Models.Permalink.NamespaceDictionary.get_Item(Guid namespaceId) in d:\projects\vaobong_piranga\Core\Piranha\Entities\Internal\Permalink.cs:line 42
+   at Piranha.Models.Permalink.GetByName(Guid namespaceid, String name) in d:\projects\vaobong_piranga\Core\Piranha\Entities\Internal\Permalink.cs:line 135
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, Boolean draft, String[] args) in d:\projects\vaobong_piranga\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 52
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, String[] args) in d:\projects\vaobong_piranga\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 32
+   at Piranha.WebPages.WebPiranha.BeginRequest(HttpContext context) in d:\projects\vaobong_piranga\Core\Piranha\WebPages\WebPiranha.cs:line 328
+ERROR [2017-06-04 15:21:04] Origin [WebPiranha.BeginRequest] Message [Unhandled exception]
+System.Data.SqlClient.SqlException (0x80131904): A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: SSL Provider, error: 0 - The wait operation timed out.) ---> System.ComponentModel.Win32Exception (0x80004005): The wait operation timed out
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken, Boolean applyTransientFaultHandling)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Piranha.Data.Database.OpenConnection(String name) in D:\A_PROJECT\vaobong_piranha\vaobong_piranha\Core\Piranha\Data\Database.cs:line 109
+   at Piranha.Data.ActiveRecord`1.Query(String query, Object[] args) in D:\A_PROJECT\vaobong_piranha\vaobong_piranha\Core\Piranha\Data\ActiveRecord.cs:line 429
+   at Piranha.Data.ActiveRecord`1.GetFields(String fields, String where, Object[] args) in D:\A_PROJECT\vaobong_piranha\vaobong_piranha\Core\Piranha\Data\ActiveRecord.cs:line 392
+   at Piranha.Data.ActiveRecord`1.GetSingle(String where, Object[] args) in D:\A_PROJECT\vaobong_piranha\vaobong_piranha\Core\Piranha\Data\ActiveRecord.cs:line 331
+   at Piranha.Models.Page.GetStartpage(Boolean draft) in D:\A_PROJECT\vaobong_piranha\vaobong_piranha\Core\Piranha\Entities\Internal\Page.cs:line 352
+   at Piranha.Mvc.RouteHandler.HandleStartpage(HttpContext context) in D:\A_PROJECT\vaobong_piranha\vaobong_piranha\Core\Piranha.Mvc\RouteHandler.cs:line 32
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, Boolean draft, String[] args) in D:\A_PROJECT\vaobong_piranha\vaobong_piranha\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 119
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, String[] args) in D:\A_PROJECT\vaobong_piranha\vaobong_piranha\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 32
+   at Piranha.WebPages.WebPiranha.BeginRequest(HttpContext context) in D:\A_PROJECT\vaobong_piranha\vaobong_piranha\Core\Piranha\WebPages\WebPiranha.cs:line 310
+ClientConnectionId:048d3fd4-b70d-436d-8f65-861f683f9636
+Error Number:258,State:0,Class:20
+ERROR [2017-06-09 22:25:21] Origin [WebPiranha.BeginRequest] Message [Unhandled exception]
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Piranha.Config.get_SiteTreeNamespaceId() in C:\DATA\A_PROJECT\vaobong_piranha\vaobong_piranha\Core\Piranha\Config.cs:line 298
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, Boolean draft, String[] args) in C:\DATA\A_PROJECT\vaobong_piranha\vaobong_piranha\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 52
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, String[] args) in C:\DATA\A_PROJECT\vaobong_piranha\vaobong_piranha\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 32
+   at Piranha.WebPages.WebPiranha.BeginRequest(HttpContext context) in C:\DATA\A_PROJECT\vaobong_piranha\vaobong_piranha\Core\Piranha\WebPages\WebPiranha.cs:line 328
+ERROR [2018-03-12 11:40:03] Origin [WebPiranha.BeginRequest] Message [Unhandled exception]
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Piranha.Config.get_SiteTreeNamespaceId() in C:\DATA\A_PROJECT\vaobong_piranha\vaobong_piranha\Core\Piranha\Config.cs:line 298
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, Boolean draft, String[] args) in C:\DATA\A_PROJECT\vaobong_piranha\vaobong_piranha\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 52
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, String[] args) in C:\DATA\A_PROJECT\vaobong_piranha\vaobong_piranha\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 32
+   at Piranha.WebPages.WebPiranha.BeginRequest(HttpContext context) in C:\DATA\A_PROJECT\vaobong_piranha\vaobong_piranha\Core\Piranha\WebPages\WebPiranha.cs:line 328
+ERROR [2018-03-12 11:40:11] Origin [WebPiranha.BeginRequest] Message [Unhandled exception]
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Piranha.Config.get_SiteTreeNamespaceId() in C:\DATA\A_PROJECT\vaobong_piranha\vaobong_piranha\Core\Piranha\Config.cs:line 298
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, Boolean draft, String[] args) in C:\DATA\A_PROJECT\vaobong_piranha\vaobong_piranha\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 52
+   at Piranha.Web.Handlers.PermalinkHandler.HandleRequest(HttpContext context, String[] args) in C:\DATA\A_PROJECT\vaobong_piranha\vaobong_piranha\Core\Piranha\Web\Handlers\PermalinkHandler.cs:line 32
+   at Piranha.WebPages.WebPiranha.BeginRequest(HttpContext context) in C:\DATA\A_PROJECT\vaobong_piranha\vaobong_piranha\Core\Piranha\WebPages\WebPiranha.cs:line 328

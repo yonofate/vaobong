@@ -1,0 +1,103 @@
+﻿$w: 560px;
+$h: 315px;
+
+.breadscum {
+    a {
+        color: #2196f3;
+    }
+}
+
+.live-text {
+    max-width: $w;
+    margin: 0 auto;
+}
+
+.live-noti {
+    border: 1px solid #f42;
+    font-size: 12px;
+    color: #f42;
+    padding: 4px 8px;
+    margin-bottom: 8px;
+}
+
+.live {
+    .live-frame {
+        iframe {
+            width: $w;
+            height: $h;
+            //border: 1px solid #111;
+            margin: 20px auto;
+            display: block;
+            border: 0;
+        }
+    }
+
+    .live-info {
+        h2 {
+            margin: 12px 0 10px;
+            text-transform: uppercase;
+        }
+    }
+
+    .score-info {
+        margin: 4px auto;
+        border: 1px solid #ddd;        
+
+        > div {
+            float: left;  
+            padding: 4px;   
+            
+            + div {
+                border-left: 1px solid #ddd;
+            }       
+        }
+
+        .team {
+            width: 40%;
+            padding: 4px 8px;
+        }
+
+        .teama {
+            text-align: right;
+        }
+
+        .time, .score {
+            width: 10%;
+            text-align: center;
+        }
+
+        .score {
+            
+        }
+    }
+}
+
+.live-server {
+    ul {
+        max-width: $w;
+        margin: 0 auto;
+
+        li {
+            display: block;
+            float: left;
+            margin-right: 4px;
+                margin-bottom: 4px;
+
+            + li {
+                
+            }
+        }
+
+        a {
+            display: block;
+            padding: 2px 6px;
+            font-size: 11px;
+            background: #4caf50;
+            color: #fff;
+
+            &:hover, &.active {
+                background-color: #f42;
+            }
+        }
+    }
+}

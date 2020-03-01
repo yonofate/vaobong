@@ -1,0 +1,38 @@
+﻿@model Piranha.Extend.Regions.PostModelRegion
+<ul class="form">
+    <li>
+        @Html.LabelFor(m => m.PostTemplateId)
+        <div class="input">
+            @Html.DropDownListFor(m => m.PostTemplateId, Model.TemplateTypes)</div>
+        @Html.ValidationMessageFor(m => m.PostTemplateId)
+    </li>
+    <li>
+        @Html.LabelFor(m => m.OrderBy)
+        <div class="input">
+            @Html.DropDownListFor(m => m.OrderBy, Model.OrderByTypes)</div>
+        @Html.ValidationMessageFor(m => m.OrderBy)
+    </li>
+    <li>
+        @Html.LabelFor(m => m.Take)
+        <div class="input">
+            @Html.TextBoxFor(m => m.Take)</div>
+        @Html.ValidationMessageFor(m => m.Take)
+    </li>
+</ul>
+<div class="title" style="border-top: 1px solid #ddd"><h2>@Piranha.Resources.Extensions.PostRegionMatchingTitle</h2></div>
+<table class="list attachments">
+    <tr>
+        <td><span><strong>@Piranha.Resources.Global.Title</strong></span></td>
+        <td><strong>@Piranha.Resources.Post.Template</strong></td>
+        <td class="date"><strong>@Piranha.Resources.Global.Published</strong></td>
+        <td class="date" style="white-space:nowrap"><strong>@Piranha.Resources.Global.LastPublished</strong></td>
+    </tr>
+    @foreach (var post in Model.Posts) {
+    <tr>
+        <td><a href="@Url.Action("edit", "post", new { id = post.Id })">@post.Title</a></td>
+        <td>@post.Template.Name</td>
+        <td class="date">@post.Published.Value.ToString("yyyy-MM-dd")</td>
+        <td class="date">@post.LastPublished.Value.ToString("yyyy-MM-dd")</td>
+    </tr>
+    }
+</table>

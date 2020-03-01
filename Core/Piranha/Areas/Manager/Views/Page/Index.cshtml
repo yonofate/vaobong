@@ -1,0 +1,331 @@
+﻿@model Piranha.Models.Manager.PageModels.ListModel
+@section Head {
+    <style type="text/css">
+        ul.sites {
+            float: left;
+            margin-left: 10px;
+            margin-right: 0;
+            margin-bottom: 0;
+            }
+        ul.sites li a.selected {
+            border: 0 none;
+            padding: 10px 20px 6px;
+            }
+    </style>
+    <script type="text/javascript">
+		function addPage() {
+			$('#page-templates').show();
+			$('#block-templates').hide();
+
+			floatBox.show('boxTemplates');
+			return false;
+		}
+
+        //
+        // Sets all hidden fields before submit
+        function preSubmit(parentid, seqno, pages, blocktypes) {
+            $("#ParentId").val(parentid);
+            $("#Seqno").val(seqno);
+
+            if (pages) {
+            	$('#page-templates').show();
+            	$('#block-header').show();
+            } else {
+            	$('#page-templates').hide();
+            	$('#block-header').hide();
+			}
+
+            if (blocktypes == '') {
+            	$('#block-templates').hide();
+            } else {
+            	// Show all blocks
+            	$('#block-templates .templates').removeClass('one');
+            	$('#block-templates .templates').show();
+            	var visible = 0;
+
+				// Hide disabled blocks
+            	$.each($('#block-templates .templates'), function (i, e) {
+            		var id = $(e).attr('data-templateid');
+
+            		if (blocktypes.indexOf(id) == -1)
+            			$(e).hide();
+            		else visible++;
+            	});
+            	if (visible == 1)
+            		$('#block-templates .templates').addClass('one');
+
+            	$('#block-templates').show();
+            }
+
+            floatBox.show('boxTemplates');
+            return false;
+        }
+
+        var deletemsg = "@Piranha.Resources.Page.MessageDeleteConfirm";
+
+        function formatSitemap() {
+            $.each($(".sitemap li:visible"), function (i, e) {
+                if (i % 2 == 1)
+                    $(this).addClass("odd");
+                else $(this).removeClass("odd");
+            });
+        }
+
+        var currmove;
+
+        $(document).ready(function () {
+            formatSitemap();
+
+            // Handle the site tree
+            $(".sitemap .action").click(function () {
+                var li = $(this).parent().parent();
+                li.toggleClass("collapsed");
+                li.toggleClass("expanded");
+                formatSitemap();
+            });
+
+            // Set the selected template id
+            $(".templates").click(function () {
+                $("#TemplateId").val($(this).attr("data-templateid"));
+                $("form").submit();
+            });
+
+            // Set the original id
+            $(".copy-page").live('click', function () {
+                $("#OriginalId").val($(this).attr("data-id"));
+                $("form").submit();
+            });
+
+            $(".delete").click(function () {
+                return confirm(deletemsg);
+            });
+
+            // Setup page list
+            var options = {
+                listClass: 'list-js',
+                searchId: 'search',
+                valueNames: ['title', 'template', 'updated', 'created']
+            };
+            new List('list', options);
+
+            // Setup page copy list
+            var copyoptions = {
+                listClass: 'copy-list-js',
+                searchId: 'page-search',
+                maxVisibleItemsCount: 5000,
+                valueNames: ['copypage-title', 'copypage-template', 'copypage-siteid']
+            };
+            new List('page-list', copyoptions);
+
+            @if (!Model.IsSeoList) {
+            <text>
+            // Switch between list/tree
+            $("#search").keyup(function () {
+                if ($(this).val() != "") {
+                    $(".sitemap").hide();
+                    $("#list").show();
+                } else {
+                    $("#list").hide();
+                    $(".sitemap").show();
+                }
+            });
+            </text>
+            }
+        });
+
+        function bindMove() {
+            $(".move .title a").click(function () {
+                if ($(this).parent().parent().hasClass("expanded"))
+                    alert("move: " + currmove + " below: " + $(this).parent().parent().attr("id"));
+                else alert("move: " + currmove + " after: " + $(this).parent().parent().attr("id"));
+
+                return false;
+            });
+        }
+    </script>
+    <!-- Restyle the list a bit to match tree -->
+    <style type="text/css">
+        table.list th:first-child,
+        table.list tbody td:first-child > * {
+            padding-left: 30px;
+            }
+    </style>
+}
+@section Toolbar { 
+@Html.Partial("Partial/Tabs")
+<div class="toolbar">
+    <div class="inner">
+        <ul>
+            <li><a onclick="return addPage()" class="add">@Piranha.Resources.Global.ToolbarAdd</a></li>
+            @if (Model.ActiveSite != "DEFAULT_SITE") {
+            <li><a href="@Url.Action("site", new { id = Model.ActiveSite.ToLower() })" class="refresh">@Piranha.Resources.Global.ToolbarReload</a></li>
+            } else {
+            <li><a href="@Url.Action("index")" class="refresh">@Piranha.Resources.Global.ToolbarReload</a></li>
+            }
+            @if (Model.SitePage[Model.ActiveSiteId] != Guid.Empty) {
+            <li>
+                <a href="@Url.Action("edit", new { @id = Model.SitePage[Model.ActiveSiteId] })" class="edit-site">@Piranha.Resources.Page.EditSite</a>
+                @if (Model.SiteWarnings[Model.ActiveSiteId] > 0) {
+                     <span class="notification">@Model.SiteWarnings[Model.ActiveSiteId]</span>
+                }
+            </li>
+            }
+            @if (Model.TotalSiteWarnings[Model.ActiveSiteId] > 0) {
+                <li>
+                    <a href="@Url.Action("seo", new { @id = Model.ActiveSite.ToLower() })" class="seo">SEO</a>
+                    <span class="notification">@Model.TotalSiteWarnings[Model.ActiveSiteId]</span>
+                </li>
+            }
+            @Piranha.WebPages.Hooks.Manager.Toolbar.Render(Url, Model)
+        </ul>
+        <button class="search" title="@Piranha.Resources.Global.ToolbarSearch"></button>@Html.TextBox("search")
+        <div class="clear"></div>
+    </div>
+</div>
+}
+<div class="grid_12">
+@using (Html.BeginForm("insert", (string)ViewContext.RouteData.Values["Controller"])) {
+    @Html.Hidden("TemplateId", Model.Templates.Count == 1 ? Model.Templates[0].Id : Guid.Empty)
+    @Html.Hidden("ParentId")
+    @Html.Hidden("Seqno", Model.NewSeqno)
+    @Html.Hidden("SiteTree", Model.ActiveSite)
+    @Html.Hidden("OriginalId")
+
+    if (Model.SiteTrees.Count > 1) {
+    <div>
+        <ul class="sites tabs">
+            @foreach (var site in Model.SiteTrees) {
+            <li>
+                <a href="@Url.Action("site", "page", new { @id = site.InternalId.ToLower() })" @(site.InternalId == Model.ActiveSite ? "class=selected" : "")>@site.Name</a>
+            </li>
+            }
+        </ul>
+        <div class="clear"></div>
+    </div>
+    }
+    <ul class="sitemap" @(Model.IsSeoList ? "style=display:none" : "")>
+        @if (!Model.IsSeoList) {
+        <li class="header">
+            <span class="buttons"></span>
+            <span class="date">@Piranha.Resources.Global.Created</span>
+            <span class="date">@Piranha.Resources.Global.Updated</span>
+            <span class="type">@Piranha.Resources.Global.Type</span>
+            <span class="title">@Piranha.Resources.Global.Title</span>
+        </li>
+        @Html.Partial(@"~/Areas/Manager/Views/Page/Partial/SiteTree.cshtml", new Piranha.Models.Manager.PageModels.SitemapModel() { Pages = Model.SiteMap, Templates = Model.Templates })
+        }
+    </ul>
+    
+    <table id="list" class="list" @(!Model.IsSeoList ? "style=display:none" : "")>
+        <thead>
+            <tr>
+                <th><span class="sort asc" data-sort="title">@Piranha.Resources.Global.Title</span></th>
+                <th style="width:200px"><span class="sort" data-sort="template">@Piranha.Resources.Global.Type</span></th>
+                <th class="date"><span class="sort" data-sort="updated">@Piranha.Resources.Global.Updated</span></th>
+                <th class="date"><span class="sort" data-sort="created">@Piranha.Resources.Global.Created</span></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody class="list-js">
+            @foreach (var page in Model.Pages) {
+            <tr@(page.Updated > page.LastPublished ? " class=draft" : "")>
+                <td class="title"><a href="@Url.Action("edit", new { id = page.Id })@Html.Raw(Model.IsSeoList ? "?action=seo" : "")">
+                    @(!String.IsNullOrEmpty(page.NavigationTitle) ? page.NavigationTitle : page.Title)
+                    <div class="list-info">
+                        @Html.Raw(page.LastPublished == DateTime.MinValue ? "<span class=info-unpublished></span>" : (page.Updated > page.LastPublished ? "<span class=info-draft></span>" : ""))
+                        @Html.Raw(page.OriginalId != Guid.Empty ? "<span class=info-copy></span>" : "")
+                        @Html.Raw(Model.IsSeoList ? "<span class=notification>" + Model.PageWarnings[page.Id].ToString() + "</span>" : "")
+                    </div>
+                </a></td>
+                <td class="template">@page.TemplateName</td>
+                <td class="updated">@page.Updated.ToString("yyyy-MM-dd")</td>
+                <td class="created">@page.Created.ToString("yyyy-MM-dd")</td>
+                <td class="buttons three">
+                    <button class="icon add-after marg" title="@Piranha.Resources.Page.ListAddAfter" onclick="return preSubmit('@page.ParentId', @(page.Seqno + 1))" type="submit"></button>
+                    <button class="icon add-below marg" title="@Piranha.Resources.Page.ListAddBelow" onclick="return preSubmit('@page.Id', 1)" type="submit"></button>
+                    @if (page.Pages.Count == 0 && User.HasAccess("ADMIN_PAGE_PUBLISH")) {
+                    <a href="@Url.Action("delete", "page", new { id = page.Id })" title="@Piranha.Resources.Page.ListDelete" class="icon delete"></a>
+                    }
+                </td>
+            </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5"></td>
+            </tr>
+        </tfoot>
+    </table>
+    
+}
+</div>
+
+@section Foot {
+<div id="boxTemplates" class="floatbox">
+    <div class="bg"></div>
+    <div class="box">
+        <div class="title">
+            <ul class="box-tabs">
+                <li class="selected"><a href="#create-new">@Piranha.Resources.Page.PopupTypeTitle</a></li>
+                <li><a href="#create-copy">@Piranha.Resources.Page.CreateCopy</a></li>
+            </ul>
+            <a class="close-btn right" data-id="boxTemplates"></a>
+            <div class="clear"></div>
+        </div>
+        <div id="create-new" class="inner">
+			<div id="page-templates">
+				@foreach (var template in Model.Templates.Where(t => !t.IsBlock)) {
+				<div class="templates @(Model.Templates.Count > 6 ? "compressed" : (Model.Templates.Count == 1 ? "one" : "")) left" data-templateid="@template.Id">
+					<h3>@template.Name</h3>
+					<div class="preview">
+						@template.Preview
+					</div>
+					<p>@template.Description</p>
+				</div>
+				}
+			</div>
+            <div class="clear"></div>
+			@if (Model.Templates.Where(t => t.IsBlock).Count() > 0) {
+				<div id="block-templates">
+					<h4 id="block-header" style="font-weight:bold;border-bottom: solid 1px #ddd;padding:0 0 5px 15px">Blocks</h4>
+					@foreach (var template in Model.Templates.Where(t => t.IsBlock)) {
+					<div class="templates @(Model.Templates.Count > 6 ? "compressed" : (Model.Templates.Count == 1 ? "one" : "")) left" data-templateid="@template.Id">
+						<h3>@template.Name</h3>
+						<div class="preview">
+							@template.Preview
+						</div>
+						<p>@template.Description</p>
+					</div>
+					}
+				</div>
+				<div class="clear"></div>
+			}
+        </div>
+        <div id="create-copy" class="inner hidden" style="width:660px;max-height:460px;overflow:scroll;">
+            <ul class="form" style="position:fixed;width:645px">
+                <li><label>Search</label>
+                    <div class="input"><input type="text" id="page-search" /></div>
+                </li>
+            </ul>
+            <table class="list" id="page-list" style="margin-top:34px;">
+                <thead>
+                    <tr>
+                        <th><span class="sort asc" data-sort="copypage-title">@Piranha.Resources.Global.Title</span></th>
+                        <th><span class="sort" data-sort="copypage-template">@Piranha.Resources.Global.Type</span></th>
+                        <th><span class="sort" data-sort="copypage-siteid">Site tree</span></th>
+                    </tr>
+                </thead>
+                <tbody class="copy-list-js">
+                @foreach (var page in Model.AllPages) {
+                    <tr>
+                        <td class="copypage-title"><a class="copy-page" data-id="@page.Id" href="#"> @(!String.IsNullOrEmpty(page.NavigationTitle) ? page.NavigationTitle : page.Title)</a></td>
+                        <td class="copypage-template">@page.TemplateName</td>
+                        <td class="copypage-siteid">@page.SiteTreeName</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+}

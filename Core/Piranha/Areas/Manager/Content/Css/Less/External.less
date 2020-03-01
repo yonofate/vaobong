@@ -1,0 +1,194 @@
+﻿//
+// Copyright (c) 2011-2015 Håkan Edling
+//
+// This software may be modified and distributed under the terms
+// of the MIT license.  See the LICENSE file for details.
+// 
+// http://github.com/piranhacms/piranha
+// 
+
+@import "variables.less";
+@import "mixins.less";
+
+.chzn-container-multi .chzn-choices {
+    border: none 0px;
+    background: #fff;
+    padding: 0;
+    margin: 0;
+    width: 680px;
+}
+.grid_3 .chzn-container-multi .chzn-choices {
+    width: auto;
+}
+.chzn-container-active .chzn-choices {
+    border: none 0px;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -o-box-shadow: none;
+}
+.chzn-container-multi .chzn-choices .search-field {
+    border: none 0px;
+    background: #fff;
+    height: 20px;
+}
+.chzn-container-multi .chzn-choices .search-field input {
+    font-size: 14px;
+    height: 16px;
+    margin: 4px 0 0;
+    padding: 0;
+}
+.chzn-container .chzn-drop {
+    border: 1px solid @secondary-border-color;
+    box-shadow: none; 
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -o-box-shadow: none;
+}
+.chzn-container-multi .chzn-results {
+    margin: 0;
+}
+.chzn-container .chzn-results li {
+    background: #fff;
+    border: none 0;
+}
+.chzn-container .chzn-results .highlighted {
+    background: #666;
+    color: #eee;
+}
+.chzn-container-multi .chzn-choices .search-choice {
+    color: #666;
+    border-color: @secondary-border-color;
+    margin: 0 4px 0 0;
+}
+
+/**
+ * Datepicker
+ */
+.ui-widget {
+    font: 14px Arial;
+}
+.ui-widget-header {
+    background: #ddd;
+    border-color: @primay-border-color ;
+    color: #444;
+}
+.ui-state-hover,
+.ui-widget-header .ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-state-active {
+    background: #eee;
+    border-color: #eee;
+    color: #444;
+}
+.ui-widget-content 
+.ui-state-active, 
+.ui-widget-header 
+.ui-state-active {
+    background: #54bd00;
+    border-color: #439700;
+    color: #444;
+}
+.ui-state-highlight,
+.ui-widget-content .ui-state-highlight,
+.ui-widget-header .ui-state-highlight {
+    background: #eee;
+    border-color: #ccc;
+}
+
+/**
+ * Tiny MCE 4.0
+ */
+.content-editor {
+    .mce-tinymce {
+        border: none;
+    }
+
+    .mce-container {
+        border-color: @primay-border-color;
+    }
+
+    .mce-panel {
+        background: #eee;
+    }
+
+    .mce-toolbar {
+        padding: 0 10px 2px;
+    }
+
+    .mce-menubar {
+        display: none !important;
+    }
+
+    .mce-ico {
+        font-size: 13px;
+    }
+
+    .mce-btn button {
+        font-size: 12px;
+    }
+
+	.fixed {
+		.mce-toolbar {
+			&.fixed-toolbar {
+				background: none repeat scroll 0 0 #FFFFFF;
+				border-radius: 0 0 6px 6px;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+				display: inline-block;
+				margin-left: 4px;
+				padding: 0;
+				position: fixed;
+				top: 53px;
+				width: auto;
+			}
+		}
+	}
+}
+
+body {
+    .mce-window {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+        border-width: 6px !important;
+        border-color: #fff;
+        .border-radius(10px);
+    }
+
+    .mce-window-head {
+        background: #eee;
+        border-color: @primay-border-color;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+
+    .mce-window-head .mce-title {
+        font-size: 18px;
+        font-weight: normal;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .mce-window-head .mce-close {
+        background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAB3UlEQVR42qWQQSxjURSGW0UoJhYM795q731VQtt4iCaaaCcRiUQklrOSSGzEavaEMgtKE2ywEJVYdEdpQpMZrUlEghBqMiJhFhNbSzaSM+fdeE/7zNh4yZd7zvnP+c991wQA7yIn+f2ptfcmoEz+r/k2oAzdBlu+/NPgusv3+VJxwUUjg19+b8I4fBVQQhmvEzIeGa6CzRHYXzbrBj+7/dZjjxMOORUc1dvhvP3FJNOhhI7dMmpEcNTA4cznbtMNksVWc5rT2bTTBgJs+lFnh5N2b+w02Dxy4OaQwpquyzSVrqkuefUGSactsitTSCK7jMA3vMleI4cdJonas5Zab+D5xjfQiaPJJjYKcOsGGml5XKbfV921BcZHfEVMpocxTsHA/VabIja/aRDldHyNkScEjEQ5ib9psMRpaBkbNZaeya3RBNw95hrMuRymeUbG5x0ENObUk9HtBUbDIs6GkcRCrb1IN4jUMeu0QwIDqdEmV56qhxmJTBn0MKe+nF+YkmsGJtB9wi4BnnsPfT1iWGPSQWaEhnzltsU/nX6hmywmQTkeZf1S5dgw/ZgoybcomHuw3qqCsZqzQalyZYhWrWFcgXzQb2BBD6RI24ZfMeZl2WCtNEsvVGc0g3fxF7yqHwCAJ0miAAAAAElFTkSuQmCC") no-repeat scroll 0 50%;
+        color: transparent;
+        text-shadow: none;
+    }
+
+    .mce-foot {
+        background: #fff;
+    }
+
+    .mce-primary,
+    .mce-primary:hover {
+        background: #666;
+        box-shadow: none;
+    }
+
+    .mce-textbox:focus {
+        border: 1px solid #C5C5C5;
+        box-shadow: none;
+    }
+
+    .mce-primary button {
+        color: #eee;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    }
+}

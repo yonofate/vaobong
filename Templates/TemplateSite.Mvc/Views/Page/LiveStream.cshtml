@@ -1,0 +1,106 @@
+﻿@{
+    Layout = "~/Views/Shared/_LiveLayout.cshtml";
+    ViewBag.Title = Model == null || Model.Page == null ? "Live Stream" : Model.Page.Title;
+}
+
+<h2 class="mv16 text-uppercase page__title">Trực tiếp bóng đá</h2>
+
+<ul class="sopcast-tab clearfix" data-bind="foreach: tabs">
+    <li data-bind="text: text,
+                   click: $root.goToTab,
+                   css: {active: $data == $root.chosenTabId()}"></li>
+</ul>
+<div data-bind="visible: loadingData()" class="text-uppercase text-center mv16">
+    <div class="spinner">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+    </div>
+</div>
+<h5 class="text-center ph" data-bind="visible: champions().length === 0 && !loadingData()">Không có trận đấu nào!</h5>
+<div id="livestream" class="sopcast-collection" data-bind="foreach: champions">
+    <div class="sopcast-item">
+        <h3 class="sop__champion clearfix">
+            <span data-bind="attr: {class: flag}"></span>
+            <span data-bind="text: champ"></span>
+        </h3>
+        <div class="sop__matches" data-bind="foreach: matches">
+            <div class="match" data-bind="css: {playing: isPlaying}">
+                <div class="match__info clearfix">
+                    <div class="match-time" data-bind="text: date"></div>
+                    <div class="match-team clearfix">
+                        <div class="team team1" data-bind="text: team1"></div>
+                        <div class="score"><span data-bind="text: time"></span><a href="#" data-bind="text: score"></a></div>
+                        <div class="team team2" data-bind="text: team2">lorem ipsum dolor</div>
+                    </div>
+                    <div class="match-sopcast">
+                        <a href="#" class="btn-sopcast-link"
+                           data-bind="attr: {'data-id': id,  'data-href': url, href: $root.formattedHref(url())}"><span class="flag fl_stream"></span></a>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>
+
+@section script {
+    <script src="~/Content/js/jquery-1.11.1.min.js"></script>
+    <script src="~/content/js/stickyfloat.js"></script>
+    <script src="~/content/js/basic.js"></script>
+    <script src="~/Content/js/knockout.js"></script>
+    <script src="~/content/js/models.js"></script>
+    <script src="~/content/js/livestream.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.floating-banner').stickyfloat({ duration: 200, offsetY: 150, easing: 'swing' });
+            
+            ko.applyBindings(streamViewModel);
+            //streamViewModel.chosenTabId(streamViewModel.tabs[0]);
+
+            streamViewModel.goToTab(streamViewModel.tabs[0]);
+            // onLoadLiveStreamLink();
+                       
+            setInterval(function () {
+                if (streamViewModel.champions().length == 0) return;
+
+                $.ajax({
+                    url: '/Page/UpdateLiveScore',
+                    method: 'get',
+                    success: function (resp) {
+                        //console.log(resp);
+                        if (!resp || resp.length == 0) return;
+
+                        var len = resp.length,
+                            champions = streamViewModel.champions(),
+                            champCount = champions.length;
+
+                        for (var i = 0; i < len; i++) {
+                            var id = resp[i].Id,
+                                time = resp[i].ElapsedTime,
+                                score = resp[i].Score;
+
+                            // loop thru champ to find match
+                            for (var j = 0; j < champCount; j++) {
+                                var matches = champions[j].matches(),
+                                    matchCount = matches.length;
+                                for (var k = 0; k < matchCount; k++) {
+                                    if (matches[k].id() === id) {
+                                        matches[k].time(time);
+                                        matches[k].score(score);
+                                        matches[k].isPlaying(true);
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    error: function (jqXHR) {
+                        console.log(jqXHR);
+                    }
+                });
+            }, 3000);
+            
+        });
+    </script>
+}

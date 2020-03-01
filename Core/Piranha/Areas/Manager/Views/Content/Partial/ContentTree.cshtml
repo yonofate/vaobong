@@ -1,0 +1,28 @@
+﻿@model List<Piranha.Models.Content>
+@foreach (var content in Model) {
+    <li class="@(content.ChildContent.Count > 0 ? (content.HasChild(ViewBag.Expanded) ? "expanded" : "collapsed") : "collapsed")">
+        <span class="buttons">
+            @if (content.IsFolder) {
+            <a href="@Url.Action("insert", "content", new { id = content.Id })" title="@Piranha.Resources.Global.ToolbarAdd" class="icon add marg"></a>
+            <a href="@Url.Action("insertfolder", "content", new { id = content.Id })" title="@Piranha.Resources.Content.ToolbarAddFolder" class="icon add-folder marg"></a>
+            }
+            @if (content.ChildContent.Count == 0 && User.HasAccess("ADMIN_CONTENT_PUBLISH")) {
+            <a href="@Url.Action("delete", "content", new { id = content.Id })" title="@Piranha.Resources.Content.ListDelete" 
+                class="icon delete @(content.IsImage ? "media-image" : (content.IsFolder ? "media-folder" : ""))"></a>
+            }
+        </span>
+        <span class="date">@content.Created.ToString("yyyy-MM-dd")</span>
+        <span class="date">@content.Updated.ToString("yyyy-MM-dd")</span>
+        <span class="title">@if (content.ChildContent.Count > 0) {<span class="action"></span>}<a href="@Url.Action("edit", "content", new { id = content.Id })">
+            <img class="thumb" src="@Url.GetThumbnailUrl(content.Id, 32)" alt="@content.AlternateText" />
+            @content.DisplayName
+            <div class="list-info">
+                @Html.Raw(content.LastPublished == DateTime.MinValue ? "<span class=info-unpublished></span>" : (content.Updated > content.LastPublished ? "<span class=info-draft></span>" : ""))
+            </div></a></span>
+        @if (content.ChildContent.Count > 0) {
+        <ul>
+            @Html.Partial("Partial/ContentTree", content.ChildContent)
+        </ul>
+        }
+    </li>
+}

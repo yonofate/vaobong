@@ -1,0 +1,66 @@
+﻿@model Piranha.Models.PageModel
+@{
+    ViewBag.Title = Model.Page.Title;
+    List<Piranha.Entities.Post> postMain = Model.Regions.MainContent;
+    List<Piranha.Entities.Post> post1 = Model.Regions.Content1;
+    List<Piranha.Entities.Post> post2 = Model.Regions.Content2;
+    List<Piranha.Entities.Post> post3 = Model.Regions.Content3;
+    var t1 = @Model.Regions.Content1Title;
+    var t2 = @Model.Regions.Content2Title;
+    var t3 = @Model.Regions.Content3Title;
+}
+<div class="main-banner">
+    <img src="~/content/images/banner.jpg" alt="Vao Bong88, Sbobet, Ibet888 không bị chặn" />
+</div>
+<!--main-cont-page-->
+<div class="main-cont-page">
+    <div class="main-left">
+        <div id="main_content" class="highlight-web" style="margin-top:0px;">
+            <div class="block-ttl">
+                <span>@Model.Page.Title</span>
+            </div>
+            <div class="sites-list">
+                <ul class="widget-list">
+                    @Html.Partial("MainNews", postMain)
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="main-right">
+        <section class="group_sidebar">
+            <aside class="sidebar">
+                <section class="widget">
+                    <h3 class="title-bar">
+                        <span>@t1.Title</span>
+                    </h3>
+                    <!-- .title-bar -->
+                    <ul class="widget-list">
+                        @Html.Partial("SidebarNews", post1)
+                    </ul>
+                </section>
+            </aside>
+            <aside class="sidebar">
+                <section class="widget">
+                    <h3 class="title-bar">
+                        <span>@t2.Title</span>
+                    </h3>
+                    <!-- .title-bar -->
+                    <ul class="widget-list">
+                        @Html.Partial("SidebarNews", post2)
+                    </ul>
+                </section>
+            </aside>
+            <aside class="sidebar">
+                <section class="widget">
+                    <h3 class="title-bar">
+                        <span>@t3.Title</span>
+                    </h3>
+                    <!-- .title-bar -->
+                    <ul class="widget-list">
+                        @Html.Partial("SidebarNews", post3)
+                    </ul>
+                </section>
+            </aside>
+        </section>
+    </div>
+</div>

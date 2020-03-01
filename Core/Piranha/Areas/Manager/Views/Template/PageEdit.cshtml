@@ -1,0 +1,213 @@
+﻿@model Piranha.Models.Manager.TemplateModels.PageEditModel
+@{
+    ViewBag.Selected = "Settings" ;
+    ViewBag.SelectedTab = "PageType" ;
+}
+@section Head {
+    <script type="text/javascript" src="~/res.ashx/areas/manager/content/js/jquery.template.js"></script>
+    <script type="text/javascript" src="~/res.ashx/areas/manager/content/js/jquery.regiontemplate.js"></script>
+    <script type="text/javascript" src="~/res.ashx/areas/manager/content/js/ext/json2.js"></script>
+    <script type="text/javascript">
+        /**
+         * This var is needed by the regiontemplate script.
+         */
+        var templateid = '@Model.Template.Id';
+
+        $(document).ready(function () {
+        	$('#Template_Name').focus();
+
+        	$('#isblock input').change(function () {
+        		if ($(this).is(':checked')) {
+        			$('#subpages').hide();
+        			$('#blocktypes').show();
+				} else {
+        			$('#subpages').show();
+        			$('#blocktypes').hide();
+				}
+        	});
+        });
+    </script>
+    @if (Model.Template.IsLocked) {
+    <style type="text/css">
+        .region-editor .icon {
+            display: none;
+        }
+        .region-editor tr.dark {
+            display: none;
+        }
+    </style>
+    }
+}
+@section Toolbar {
+@Html.Partial("Partial/Tabs")
+<div class="toolbar">
+    <div class="inner">
+        <ul>
+            @if (!Model.Template.IsLocked) {
+            <li><a class="save submit">@Piranha.Resources.Global.ToolbarSave</a></li>
+            <li><a href="@Url.Action("deletepage", new { id = Model.Template.Id })" class="delete" title="">@Piranha.Resources.Global.ToolbarDelete</a></li>
+            }
+            <li><a href="@Url.Action("pagelist")" class="back">@Piranha.Resources.Global.ToolbarBack</a></li>
+            <li><a href="@Url.Action("page", new { id = Model.Template.Id })" class="refresh">@Piranha.Resources.Global.ToolbarReload</a></li>
+        </ul>
+        <div class="clear"></div>
+    </div>
+</div>
+}
+
+@{ Html.BeginForm("page", "template") ; }
+<div>
+    @Html.HiddenFor(m => m.Template.Id)
+    @Html.HiddenFor(m => m.Template.IsNew)
+    @Html.HiddenFor(m => m.Template.IsSiteTemplate)
+    @Html.HiddenFor(m => m.Template.Type)
+    @Html.HiddenFor(m => m.Template.Created)
+    @Html.HiddenFor(m => m.Template.Updated)
+    @Html.HiddenFor(m => m.Template.CreatedBy)
+    @Html.HiddenFor(m => m.Template.UpdatedBy)
+    @if (!Piranha.Application.Current.IsMvc) {
+    @Html.HiddenFor(m => m.Template.View)
+    @Html.HiddenFor(m => m.Template.ShowView)
+    }
+</div>
+<div class="grid_9">
+    <div class="box expandable">
+        <div class="title"><h2>@Piranha.Resources.Global.Information</h2></div>
+        <div class="inner">
+            <ul class="form">
+                <li>@Html.LabelFor(m => m.Template.Name)
+                    <div class="input">
+                        @Html.TextBoxFor(m => m.Template.Name)</div>
+                    @Html.ValidationMessageFor(m => m.Template.Name)
+                </li>
+                <li>@Html.LabelFor(m => m.Template.Description)
+                    <div class="input">
+                        @Html.TextAreaFor(m => m.Template.Description, 
+                            new { @placeholder = Piranha.Resources.Global.Optional })</div>
+                </li>
+            </ul>
+            <ul class="form optional">               
+                <li>@Html.LabelFor(m => m.Template.Preview)
+                    <div class="input">
+                        @Html.TextAreaFor(m => m.Template.Preview, new { @rows = 8} )</div>
+                </li>                
+            </ul>
+        </div>
+    </div>
+    <div class="box content-editor">
+        <div class="title"><h2>@Piranha.Resources.Global.Regions</h2></div>
+        <div class="inner">
+            <table class="list region-editor">
+                <tbody>
+                    <tr>
+                        <th>@Piranha.Resources.Global.Name</th>
+                        <th>@Piranha.Resources.Global.InternalId</th>
+                        <th>@Piranha.Resources.Global.Type</th>
+                        <th></th>
+                    </tr>
+                    @Html.EditorFor(m => m.Regions)
+                    <tr class="dark">
+                        <td class="form">
+                            <div class="input">
+                                <input type="text" id="newregionName" /></div>
+                        </td>
+                        <td class="form">
+                            <div class="input">
+                                <input type="text" id="newregionInternalId" /></div>
+                        </td>
+                        <td class="form">
+                            <div class="input">
+                                @Html.DropDownList("newregionType",
+                                    new SelectList(Model.RegionTypes, "Type", "Name"))</div>
+                        </td>
+                        <td class="buttons four">
+                            <button id="btnAddRegion" class="btn marg-big">@Piranha.Resources.Global.Add</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="box">
+        <div class="title"><h2>@Piranha.Resources.Global.Advanced</h2></div>
+        <div class="inner">
+            <ul class="form">
+                <li>@Html.LabelFor(m => m.Template.Controller, 
+                        Piranha.Application.Current.IsMvc ? Piranha.Resources.Page.Route : Piranha.Resources.Page.Template)
+                    <div class="input">
+                        @Html.TextBoxFor(m => m.Template.Controller, 
+                            new { @placeholder = "Page" })</div>
+                    <label>&nbsp;</label>
+                    <p>@Html.CheckBoxFor(m => m.Template.ShowController)
+                        @(Piranha.Application.Current.IsMvc ? Piranha.Resources.Template.PageRouteOverride : Piranha.Resources.Template.PageTemplateOverride)</p>
+                </li>
+                @if (Piranha.Application.Current.IsMvc) {
+                <li>@Html.LabelFor(m => m.Template.View)
+                    <div class="input">
+                        @Html.TextBoxFor(m => m.Template.View, new { @placeholder = "Index" })</div>
+                    <label>&nbsp;</label>
+                    <p>@Html.CheckBoxFor(m => m.Template.ShowView) @Piranha.Resources.Template.PageViewOverride</p>
+                </li>
+                }
+                <li>@Html.LabelFor(m => m.Template.Redirect)
+                    <div class="input">
+                        @Html.TextBoxFor(m => m.Template.Redirect, 
+                            new { @placeholder = Piranha.Resources.Global.Optional })</div>
+                    <label>&nbsp;</label>
+                    <p>@Html.CheckBoxFor(m => m.Template.ShowRedirect) @Piranha.Resources.Template.PageRedirectOverride</p>
+                </li>
+				<li id="isblock">@Html.LabelFor(m => m.Template.IsBlock)
+					<p>
+						@Html.CheckBoxFor(m => m.Template.IsBlock) @Piranha.Resources.Template.IsBlockDescription
+					</p>
+				</li>
+				<li id="blocktypes" @(!Model.Template.IsBlock ? "style=display:none" : "")>
+					@Html.LabelFor(m => m.Template.BlockTypes)
+					<div class="block">
+						@foreach (var t in Model.Templates) {
+							<div class="half left">
+								<p class="checkbox">
+									<input type="checkbox" id="Template_BlockTypes" name="Template.BlockTypes" value="@t.Id" @(Model.Template.BlockTypes.Contains(t.Id) ? "checked=checked" : "")> @t.Name
+								</p>
+							</div>
+						}
+					</div>
+				</li>
+				<li id="subpages" @(Model.Template.IsBlock ? "style=display:none" : "")>
+					@Html.LabelFor(m => m.Template.Subpages)
+					<p>
+						@Html.CheckBoxFor(m => m.Template.Subpages) @Piranha.Resources.Template.SubpagesDescription
+					</p>
+				</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="grid_3">
+    @if (!Model.Template.IsNew && !String.IsNullOrEmpty(Model.Template.Preview.ToHtmlString())) {
+    <div class="box pagetemplate">
+        <div class="title"><h2>@Piranha.Resources.Page.HtmlPreview</h2></div>
+        <div class="inner">
+            <div class="edit">
+                @Model.Template.Preview
+            </div>
+        </div>
+    </div>
+    }
+    <div class="box">
+        <div class="title"><h2>@Piranha.Resources.Global.Properties</h2></div>
+        <div class="inner">
+            <div id="region_data"></div>
+            <ul id="properties" class="list buttons">
+                @foreach (var property in Model.Template.Properties) {
+                <li><span>@property</span><button class="btn delete right remove-region"></button></li>
+                }
+            </ul>
+            <div class="input">
+                <input id="po_name" type="text" placeholder="@Piranha.Resources.Template.PropertyPlaceholder" /></div>
+            <button id="po_add" class="btn right">@Piranha.Resources.Global.Add</button>
+            <div class="clear"></div>
+         </div>
+    </div>
+</div>
+@{ Html.EndForm() ; }

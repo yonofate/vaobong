@@ -1,0 +1,12 @@
+﻿@model List<Piranha.Models.Sitemap>
+@foreach (var page in Model) {
+    <li class="collapsed">
+        <span class="title">@if (page.Pages.Count > 0) {<span class="action"></span>}<a data-id="@page.Id" href="#">
+            @(!String.IsNullOrEmpty(page.NavigationTitle) ? page.NavigationTitle : page.Title)</a></span>
+        @if (page.Pages.Count > 0) {
+        <ul>
+            @Html.Partial("Partial/DialogSiteTree", page.Pages)
+        </ul>
+        }
+    </li>
+}

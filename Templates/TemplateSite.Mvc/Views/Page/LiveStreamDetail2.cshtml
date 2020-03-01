@@ -1,0 +1,97 @@
+﻿@{
+    
+    ViewBag.Title = "Trực tiếp trận đấu " + Model.Title;
+}
+
+<h2 class="mv16 text-uppercase page__title breadscum"><a href="/live-bong-da">Trực tiếp bóng đá</a> / @Model.Title</h2>
+
+<p class="live-text">
+    Xem bóng đá trực tuyến - Trực tiếp bóng đá của trận <strong>@Model.Title</strong> lúc <strong>@Model.DateTime</strong> sẽ được cập nhật link xem bóng đá trực tiếp mới nhất khoảng 10 phút trước khi trận đấu bắt đầu !
+</p>
+
+<div class="live" data-match-id="@Model.Id">
+    <div class="live-info live-text">
+        <h2 class="text-center">@Model.Title</h2>
+        <div class="score-info clearfix">
+            <div class="time"></div>
+            <div class="team teama">@Model.TeamA.TeamName</div>
+            <div class="score">? - ?</div>
+            <div class="team teamb">@Model.TeamB.TeamName</div>
+        </div>
+    </div>
+
+    <div class="live-frame">
+        <iframe src="@Model.OriginServer" frameborder="0" scrolling="no"></iframe>
+    </div>
+
+    <div class="live-noti live-text">Refresh (F5) để có link cập nhật mới nhất.</div>
+    <div class="live-server">
+        <ul class="clearfix">            
+            @foreach (var server in Model.Servers)
+            {
+                <li><a href="#" data-id="@server.Id">@server.Text</a></li>
+            }
+        </ul>
+    </div>
+</div>
+
+@section script {
+    <script src="~/Content/js/jquery-1.11.1.min.js"></script>
+    <script src="~/content/js/stickyfloat.js"></script>
+    <script src="~/content/js/basic.js"></script>
+    @*<script src="~/Content/js/knockout.js"></script>
+    <script src="~/content/js/models.js"></script>*@
+    @*<script src="~/content/js/liveviewer.js"></script>*@
+    <script type="text/javascript">
+        function changeViewServer(e) {
+            e.preventDefault();
+            var $self = $(this),
+                sid = $self.attr('data-id'),
+                src = 'http://s11.live3s.com/iframe/' + sid + '.html';
+            // console.log('stream id', sid, 'src', src);
+            $self.closest('ul').find('.active').removeClass('active'); // remove other active state
+            $self.addClass('active'); // active current link
+            $('.live-frame > iframe').attr('src', src); // update frame src
+        }
+
+        $(document).ready(function () {
+            $('.floating-banner').stickyfloat({ duration: 200, offsetY: 150, easing: 'swing' });
+
+            // ko.applyBindings(viewerViewModel);
+
+            // onLoadLiveViewer();
+            $(document).on('click', '.live-server a', changeViewServer);
+            var matchId = $('.live').attr('data-match-id');
+            
+            var interval = setInterval(function () {
+                $.ajax({
+                    url: '/Page/UpdateLivescore',
+                    method: 'get',
+                    data: { matchId: matchId },
+                    success: function (resp) {
+
+                        // console.log(resp);
+
+                        if (resp && resp.length > 0) {
+                            var match = resp[0],
+                                $scoreInfo = $('.score-info');
+                            
+                            $scoreInfo.find('.tive').html(match.ElapsedTime);
+                            $scoreInfo.find('.score').html(match.Score);
+                        } else {
+                            interval && clearInterval(interval);
+                            $('.live-frame').html('<h4 class="live-text text-center pv16">Trấn đấu chưa bắt đầu!</h4>')
+                        }
+                    },
+                    error: function (jqXHR) {
+                        // console.log(jqXHR);
+                    },
+                    complete: function () {
+
+                    }
+                });
+            }, 3000);
+        });
+    </script>
+}
+

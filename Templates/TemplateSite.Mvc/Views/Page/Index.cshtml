@@ -1,0 +1,30 @@
+﻿@model Piranha.Models.PageModel
+@{
+    ViewBag.Title = Model.Page.Title;
+    //List<Piranha.Entities.PostModel> TinTucCaCuoc = Model.Regions.TinTucCaCuoc;
+}
+<!--<div class="main-banner">
+    <img src="~/content/images/banner.jpg" alt="banner" />
+</div>-->
+<!--main-cont-page-->
+<div class="main-cont-page">
+    <div class="main-left">
+        @Model.Regions.Content
+    </div>
+    <div class="main-right">
+        <section class="group_sidebar">
+            <aside class="topsidebar">
+                <h2>Link Vào Bóng Mới Nhất 2016: Bong88, Sbobet, Ibet888, W88, 3in1bet, M88, Happy8, 12Bet, Fun88, Dafabet, S128</h2>
+            </aside>
+        </section>
+    </div>
+</div>
+
+<div class="highlight-web">
+    <div class="block-ttl">
+        <span>Website nổi bật</span>
+    </div>
+    <div class="sites-list">
+        @Model.Regions.Weblink
+    </div>
+</div>

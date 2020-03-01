@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccessDescription" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="AccessDescriptionLength" xml:space="preserve">
+    <value>Описание имеет максимальную длину 255 символов.</value>
+  </data>
+  <data name="AccessGroup" xml:space="preserve">
+    <value>Группа</value>
+  </data>
+  <data name="AccessGroupRequired" xml:space="preserve">
+    <value>Поле "Группа" обязательно для заполения.</value>
+  </data>
+  <data name="AccessMembers" xml:space="preserve">
+    <value>Пользователи</value>
+  </data>
+  <data name="AccessMembersNew" xml:space="preserve">
+    <value>Когда разрешение будет создано вы можете видеть, кто имеет к нему доступ.</value>
+  </data>
+  <data name="AccessName" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="AccessNameLength" xml:space="preserve">
+    <value>Название имеет максимальную длину 64 символа.</value>
+  </data>
+  <data name="AccessNameRequired" xml:space="preserve">
+    <value>Поле "Название" обязательно для заполения.</value>
+  </data>
+  <data name="Account" xml:space="preserve">
+    <value>Учетная запись пользователя</value>
+  </data>
+  <data name="APIKey" xml:space="preserve">
+    <value>Ключ API</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Изменить пароль</value>
+  </data>
+  <data name="CreatePassword" xml:space="preserve">
+    <value>Установить пароль</value>
+  </data>
+  <data name="EditTitleExistingAccess" xml:space="preserve">
+    <value>Редактировать разрешение</value>
+  </data>
+  <data name="EditTitleExistingGroup" xml:space="preserve">
+    <value>Изменить группу</value>
+  </data>
+  <data name="EditTitleExistingParam" xml:space="preserve">
+    <value>Редактирование параметра</value>
+  </data>
+  <data name="EditTitleExistingUser" xml:space="preserve">
+    <value>Редактирование пользователя</value>
+  </data>
+  <data name="EditTitleNewAccess" xml:space="preserve">
+    <value>Добавить разрешение</value>
+  </data>
+  <data name="EditTitleNewGroup" xml:space="preserve">
+    <value>Добавить новую группу</value>
+  </data>
+  <data name="EditTitleNewParam" xml:space="preserve">
+    <value>Добавить новый параметр</value>
+  </data>
+  <data name="EditTitleNewUser" xml:space="preserve">
+    <value>Добавить нового пользователя</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="EmailLength" xml:space="preserve">
+    <value>Адрес электронной почты имеет максимальную длину 128 символов.</value>
+  </data>
+  <data name="EmailRequired" xml:space="preserve">
+    <value>Адрес электронной почты не требуется.</value>
+  </data>
+  <data name="Firstname" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="FirstnameLength" xml:space="preserve">
+    <value>Имя имеет максимальную длину 128 символов.</value>
+  </data>
+  <data name="FirstnameRequired" xml:space="preserve">
+    <value>Поле "Имя" обязательно для заполения.</value>
+  </data>
+  <data name="Generate" xml:space="preserve">
+    <value>Генерация</value>
+  </data>
+  <data name="GroupDescription" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="GroupDescriptionLength" xml:space="preserve">
+    <value>Описание имеет максимальную длину 255 символов.</value>
+  </data>
+  <data name="GroupMembers" xml:space="preserve">
+    <value>Пользователи</value>
+  </data>
+  <data name="GroupMembersNew" xml:space="preserve">
+    <value>Вы не можете просмотреть членов группы, пока группа не была создана.</value>
+  </data>
+  <data name="GroupName" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="GroupNameLength" xml:space="preserve">
+    <value>Название имеет максимальную длину 64 символа.</value>
+  </data>
+  <data name="GroupNameRequired" xml:space="preserve">
+    <value>Поле "Название" обязательно для заполения.</value>
+  </data>
+  <data name="ListTitle" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="ListTitleAccess" xml:space="preserve">
+    <value>Разрешения</value>
+  </data>
+  <data name="ListTitleExternal" xml:space="preserve">
+    <value>Внешние системы</value>
+  </data>
+  <data name="ListTitleGroups" xml:space="preserve">
+    <value>Группы</value>
+  </data>
+  <data name="ListTitleParams" xml:space="preserve">
+    <value>Параметры</value>
+  </data>
+  <data name="ListTitleUsers" xml:space="preserve">
+    <value>Пользователи</value>
+  </data>
+  <data name="Locked" xml:space="preserve">
+    <value>Блокировка</value>
+  </data>
+  <data name="LockedInfo" xml:space="preserve">
+    <value>Может пользователь зайти на сайт или нет</value>
+  </data>
+  <data name="LockedUntil" xml:space="preserve">
+    <value>Блокировать до</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Имя пользователя</value>
+  </data>
+  <data name="LoginLength" xml:space="preserve">
+    <value>Имя пользователя имеет максимальную длину 64 символов.</value>
+  </data>
+  <data name="LoginRequired" xml:space="preserve">
+    <value>Поле "Имя пользователя" обязательно для заполения.</value>
+  </data>
+  <data name="MessageAccessDeleted" xml:space="preserve">
+    <value>Разрешение был удалено.</value>
+  </data>
+  <data name="MessageAccessNotDeleted" xml:space="preserve">
+    <value>Произошла ошибка при удалении разрешения.</value>
+  </data>
+  <data name="MessageAccessNotSaved" xml:space="preserve">
+    <value>Произошла ошибка при сохранении разрешения.</value>
+  </data>
+  <data name="MessageAccessSaved" xml:space="preserve">
+    <value>Разрешение было сохранено.</value>
+  </data>
+  <data name="MessageGroupDeleted" xml:space="preserve">
+    <value>Группа была удалена.</value>
+  </data>
+  <data name="MessageGroupNotDeleted" xml:space="preserve">
+    <value>Произошла ошибка при удалении группы.</value>
+  </data>
+  <data name="MessageGroupNotSaved" xml:space="preserve">
+    <value>Произошла ошибка при сохранении группы.</value>
+  </data>
+  <data name="MessageGroupSaved" xml:space="preserve">
+    <value>Группа была сохранена.</value>
+  </data>
+  <data name="MessageNewPassword" xml:space="preserve">
+    <value>Новый пароль</value>
+  </data>
+  <data name="MessageParamDeleted" xml:space="preserve">
+    <value>Параметр был удален.</value>
+  </data>
+  <data name="MessageParamNotDeleted" xml:space="preserve">
+    <value>Произошла ошибка при удалении параметра.</value>
+  </data>
+  <data name="MessageParamNotSaved" xml:space="preserve">
+    <value>Произошла ошибка при сохранении параметра.</value>
+  </data>
+  <data name="MessageParamSaved" xml:space="preserve">
+    <value>Параметр был сохранен.</value>
+  </data>
+  <data name="MessageUserDeleted" xml:space="preserve">
+    <value>Пользователь был удален.</value>
+  </data>
+  <data name="MessageUserNotDeleted" xml:space="preserve">
+    <value>Произошла ошибка при удалении пользователя.</value>
+  </data>
+  <data name="MessageUserNotSaved" xml:space="preserve">
+    <value>Произошла ошибка при сохранении пользователя.</value>
+  </data>
+  <data name="MessageUserSaved" xml:space="preserve">
+    <value>Пользователь был сохранен.</value>
+  </data>
+  <data name="ParamDescription" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="ParamDescriptionLength" xml:space="preserve">
+    <value>Описание имеет максимальную длину 255 символов.</value>
+  </data>
+  <data name="ParamName" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="ParamNameLength" xml:space="preserve">
+    <value>Название параметра имеет максимальную длину 64 символов.</value>
+  </data>
+  <data name="ParamNameRequired" xml:space="preserve">
+    <value>Поле "Название параметра" обязательно для заполения.</value>
+  </data>
+  <data name="ParamValue" xml:space="preserve">
+    <value>Значение</value>
+  </data>
+  <data name="ParamValueLength" xml:space="preserve">
+    <value>Значение параметра имеет максимальную длину 128 символов.</value>
+  </data>
+  <data name="ParentGroup" xml:space="preserve">
+    <value>Родительская группа</value>
+  </data>
+  <data name="PasswordConfirmError" xml:space="preserve">
+    <value>Пароли не совпадают.</value>
+  </data>
+  <data name="Surname" xml:space="preserve">
+    <value>Фамилия</value>
+  </data>
+  <data name="SurnameLength" xml:space="preserve">
+    <value>Фамилия имеет максимальную длину 128 символов.</value>
+  </data>
+  <data name="SurnameRequired" xml:space="preserve">
+    <value>Поле "Фамилия" обязательно для заполения.</value>
+  </data>
+  <data name="ToolbarAddAccess" xml:space="preserve">
+    <value>Добавить новое разрешение</value>
+  </data>
+  <data name="ToolbarAddGroup" xml:space="preserve">
+    <value>Добавить новую группу</value>
+  </data>
+  <data name="ToolbarAddParam" xml:space="preserve">
+    <value>Добавить новый параметр</value>
+  </data>
+  <data name="ToolbarAddUser" xml:space="preserve">
+    <value>Добавить нового пользователя</value>
+  </data>
+  <data name="UserInfo" xml:space="preserve">
+    <value>Информация о пользователе</value>
+  </data>
+  <data name="GroupParentIdRequired" xml:space="preserve">
+    <value>Родительская группа обязательна.</value>
+  </data>
+  <data name="UserGroupIdRequired" xml:space="preserve">
+    <value>Вы должны назначить пользователей в группу.</value>
+  </data>
+  <data name="PasswordRequired" xml:space="preserve">
+    <value>Поле "Пароль" обязательно для заполения.</value>
+  </data>
+</root>

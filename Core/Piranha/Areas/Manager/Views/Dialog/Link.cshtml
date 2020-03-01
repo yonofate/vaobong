@@ -1,0 +1,22 @@
+﻿@model Piranha.Areas.Manager.Models.LinkDialogModel
+@{
+    Layout = "";
+}
+<div class="title">
+    <ul class="box-tabs">
+        <li class="selected"><a class="btn-link-page" href="#link-page">Pages</a></li>
+        <li><a class="btn-link-media" href="#link-media">Media</a></li>
+    </ul>
+    <a class="close-btn right" data-id="boxLink"></a>
+    <div class="clear"></div>
+</div>
+<div id="link-page" class="inner link-page">
+    <ul class="sitemap">
+        @Html.Partial("Partial/DialogSiteTree", Model.Pages)
+    </ul>
+    <div class="clear"></div>
+    <div class="loader"></div>
+</div>
+<div id="link-media" class="inner link-media hidden">
+    Yo my man
+</div>

@@ -1,0 +1,11 @@
+﻿@using Piranha.WebPages;
+<ul class="menu">
+    @foreach (var group in Manager.Menu) {
+        if (group.HasAccess()) {
+            var items = group.ItemsForUser() ;
+            <li class="@(group.IsActive() ? "selected" : "") @(!String.IsNullOrEmpty(group.CssClass) ? "icon " + group.CssClass : "")">
+                <a href="@Url.Action(items[0].Action, items[0].Controller)">@group.Name</a></li>
+        }
+    }
+    <li class="icon logout"><a href="@Url.Action("logout", "account")">@Piranha.Resources.Global.MenuLogout</a></li>
+</ul>

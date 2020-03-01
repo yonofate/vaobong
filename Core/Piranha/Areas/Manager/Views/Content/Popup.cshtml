@@ -1,0 +1,63 @@
+﻿@model Piranha.Models.Manager.ContentModels.PopupModel
+@{
+    Layout = "";
+    var first = true ;
+}
+<div class="title">
+    <ul class="box-tabs">
+        <li class="selected"><a class="btn-media-existing"href="#attach-existing">@Piranha.Resources.Content.ChooseExisting</a></li>
+        <li><a href="#attach-new" class="btn-media-new">@Piranha.Resources.Content.UploadNew</a></li>
+    </ul>
+    <a class="close-btn right" data-id="boxContent"></a>
+    <div class="clear"></div>
+</div>
+<div id="attach-existing" class="inner media-existing gallery @(Model.Content.Count > 12 ? "gallery-compressed" : "")">
+    @foreach (var content in Model.Content) {
+        <div class="gallery-item @(Model.Content.Count > 12 ? "compressed" : "")">
+            @if (first && content.ParentId != Guid.Empty) {
+            <img class="folder" data-id="@content.Id" src="~/res.ashx/areas/manager/content/img/ico-folder-up-96.png" />
+            } else {
+            <img@(content.IsFolder ? " class=folder" : (!content.IsImage ? " class=document" : "")) data-id="@content.Id" src="@Url.GetThumbnailUrl(content.Id, 96)" title="@content.AlternateText" alt="@content.AlternateText" />
+            }
+            <p><small>@content.DisplayName</small></p>
+        </div>
+        first = false ;
+    }
+    <div class="clear"></div>
+    <div class="loader"></div>
+</div>
+<div id="attach-new" class="inner media-new hidden">
+    <ul class="form">
+        <li><label>@Piranha.Resources.Content.Upload</label>
+            <div class="upload">
+                <input type="file" class="media-new-file" id="new-file" name="new-file" data-id="upload_name" />
+                <button class="btn blue file" data-id="new-file">@Piranha.Resources.Global.ChooseFile</button>
+                <div class="input">
+                    <input id="upload_name" type="text" />
+                </div>
+            </div>
+        </li>
+        <li>
+            <label>@Piranha.Resources.Content.ParentId</label>
+            <div class="input">
+                <select class="new-parentid">
+                    @foreach (var f in Model.Folders) {
+                    <option value="@f.Value" @(f.Value == Model.SelectedFolder ? "selected=true" : "")>@Html.Raw(f.Text)</option>
+                    }
+                </select>
+            </div>
+        </li>
+        <li><label>@Piranha.Resources.Global.Name</label>
+            <div class="input"><input type="text" class="new-name" /></div>
+        </li>
+        <li><label>@Piranha.Resources.Content.AlternateText</label>
+            <div class="input"><input type="text" class="new-alt" /></div>
+        </li>
+        <li><label>@Piranha.Resources.Global.Description</label>
+            <div class="input"><textarea rows="4" class="new-desc"></textarea></div>
+        </li>
+    </ul>
+    <button class="btn media-new-upload right">@Piranha.Resources.Global.ToolbarSave</button>
+    <div class="clear"></div>
+    <div class="loader"></div>
+</div>

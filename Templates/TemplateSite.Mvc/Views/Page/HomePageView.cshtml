@@ -1,0 +1,18 @@
+﻿@model Piranha.Models.PageModel
+@{
+    ViewBag.Title = Model.Page.Title;
+    List<Piranha.Entities.PostModel> postNews = Model.Regions.news;
+    List<Piranha.Entities.PostModel> postNhacais = Model.Regions.nhacai;
+}
+<div class="news">
+    @foreach(var item in postNews)
+    {
+    <div>
+        @item.Post.Properties.FirstOrDefault().Name <br />
+        @Html.Raw(item.Post.Properties.FirstOrDefault().Value)
+    </div>
+    }
+</div>
+<div class="nhacais">
+
+</div>

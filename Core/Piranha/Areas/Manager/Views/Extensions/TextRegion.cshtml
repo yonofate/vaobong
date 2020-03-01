@@ -1,0 +1,11 @@
+﻿@model Piranha.Extend.Regions.TextRegion
+@{
+}
+<ul class="form">
+    <li>@Html.LabelFor(m => m.Title)
+        <div class="input">@Html.TextBoxFor(m => m.Title)</div>
+        @Html.ValidationMessageFor(m => m.Title)</li>
+    <li>@Html.LabelFor(m => m.Body)
+        <div class="input">@Html.TextAreaFor(m => m.Body, new { @rows = 8 })</div>
+        @Html.ValidationMessageFor(m => m.Body)</li>
+</ul>

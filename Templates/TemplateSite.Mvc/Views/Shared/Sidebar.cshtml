@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "" ;
+    
+    List<Piranha.Entities.Post> posts = null ;
+    using (var db = new Piranha.DataContext()) {
+        posts = db.Posts.Where(x => x.TemplateId.ToString() == "5017DBE4-5685-4941-921B-CA922EDC7A12").OrderByDescending(p => p.Published).Take(6).ToList();
+    }
+}
+@if (posts.Count > 0) {
+    foreach (var post in posts) {
+        <li>
+                <h4><a href="@UI.Permalink(post.PermalinkId)">@post.Title</a></h4>
+<div class="description">
+            <p>@post.Excerpt</p>
+</div>
+<a href="@UI.Permalink(post.PermalinkId)" class="widget-view-detail">
+										<i class="fa fa-caret-right"></i> Chi tiết
+									</a>
+        </li>
+        <hr />
+    }
+} else {
+    <p>Hiện chưa có bài viết nào</p>
+}

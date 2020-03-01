@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = Piranha.Resources.Account.InstallTitle ;
+    Layout = "" ;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>@Piranha.Resources.Account.InstallTitle</title>
+
+    <link href="~/res.ashx/areas/manager/content/img/icon.ico" rel="icon" type="image/x-icon">
+    <link href="~/res.ashx/areas/manager/content/img/icon.ico" rel="shortcut icon" type="image/x-icon"> 
+    <link href="~/res.ashx/areas/manager/content/css/style.min.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="~/res.ashx/areas/manager/content/js/ext/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="~/res.ashx/areas/manager/content/js/jquery.manager.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".message").click(function () { $(this).fadeOut("medium"); });
+
+            if ($("#sysMsg").text() != "") {
+                floatBox.show("boxMessage");
+            }
+
+            $("#schema").click(function () {
+                $("#InstallType").attr("value", "SCHEMA");
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container_12">
+        <div class="grid_4 box login">
+            <div class="title"><h2>@Piranha.Resources.Account.InstallTitle</h2></div>
+            <div class="inner">
+                @{ Html.BeginForm("create", "install") ; }
+                <ul class="form">
+                    <li><label>@Piranha.Resources.Global.Username</label>
+                        <div class="input"><input name="UserLogin" type="text" placeholder="@Piranha.Resources.Account.UsernameInfo" /></div></li>
+                    <li><label>@Piranha.Resources.Global.Password</label>
+                        <div class="input"><input name="Password" type="password" placeholder="@Piranha.Resources.Account.PasswordInfo" /></div></li>
+                    <li><label>@Piranha.Resources.Global.Confirm</label>
+                        <div class="input"><input name="PasswordConfirm" type="password" placeholder="@Piranha.Resources.Account.PasswordConfirmInfo" /></div></li>
+                    <li><label>@Piranha.Resources.Settings.Email</label>
+                        <div class="input"><input name="UserEmail" type="text" placeholder="@Piranha.Resources.Account.EmailInfo" /></div></li>
+                    <input type="hidden" id="InstallType" name="InstallType" value="FULL" />
+                    <div class="separator"></div>
+                    <br />
+                    <button id="full" class="btn blue big full">@Piranha.Resources.Account.InstallSite</button>
+                </ul>
+                @{ Html.EndForm() ; }
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

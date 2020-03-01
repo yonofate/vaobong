@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AlternateText" xml:space="preserve">
+    <value>Alt. text</value>
+  </data>
+  <data name="ChooseFile" xml:space="preserve">
+    <value>Subir arquivo</value>
+  </data>
+  <data name="ContentSize" xml:space="preserve">
+    <value>Tamanho do arquivo</value>
+  </data>
+  <data name="ContentType" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Descrição</value>
+  </data>
+  <data name="EditTitleExistingDocument" xml:space="preserve">
+    <value>Editar documento</value>
+  </data>
+  <data name="EditTitleExistingFolder" xml:space="preserve">
+    <value>Editar pasta</value>
+  </data>
+  <data name="EditTitleExistingImage" xml:space="preserve">
+    <value>Editar imagem</value>
+  </data>
+  <data name="EditTitleNew" xml:space="preserve">
+    <value>Adicionar conteúdo</value>
+  </data>
+  <data name="EditTitleNewFolder" xml:space="preserve">
+    <value>Adicionar nova pasta</value>
+  </data>
+  <data name="FileInformation" xml:space="preserve">
+    <value>Informação do arquivo</value>
+  </data>
+  <data name="Filename" xml:space="preserve">
+    <value>Nome do arquivo</value>
+  </data>
+  <data name="FromUrl" xml:space="preserve">
+    <value>Da URL</value>
+  </data>
+  <data name="ImageSize" xml:space="preserve">
+    <value>Tamanho da imagem</value>
+  </data>
+  <data name="IncludingCache" xml:space="preserve">
+    <value>Incluindo cache</value>
+  </data>
+  <data name="LastSynced" xml:space="preserve">
+    <value>Data do servidor</value>
+  </data>
+  <data name="ListDelete" xml:space="preserve">
+    <value>Deletar conteúdo</value>
+  </data>
+  <data name="ListTitle" xml:space="preserve">
+    <value>Imagens &amp; documentos</value>
+  </data>
+  <data name="MessageDocumentDeleted" xml:space="preserve">
+    <value>O documento foi excluído.</value>
+  </data>
+  <data name="MessageDocumentNotDeleted" xml:space="preserve">
+    <value>Ocorreu um erro ao excluir o documento.</value>
+  </data>
+  <data name="MessageDocumentNotFound" xml:space="preserve">
+    <value>O documento não foi encontrado no servidor.</value>
+  </data>
+  <data name="MessageDocumentNotSynced" xml:space="preserve">
+    <value>Nenhuma versão mais recente do documento existe no servidor.</value>
+  </data>
+  <data name="MessageDocumentSaved" xml:space="preserve">
+    <value>O documento foi salvo.</value>
+  </data>
+  <data name="MessageDocumentSynced" xml:space="preserve">
+    <value>O documento foi atualizado a partir do servidor.</value>
+  </data>
+  <data name="MessageDocumentSyncError" xml:space="preserve">
+    <value>Ocorreu um erro no servidor de documentos.</value>
+  </data>
+  <data name="MessageFolderDeleted" xml:space="preserve">
+    <value>A pasta foi excluída.</value>
+  </data>
+  <data name="MessageFolderNotDeleted" xml:space="preserve">
+    <value>Ocorreu um erro ao excluir a pasta.</value>
+  </data>
+  <data name="MessageFolderSaved" xml:space="preserve">
+    <value>A pasta foi salva.</value>
+  </data>
+  <data name="MessageImageDeleted" xml:space="preserve">
+    <value>A imagem foi excluída.</value>
+  </data>
+  <data name="MessageImageNotDeleted" xml:space="preserve">
+    <value>Ocorreu um erro ao excluir a imagem.</value>
+  </data>
+  <data name="MessageImageNotFound" xml:space="preserve">
+    <value>A imagem não foi encontrada no servidor.</value>
+  </data>
+  <data name="MessageImageNotSynced" xml:space="preserve">
+    <value>Nenhuma versão mais recente da imagem existe no servidor.</value>
+  </data>
+  <data name="MessageImageSaved" xml:space="preserve">
+    <value>A imagem foi salva.</value>
+  </data>
+  <data name="MessageImageSynced" xml:space="preserve">
+    <value>A imagem foi atualizado a partir do servidor.</value>
+  </data>
+  <data name="MessageImageSyncError" xml:space="preserve">
+    <value>Ocorreu um erro no servidor de imagem.</value>
+  </data>
+  <data name="MessageNotSaved" xml:space="preserve">
+    <value>Ocorreu um erro ao salvar o conteúdo.</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="OriginalUrl" xml:space="preserve">
+    <value>URL original</value>
+  </data>
+  <data name="ParentId" xml:space="preserve">
+    <value>Pasta</value>
+  </data>
+  <data name="ThumbnailNewDescription" xml:space="preserve">
+    <value>A miniatura será mostrada depois de ter carregado o novo conteúdo.</value>
+  </data>
+  <data name="ToolbarAdd" xml:space="preserve">
+    <value>Subir novo conteúdo</value>
+  </data>
+  <data name="ToolbarAddFolder" xml:space="preserve">
+    <value>Nova pasta</value>
+  </data>
+  <data name="Upload" xml:space="preserve">
+    <value>Da máquina</value>
+  </data>
+  <data name="MessageDocumentPublished" xml:space="preserve">
+    <value>O documento foi publicado.</value>
+  </data>
+  <data name="MessageDocumentUnpublished" xml:space="preserve">
+    <value>O documento foi despublicado.</value>
+  </data>
+  <data name="MessageFolderPublished" xml:space="preserve">
+    <value>A pasta foi publicada.</value>
+  </data>
+  <data name="MessageFolderUnpublished" xml:space="preserve">
+    <value>A pasta foi despublicada.</value>
+  </data>
+  <data name="MessageImagePublished" xml:space="preserve">
+    <value>A imagem foi publicada.</value>
+  </data>
+  <data name="MessageImageUnpublished" xml:space="preserve">
+    <value>A imagem foi despublicada.</value>
+  </data>
+  <data name="MessageNotFound" xml:space="preserve">
+    <value>Ocorreu um erro. O objeto de mídia especificado não pôde ser encontrado.</value>
+  </data>
+  <data name="MessageReverted" xml:space="preserve">
+    <value>A última versão publicada foi agora restaurado.</value>
+  </data>
+  <data name="ChooseExisting" xml:space="preserve">
+    <value>Escolha existente</value>
+  </data>
+  <data name="UploadNew" xml:space="preserve">
+    <value>Subir novo</value>
+  </data>
+  <data name="MessageDeleteConfirmFile" xml:space="preserve">
+    <value>Tem certeza de que deseja excluir o documento selecionado?</value>
+  </data>
+  <data name="MessageDeleteConfirmFolder" xml:space="preserve">
+    <value>Tem certeza de que deseja excluir a pasta selecionada?</value>
+  </data>
+  <data name="MessageDeleteConfirmImage" xml:space="preserve">
+    <value>Tem certeza de que deseja excluir a imagem selecionada?</value>
+  </data>
+  <data name="MessageUpdated" xml:space="preserve">
+    <value>A versão publicada foi atualizada.</value>
+  </data>
+</root>

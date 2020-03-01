@@ -1,0 +1,21 @@
+﻿@model Piranha.Extend.Regions.MarkdownRegion
+@{
+    var id = ViewData.TemplateInfo.GetFullHtmlFieldId("") ;
+}
+<style type="text/css">
+    .markdown-container {
+        border-top: 1px solid #ddd;
+        padding-left: 10px;
+    }
+    .markdown {
+        border: 0;
+        width: 100%;
+        max-width: 853px;
+        min-width: 100%;
+        height: 400px;
+        overflow-y: visible;
+    }
+</style>
+<div class="markdown-container">
+    @Html.TextAreaFor(m => m, new { @rows = 10, @class = "markdown" })
+</div>

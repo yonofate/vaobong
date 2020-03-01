@@ -1,0 +1,9 @@
+ERROR [2014-10-08 15:12:42] Origin [WebPiranha.BeginRequest] Message [Unhandled exception]
+System.FormatException: Input string was not in a correct format.
+   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at System.Convert.ToInt32(String value)
+   at Piranha.Web.Handlers.ThumbnailHandler.GetThumbnail(HttpContext context, Boolean draft, String[] args, Guid id) in c:\Proj\GitHub\Piranha-2.2\Piranha\Web\Handlers\ThumbnailHandler.cs:line 57
+   at Piranha.Web.Handlers.ThumbnailHandler.HandleRequest(HttpContext context, Boolean draft, String[] args) in c:\Proj\GitHub\Piranha-2.2\Piranha\Web\Handlers\ThumbnailHandler.cs:line 31
+   at Piranha.Web.Handlers.ThumbnailHandler.HandleRequest(HttpContext context, String[] args) in c:\Proj\GitHub\Piranha-2.2\Piranha\Web\Handlers\ThumbnailHandler.cs:line 20
+   at Piranha.WebPages.WebPiranha.BeginRequest(HttpContext context) in c:\Proj\GitHub\Piranha-2.2\Piranha\WebPages\WebPiranha.cs:line 286

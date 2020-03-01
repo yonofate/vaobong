@@ -1,0 +1,267 @@
+﻿//
+// Copyright (c) 2011-2015 Håkan Edling
+//
+// This software may be modified and distributed under the terms
+// of the MIT license.  See the LICENSE file for details.
+// 
+// http://github.com/piranhacms/piranha
+// 
+
+@import "variables.less";
+
+ul.sitemap {
+    background: #eee;
+    clear: both;
+
+    li {
+        background: #eee;
+        overflow: hidden;
+
+        span {
+            display: block;
+            float: right;
+            padding: 10px 20px;
+
+            &.info-unpublished,
+            &.info-draft,
+            &.info-copy {
+                display: inline-block;
+                float: left;
+                padding: 0;
+            }
+        }
+
+        &.header {
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+
+            span {
+                padding: 12px 20px;
+                font-weight: bold;
+            }
+        }
+
+        &.odd {
+            background: #f8f8f8;
+        }
+
+        &.draft > span {
+            font-style: italic;
+            color: #a2a2a2;
+        }
+
+		&.block {
+			font-size: 12px;
+			background: #fff;
+			color: #999;
+
+			border: dashed 1px @form-border-color;
+			border-width: 0 1px;
+
+			span {
+				padding: 6px 20px;
+			}
+
+			.title {
+				border: none;
+
+				a {
+					color: @color-btn-light;
+				}
+
+				.action {
+					display: none;
+				}
+			}
+
+			&.last {
+				border-width: 0 1px 1px;
+				padding-bottom: 10px;
+			}
+
+			.block {
+				border-width: 0;
+				padding-bottom: 0;
+			}
+
+			.buttons {
+				opacity: 0.6;
+				padding: 5px 19px 5px 20px;
+			}
+		}
+
+		&.has-block.expanded {
+			>.title {
+				background: #fff;
+				border: dashed 1px @form-border-color;
+				border-width: 0 1px;
+			}
+		}
+    }
+
+    .action {
+        display: block;
+        float: left;
+        width: 20px;
+        height: 16px;
+        padding: 0;
+        cursor: pointer;
+    }
+
+    &.media {
+        li {
+            span {
+                line-height: 32px;
+            }
+
+            &.header {
+                span {
+                    line-height: normal;
+                }
+
+                .title {
+                    text-indent: 40px;
+                }
+            }
+
+            .list-info {
+                margin-top: 8px;
+            }
+        }
+
+        .action {
+            height: 32px;
+        }
+
+        .expanded .action,
+        .collapsed .action {
+            background-position: 0 10px;
+        }
+
+        .icon {
+            background-position: 0 50%;
+            height: 32px;
+        }
+    }
+
+    .buttons {
+        width: 70px;
+
+		.delete {
+			float: right;
+		}
+    }
+
+    .date {
+        width: 80px;
+        white-space: nowrap;
+    }
+
+    .type {
+        width: 200px;
+    }
+
+    .title {
+        float: none;
+        padding-left: 10px;
+        border-bottom: solid 1px @primay-border-color;
+
+        a {
+            display: block;
+            margin-left: 20px;
+        }
+    }
+
+    .header .title {
+        padding-left: 30px;
+        border-bottom: solid 4px @primay-border-color;
+    }
+
+    img.thumb {
+        width: 32px;
+        float: left;
+        padding-right: 10px;
+    }
+
+    ul {
+        display: none;
+
+        .title {
+            padding-left: 30px;
+        }
+
+        ul {
+            .title {
+                padding-left: 50px;
+            }
+
+            ul {
+                .title {
+                    padding-left: 70px;
+                }
+
+                ul {
+                    .title {
+                        padding-left: 90px;
+                    }
+
+                    ul {
+                        .title {
+                            padding-left: 120px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .expanded .action {
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAQFJREFUeNpi/P//PwMMdHV18QEpHgZM8K6srOwHiMEI0gBUKMbBwbH+9+/fJiwsLH/QVQPF2dnY2Hb8+PEjngUkAFR83NPTU0lRURHEZcNiA8PRo0e9Ll26tIaZi4tLEMhv9PHxYWFiYmLAhUVFRRlPnTolDLKBDSjwDwgY8AGYX1mQ3IlXA0yeBab758+fDN+/f2fIyMhAUcjJyckwY8YMhl+/fqHaABJgZmZmmD17NobpIDkQBhlMtJP+/PkDt+HL379/WQhpADmZkZHxDzjiJkyYcBQYB+YqKirMuDRcv379x5MnT7axQN3off/+/YV37tyxx6UBGPTrgK5IAwgwAOUcef3ybTpWAAAAAElFTkSuQmCC) 0 3px no-repeat;
+    }
+
+    .expanded ul {
+        display: block;
+    }
+
+    .collapsed ul {
+        display: none;
+    }
+
+    .collapsed .action {
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAARBJREFUeNpi/P//PwMMdHV18QEpHgZM8K6srOwHiMEI0gBUKMbBwbH+9+/fJiwsLH/QVQPF2dnY2Hb8+PEjngUkAFR83NPTU0lRURHEZcNiA8PRo0e9Ll26tIaZi4tLEMhv9PHxYWFiYmLAhUVFRRlPnTolzAQyESjwDwgYkHFBQQEKH+ZXFiR3MmBxOwYbrAGk++fPnwxATzG0tbXBFZWXl4P8x1BVVcXw69cvVBtAAiC31tTUgPktLS1wNkgOhEEGE+2kP3/+wG348vfvXxZ0DUVFRSgaQE5mZGT8A464CRMmHAXGgbmKigozAw5w/fr1H0+ePNnGAnWj9/379xfeuXPHHpcGoP/WAW1MAwgwAHVnm1X1kmhJAAAAAElFTkSuQmCC) 0 3px no-repeat;
+    }
+}
+
+.list-info {
+    margin: 2px 0 0 10px;
+    position: absolute;
+    display: inline-block;
+}
+
+.info-unpublished, .info-draft, .info-copy {
+    height: 16px;
+    padding: 0;
+    display: inline-block;
+    float: left;
+    opacity: 0.5;
+    margin-right: 6px;
+}
+
+.info-unpublished:hover, .info-draft:hover, .info-copy:hover {
+    opacity: 0.8;
+}
+
+.info-unpublished {
+    background: url('../../img/info-unpublished.png') 0 0 no-repeat;
+    width: 75px;
+}
+
+.info-draft {
+    background: url('../../img/info-draft.png') 0 0 no-repeat;
+    width: 42px;
+}
+
+.info-copy {
+    background: url('../../img/info-copy.png') 0 0 no-repeat;
+    width: 39px;
+}

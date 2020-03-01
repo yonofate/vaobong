@@ -1,0 +1,35 @@
+﻿@model Piranha.Models.Manager.PageModels.SitemapModel
+@foreach (var page in Model.Pages) {
+	var hasBlocks = page.Pages.Where(p => p.IsBlock).Count() > 0;
+	var last = page == Model.Pages.Last();
+	var expanded = page.IsBlock || (page.Pages.Count > 0 && (page.Level <= ViewBag.Levels || page.HasChild(ViewBag.Expanded)));
+	var blocktypes = Model.BlocksString(page);
+	var subpages = Model.Subpages(page);
+	
+    <li id="@page.Id" class="@(expanded ? "expanded" : "collapsed") @(page.Updated > page.LastPublished ? "draft" : "") @(page.IsBlock ? "block" + (last ? " last" : "") : hasBlocks ? "has-block" : "")">
+        <span class="buttons" data-subpages="@subpages.ToString().ToLower()" data-blocks="@blocktypes">
+            <button class="icon add-after marg" title="@Piranha.Resources.Page.ListAddAfter" onclick="return preSubmit('@page.ParentId', @(page.Seqno + 1), @subpages.ToString().ToLower(), '@Model.ParentTypes')" type="submit"></button>
+			@if (subpages || !String.IsNullOrEmpty(blocktypes)) {
+	            <button class="icon add-below marg" title="@Piranha.Resources.Page.ListAddBelow" onclick="return preSubmit('@page.Id', 1, @subpages.ToString().ToLower(), '@blocktypes')" type="submit"></button>
+			}
+            @if (page.Pages.Count == 0 && User.HasAccess("ADMIN_PAGE_PUBLISH")) {
+            <a href="@Url.Action("delete", "page", new { id = page.Id })" title="@Piranha.Resources.Page.ListDelete" class="icon delete"></a>
+            }
+        </span>
+        <span class="date">@page.Created.ToString("yyyy-MM-dd")</span>
+        <span class="date">@page.Updated.ToString("yyyy-MM-dd")</span>
+        <span class="type">@page.TemplateName</span>
+        <span class="title">@if (page.Pages.Count > 0) {<span class="action"></span>}<a href="@Url.Action("edit", "page", new { id = page.Id })">
+            @(!String.IsNullOrEmpty(page.NavigationTitle) ? page.NavigationTitle : page.Title)
+            <div class="list-info">
+                @Html.Raw(page.LastPublished == DateTime.MinValue ? "<span class=info-unpublished></span>" : (page.Updated > page.LastPublished ? "<span class=info-draft></span>" : ""))
+                @Html.Raw(page.OriginalId != Guid.Empty ? "<span class=info-copy></span>" : "")
+            </div></a></span>
+        @if (page.Pages.Count > 0) {
+        <ul>
+			@Html.Partial("Partial/SiteTree", new Piranha.Models.Manager.PageModels.SitemapModel() { Pages = page.Pages.Where(p => p.IsBlock).ToList(), Templates = Model.Templates, ParentTypes = blocktypes })
+            @Html.Partial("Partial/SiteTree", new Piranha.Models.Manager.PageModels.SitemapModel() { Pages = page.Pages.Where(p => !p.IsBlock).ToList(), Templates = Model.Templates, ParentTypes = blocktypes })
+        </ul>
+        }
+    </li>
+}

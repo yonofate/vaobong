@@ -1,0 +1,36 @@
+﻿@model Piranha.Models.Post
+@{
+    Layout = "";
+
+    List<Piranha.Entities.Post> posts = null;
+    var t = Model.TemplateId;
+    using (var db = new Piranha.DataContext())
+    {
+        posts = db.Posts.Where(x => x.TemplateId == t).OrderByDescending(p => p.Published).ToList();
+    }
+}
+<link href="~/Content/Css/out.css" rel="stylesheet" />
+@if (posts.Count > 0)
+{
+    <div class="popularposts ">
+        <ul>
+            @foreach (var f in posts) {
+            <li>
+                <a title="@f.Title" href="@UI.Permalink(f.PermalinkId)">
+                    @foreach (var att in f.Attachments)
+                    {
+                        @UI.Thumbnail(att, 72);
+                    }
+                </a>
+                <a title="@f.Title" href="@UI.Permalink(f.PermalinkId)">@f.Title</a>
+            </li>
+            <div class="clear"></div>
+            }
+        </ul>
+    </div>
+
+}
+else
+{
+    <p>Hiện chưa có bài viết nào</p>
+}

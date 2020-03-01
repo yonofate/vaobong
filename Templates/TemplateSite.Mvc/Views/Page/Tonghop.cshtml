@@ -1,0 +1,42 @@
+﻿@model Piranha.Models.PageModel
+@{
+    ViewBag.Title = Model.Page.Title;
+}
+<div class="main-banner">
+    <img src="~/content/images/banner.jpg" alt="Vao Bong88, Sbobet, Ibet888 không bị chặn" />
+</div>
+<!--main-cont-page-->
+<div class="main-cont-page">
+    <div class="main-left">
+        @Model.Regions.Content
+    </div>
+    <div class="main-right">
+        <section class="group_sidebar">
+            <aside class="sidebar">
+                <a href="#" target="_blank" rel="nofollow"><img alt="tin bong da 24h, bong da 24h, baobongda" src="//i.imgur.com/2bwgtal.gif" title="Đăng ký nhận thưởng KHỦNG"></a>
+                <section class="widget">
+                    <h3 class="title-bar">
+                        <span>Bóng đá 24h</span>
+                    </h3>
+                    <!-- .title-bar -->
+                    <ul class="widget-list">
+                        @Html.Partial("Advbar", 5)
+                    </ul>
+                </section>
+            </aside>
+            <aside class="sidebar">
+                <section class="widget">
+                    <h3 class="title-bar">
+                        <span>Vui - Giải trí xem nhiều</span>
+                    </h3>
+                    <!-- .title-bar -->
+                    <ul class="widget-list">
+                        @Html.Partial("SidebarView", 7)
+                    </ul>
+                </section>
+
+                <a href="#" target="_blank"><img class="quangcao" src="http://www.sbbanner.com/newmedia/vi/promo/viSbnG_300x240.gif" border="0" width="300" height="240"></a>
+            </aside>
+        </section>
+    </div>
+</div>

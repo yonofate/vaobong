@@ -1,0 +1,215 @@
+﻿@model Piranha.Models.PageModel
+
+@{
+    ViewBag.Title = "TrustedHostv2";
+    List<Piranha.Entities.PostModel> HuongDanCaCuoc = Model.Regions.HuongDanCaCuoc;
+    List<Piranha.Entities.PostModel> KinhNghiemCaCuoc = Model.Regions.KinhNghiemCaCuoc;
+    List<Piranha.Entities.PostModel> TinTucCaCuoc = Model.Regions.TinTucCaCuoc;
+}
+
+<link href="~/Content/Css/hostv2.min.css" rel="stylesheet" />
+
+<div class="clearfix host-page mt">
+    <div class="host-collection">
+        <div class="h-title">
+            <h2>danh sách nhà cái uy tín nhất Việt Nam</h2>
+            <p>Nhà cái số một được xem là nhà cái cá cược tốt nhất phải đảm bảo được các yếu tố như: khả năng thanh toán, gửi và rút tiền nhanh, nhiều kèo, tỉ lệ cược cao, casino trực tuyến, poker online, giao diện đẹp, có nhiều chương trình khuyến mãi lớn, nhân viên hỗ trợ chu đáo, nhiệt tình... Dưới đây là danh sách nhà cái tốt nhất được bình chọn và tổng hợp trên tất cả các tiêu chí để mọi người lựa chọn được nhà cái phù hợp cho riêng mình.</p>
+        </div>
+        <div data-bind="foreach: hosts">
+            <div class="h-item">
+                <div class="h__l">
+                    <div class="ht">
+                        <a href="#" data-bind="attr: {href: site, h: name}" target="_blank">
+                            <img alt="host" data-bind="attr: {src: '/Content/images/host/'+logo}" />
+                        </a>
+                        <div>Thưởng <span class="hp" data-bind="text: pro_r + '%'"></span> lên đến <strong data-bind="text: toMoney(pro_p) + ' VND'"></strong></div>
+                    </div>
+                    <div class="hb">
+                        <ul class="clearfix">
+                            <li>
+                                <div>Giao diện</div>
+                                <div data-bind="text: ui"></div>
+                            </li>
+                            <li>
+                                <div>Rút tiền</div>
+                                <div data-bind="text: withdraw"></div>
+                            </li>
+                            <li>
+                                <div>Gửi tiền</div>
+                                <div data-bind="text: ui"></div>
+                            </li>
+                            <li>
+                                <div>Odds</div>
+                                <div data-bind="text: odds"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="h__r" data-bind="text: rate"></div>
+            </div>
+        </div>
+        <div class="text-center" data-bind="visible: showButton">
+            <button class="btn-more-host" data-bind="click: loadMoreHost">xem thêm</button>
+        </div>
+    </div>
+    <div class="host-news">
+        @if (HuongDanCaCuoc != null && HuongDanCaCuoc.Count > 0)
+        {
+            //var f = HuongDanCaCuoc.First();
+            var ps = HuongDanCaCuoc.Take(5);
+
+            <div class="n-title">
+                <h3>Hướng dẫn cá cược</h3>
+            </div>
+            <div class="n-item">
+                @foreach (var f in ps)
+                {
+                    <div class="n-big">
+                        <a title="@f.Post.Title" href="@UI.Permalink(f.Post.PermalinkId)">
+                            @if (f.Attachments != null && f.Attachments.Count > 0)
+                            {
+                                var att = f.Attachments.First();
+                                <img src="@UI.Content(att.Id)" alt="@att.AltText">
+                            }
+                            else
+                            {
+                                <img src="~/Content/images/preview.jpg" class="img-responsive" alt="@f.Post.Title" />
+                            }
+                        </a>
+                        <h4>
+                            <a title="@f.Post.Title" href="@UI.Permalink(f.Post.PermalinkId)">@f.Post.Title</a>
+                        </h4>
+                    </div>
+                }
+                @*<div class="n-big">
+                        <a title="@f.Post.Title" href="@UI.Permalink(f.Post.PermalinkId)">
+                            @if (f.Attachments != null && f.Attachments.Count > 0)
+                            {
+                                var att = f.Attachments.First();
+                                <img src="@UI.Content(att.Id)" alt="@att.AltText">
+                            }
+                            else
+                            {
+                                <img src="~/Content/images/preview.jpg" class="img-responsive" alt="@f.Post.Title" />
+                            }
+                        </a>
+                        <h4>
+                            <a title="@f.Post.Title" href="@UI.Permalink(f.Post.PermalinkId)">@f.Post.Title</a>
+                        </h4>
+                    </div>
+                    <div class="n-small">
+                        <ul>
+                            @foreach (var p in ps)
+                            {
+                                <li>
+                                    <a title="@p.Post.Title" href="@UI.Permalink(p.Post.PermalinkId)">@p.Post.Title</a>
+                                </li>
+                            }
+                        </ul>
+                    </div>*@
+            </div>
+        }
+        <!-- Hướng dẫn cá cược -->
+        @if (KinhNghiemCaCuoc != null && KinhNghiemCaCuoc.Count > 0)
+        {
+            //var f = KinhNghiemCaCuoc.First();
+            var ps = KinhNghiemCaCuoc.Take(5);
+
+            <div class="n-title">
+                <h3>kinh nghiệm cá cược</h3>
+            </div>
+            <div class="n-item">
+                @foreach (var f in ps)
+                {
+                    <div class="n-big">
+                        <a title="@f.Post.Title" href="@UI.Permalink(f.Post.PermalinkId)">
+                            @if (f.Attachments != null && f.Attachments.Count > 0)
+                            {
+                                var att = f.Attachments.First();
+                                <img src="@UI.Content(att.Id)" alt="@att.AltText">
+                            }
+                            else
+                            {
+                                <img src="~/Content/images/preview.jpg" class="img-responsive" alt="@f.Post.Title" />
+                            }
+                        </a>
+                        <h4>
+                            <a title="@f.Post.Title" href="@UI.Permalink(f.Post.PermalinkId)">@f.Post.Title</a>
+                        </h4>
+                    </div>
+                }
+                @*<div class="n-small">
+                        <ul>
+                            @foreach (var p in ps)
+                            {
+                                <li>
+                                    <a title="@p.Post.Title" href="@UI.Permalink(p.Post.PermalinkId)">@p.Post.Title</a>
+                                </li>
+                            }
+                        </ul>
+                    </div>*@
+            </div>
+        }
+        <!-- /kinh nghiệm cá cược -->
+        @if (TinTucCaCuoc != null && TinTucCaCuoc.Count > 0)
+        {
+            //var f = TinTucCaCuoc.First();
+            var ps = TinTucCaCuoc.Take(5);
+
+            <div class="n-title">
+                <h3>Tin tức cá cược</h3>
+            </div>
+            <div class="n-item">
+                @foreach (var f in ps)
+                {
+                    <div class="n-big">
+                        <a title="@f.Post.Title" href="@UI.Permalink(f.Post.PermalinkId)">
+                            @if (f.Attachments != null && f.Attachments.Count > 0)
+                            {
+                                var att = f.Attachments.First();
+                                <img src="@UI.Content(att.Id)" alt="@att.AltText">
+                            }
+                            else
+                            {
+                                <img src="~/Content/images/preview.jpg" class="img-responsive" alt="@f.Post.Title" />
+                            }
+                        </a>
+                        <h4>
+                            <a title="@f.Post.Title" href="@UI.Permalink(f.Post.PermalinkId)">@f.Post.Title</a>
+                        </h4>
+                    </div>
+                }
+                @*<div class="n-big">
+                        <a title="@f.Post.Title" href="@UI.Permalink(f.Post.PermalinkId)">
+                            @if (f.Attachments != null && f.Attachments.Count > 0)
+                            {
+                                var att = f.Attachments.First();
+                                <img src="@UI.Content(att.Id)" alt="@att.AltText">
+                            }
+                            else
+                            {
+                                <img src="~/Content/images/preview.jpg" class="img-responsive" alt="@f.Post.Title" />
+                            }
+                        </a>
+                        <h4>
+                            <a title="@f.Post.Title" href="@UI.Permalink(f.Post.PermalinkId)">@f.Post.Title</a>
+                        </h4>
+                    </div>
+                    <div class="n-small">
+                        <ul>
+                            @foreach (var p in ps)
+                            {
+                                <li>
+                                    <a title="@p.Post.Title" href="@UI.Permalink(p.Post.PermalinkId)">@p.Post.Title</a>
+                                </li>
+                            }
+                        </ul>
+                    </div>*@
+            </div>
+        }
+        <!-- /tin tức cá cược -->
+    </div>
+</div>
+
+<script src="~/Content/js/knockout.js"></script>
+<script src="~/Content/js/host.js"></script>

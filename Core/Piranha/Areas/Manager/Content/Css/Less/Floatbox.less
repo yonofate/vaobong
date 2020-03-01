@@ -1,0 +1,46 @@
+﻿//
+// Copyright (c) 2011-2015 Håkan Edling
+//
+// This software may be modified and distributed under the terms
+// of the MIT license.  See the LICENSE file for details.
+// 
+// http://github.com/piranhacms/piranha
+// 
+
+@import "variables.less";
+@import "mixins.less";
+
+.floatbox {
+    display: none;
+    z-index: 70000;
+}
+.floatbox, .floatbox .bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+
+    h2 {
+        text-align: center;
+    }
+    .content {
+        margin: 0;
+    }
+    .bg {
+        background: #000;
+        filter: ~"alpha(opacity=60)";
+        background: rgba(0,0,0,0.6);
+    }
+    .box {
+        position: relative;
+        float: left;
+        border: solid 6px #fff;
+        margin: 0 auto;
+        .border-radius(10px);
+        box-shadow: 0 0 20px rgba(0,0,0,0.8);
+    }
+    .list-box .inner {
+        padding: 0;
+    }
+}

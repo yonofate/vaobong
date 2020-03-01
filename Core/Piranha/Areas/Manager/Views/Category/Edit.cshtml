@@ -1,0 +1,73 @@
+﻿@model Piranha.Models.Manager.CategoryModels.EditModel
+@section Head {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#Category_Name').focus();
+        });
+    </script>
+}
+@section Toolbar {
+@Html.Partial("Partial/Tabs")
+<div class="toolbar">
+    <div class="inner">
+        <ul>
+            <li><a class="save submit">@Piranha.Resources.Global.ToolbarSave</a></li>
+            <li><a href="@Url.Action("delete", new { id = Model.Category.Id })" class="delete">@Piranha.Resources.Global.ToolbarDelete</a></li>
+            <li><a href="@Url.Action("index", "category")" class="back">@Piranha.Resources.Global.ToolbarBack</a></li>
+            <li><a href="@Url.Action("edit", new { id = Model.Category.Id })" class="refresh">@Piranha.Resources.Global.ToolbarReload</a></li>
+        </ul>
+        <div class="clear"></div>
+    </div>
+</div>
+}
+@{ Html.BeginForm() ; }
+@Html.HiddenFor(m => m.Category.Id)
+@Html.HiddenFor(m => m.Category.PermalinkId)
+@Html.HiddenFor(m => m.Category.IsNew)
+@Html.HiddenFor(m => m.Category.Created)
+@Html.HiddenFor(m => m.Category.CreatedBy)
+@Html.HiddenFor(m => m.Permalink.IsNew)
+@Html.HiddenFor(m => m.Permalink.Id)
+@Html.HiddenFor(m => m.Permalink.Type)
+@Html.HiddenFor(m => m.Permalink.Created)
+@Html.HiddenFor(m => m.Permalink.CreatedBy)
+<div class="grid_12">
+    <div class="box">
+        <div class="title"><h2>@Piranha.Resources.Global.Information</h2></div>
+        <div class="inner">
+            <ul class="form">
+                <li>
+                    @Html.LabelFor(m => m.Category.Name)
+                    <div class="input">
+                        @Html.TextBoxFor(m => m.Category.Name)</div>
+                    @Html.ValidationMessageFor(m => m.Category.Name)
+                </li>
+                <li class="protected">
+                    @Html.LabelFor(m => m.Category.Permalink)
+                	@if (!Model.Category.IsNew) {
+                    <p>@Piranha.WebPages.WebPiranha.GetSiteUrl()@Url.GetPermalink(Model.Category.Permalink).ToLower()</p>
+                    } else {
+                    <p><i>@Piranha.Resources.Category.PermalinkDescription</i></p>
+                    }
+                    <div class="input">
+                        @Html.TextBoxFor(m => m.Permalink.Name)</div>
+                    <a class="locked"></a>
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Category.Description)
+                    <div class="input">
+                        @Html.TextAreaFor(m => m.Category.Description)</div>
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Category.ParentId)
+                    <div class="input">
+                        @Html.DropDownListFor(m => m.Category.ParentId, Model.Categories)</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    @if (Model.Extensions.Count > 0) {
+        @Html.EditorFor(m => m.Extensions)
+    }
+</div>
+@{ Html.EndForm() ; }

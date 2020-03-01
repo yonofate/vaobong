@@ -1,0 +1,24 @@
+﻿@model Piranha.Models.Manager.ContentModels.UploadModel
+@{
+    Layout = "";
+}
+<table class="list files">
+    <thead>
+        <tr>
+            <th>Filename</th>
+            <th>Size</th>
+            <th>Uploaded</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var f in Model.Files) {
+        <tr data-path="@f.Path">
+            <td>@f.Name</td>
+            <td>@(Math.Max((long)Math.Round((double)f.Size / 1024), 1)) kb</td>
+            <td>@f.Date.ToShortDateString()</td>
+            <td class="buttons one">
+                <a class="icon add"></a></td>
+        </tr>
+        }
+    </tbody>
+</table>

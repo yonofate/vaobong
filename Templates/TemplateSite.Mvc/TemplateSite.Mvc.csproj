@@ -1,0 +1,451 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C8218575-5356-4584-8EE1-9FEB46BABADC}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TemplateSite.Mvc</RootNamespace>
+    <AssemblyName>TemplateSite.Mvc</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.9.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\HtmlAgilityPack.1.4.9\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="RazorGenerator.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\RazorGenerator.Mvc.2.3.4\lib\net40\RazorGenerator.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text, Version=3.9.71.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\WebActivatorEx.2.0.6\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Helpers\ExtensionMethods.cs" />
+    <Compile Include="Services\CrawlerServices.cs" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <None Include="Content\Css\host.scss" />
+    <Content Include="Content\Css\ads.css" />
+    <Content Include="Content\Css\host.css" />
+    <Content Include="Content\Css\hostv2.css" />
+    <Content Include="Content\Css\hostv2.min.css" />
+    <Content Include="Content\Css\out-bk1.css" />
+    <Content Include="Content\Css\out.css" />
+    <Content Include="Content\Css\out2.css" />
+    <Content Include="Content\Css\spacing.min.css" />
+    <Content Include="Content\Css\stylepage-bk.css" />
+    <Content Include="Content\Css\stylepage.css" />
+    <Content Include="Content\Css\styles.min.css" />
+    <Content Include="Content\Css\styles2.min.css" />
+    <Content Include="Content\Css\test.css" />
+    <Content Include="Content\Css\update.css" />
+    <Content Include="Content\fonts\cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Content\fonts\Roboto-Bold.ttf" />
+    <Content Include="Content\fonts\Roboto-Italic.ttf" />
+    <Content Include="Content\fonts\Roboto-Light.ttf" />
+    <Content Include="Content\fonts\Roboto-Regular.ttf" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\Css\styles.scss" />
+    <Content Include="Content\Css\_update.scss" />
+    <Content Include="Content\Css\_stylepage.scss" />
+    <Content Include="Content\Css\styles.min.css.map" />
+    <Content Include="Content\Css\_flags.scss" />
+    <Content Include="Content\Css\_loading.scss" />
+    <Content Include="Content\Css\_sopcast.scss" />
+    <Content Include="Content\Css\_livestream.scss" />
+    <Content Include="Content\Css\hostv2.scss" />
+    <Content Include="Content\Css\_prefixer.scss" />
+    <Content Include="Content\Css\hostv2.min.css.map" />
+    <None Include="Controllers\PageController.cs.pp" />
+    <None Include="Controllers\PostController.cs.pp" />
+    <Compile Include="Controllers\PageController.cs" />
+    <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MatchModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Content Include="App_Data\Cache\Content\index.html" />
+    <Content Include="App_Data\Cache\index.html" />
+    <Content Include="App_Data\Cache\Uploads\index.html" />
+    <Content Include="App_Data\Content\index.html" />
+    <Content Include="App_Data\Uploads\index.html" />
+    <Content Include="Areas\Manager\Content\Css\Editor.css" />
+    <Content Include="Areas\Manager\Views\Extensions\index.html" />
+    <Content Include="Content\Css\animate.css" />
+    <Content Include="Content\Css\basic.css" />
+    <Content Include="Content\Css\bootstrap.min.css" />
+    <Content Include="Content\Css\style.css" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\images\188bet_300x240.gif" />
+    <Content Include="Content\images\add_url.gif" />
+    <Content Include="Content\images\banner-enter.gif" />
+    <Content Include="Content\images\banner-girl.jpg" />
+    <Content Include="Content\images\banner-girlxinh.png" />
+    <Content Include="Content\images\banner-top-lg.gif" />
+    <Content Include="Content\images\banner-top-lg2.gif" />
+    <Content Include="Content\images\banner-top-sm.gif" />
+    <Content Include="Content\images\banner-vertical.gif" />
+    <Content Include="Content\images\banner.jpg" />
+    <Content Include="Content\images\banner.png" />
+    <Content Include="Content\images\banner_vaobong.jpg" />
+    <Content Include="Content\images\banner_vaobong.png" />
+    <Content Include="Content\images\bg-logo.png" />
+    <Content Include="Content\images\btn-join-now_VN.gif" />
+    <Content Include="Content\images\cancel-off.png" />
+    <Content Include="Content\images\cancel-on.png" />
+    <Content Include="Content\images\flags.png" />
+    <Content Include="Content\images\flag\en-flag.jpg" />
+    <Content Include="Content\images\floating-banner.gif" />
+    <Content Include="Content\images\horizontal-banner.gif" />
+    <Content Include="Content\images\host\logo-10bet.png" />
+    <Content Include="Content\images\host\logo-12bet.png" />
+    <Content Include="Content\images\host\logo-138bet.png" />
+    <Content Include="Content\images\host\logo-188bet.png" />
+    <Content Include="Content\images\host\logo-365bet.png" />
+    <Content Include="Content\images\host\logo-boma365.jpg" />
+    <Content Include="Content\images\host\logo-cmd368.png" />
+    <Content Include="Content\images\host\logo-dafabet.png" />
+    <Content Include="Content\images\host\logo-dubai-casino.png" />
+    <Content Include="Content\images\host\logo-fun88.png" />
+    <Content Include="Content\images\host\logo-g7bet.png" />
+    <Content Include="Content\images\host\logo-happy8.png" />
+    <Content Include="Content\images\host\logo-happyluke.png" />
+    <Content Include="Content\images\host\logo-m88.png" />
+    <Content Include="Content\images\host\logo-v9bet.png" />
+    <Content Include="Content\images\host\logo-vegas.png" />
+    <Content Include="Content\images\host\logo-vwin.png" />
+    <Content Include="Content\images\host\logo-w88.png" />
+    <Content Include="Content\images\host\logo-empire777.png" />
+    <Content Include="Content\images\host\logo-verajohn.png" />
+    <Content Include="Content\images\icon-sprite.png" />
+    <Content Include="Content\images\icons.png" />
+    <Content Include="Content\images\line.gif" />
+    <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\m88-01.png" />
+    <Content Include="Content\images\m88-02.png" />
+    <Content Include="Content\images\m88-03.png" />
+    <Content Include="Content\images\m88-04.png" />
+    <Content Include="Content\images\m88-05.png" />
+    <Content Include="Content\images\m88-06.png" />
+    <Content Include="Content\images\m88-07.png" />
+    <Content Include="Content\images\m88-08.png" />
+    <Content Include="Content\images\m88-09.png" />
+    <Content Include="Content\images\m88-10.png" />
+    <Content Include="Content\images\m88-11.png" />
+    <Content Include="Content\images\m88-12.png" />
+    <Content Include="Content\images\m88\m88-01.png" />
+    <Content Include="Content\images\m88\m88-02.png" />
+    <Content Include="Content\images\m88\m88-03.png" />
+    <Content Include="Content\images\m88\m88-04.png" />
+    <Content Include="Content\images\m88\m88-05.png" />
+    <Content Include="Content\images\m88\m88-06.png" />
+    <Content Include="Content\images\m88\m88-07.png" />
+    <Content Include="Content\images\m88\m88-08.png" />
+    <Content Include="Content\images\m88\m88-09.png" />
+    <Content Include="Content\images\m88\m88-10.png" />
+    <Content Include="Content\images\m88\m88-11.png" />
+    <Content Include="Content\images\m88\m88-12.png" />
+    <Content Include="Content\images\new.gif" />
+    <Content Include="Content\images\preview.jpg" />
+    <Content Include="Content\images\rate.png" />
+    <Content Include="Content\images\roaSbnG_120x300.gif" />
+    <Content Include="Content\images\slide_vaobong.jpg" />
+    <Content Include="Content\images\star-half.png" />
+    <Content Include="Content\images\star-off.png" />
+    <Content Include="Content\images\star-on.png" />
+    <Content Include="Content\images\temp\12bet.png" />
+    <Content Include="Content\images\temp\188bet.png" />
+    <Content Include="Content\images\temp\18x18-01.jpg" />
+    <Content Include="Content\images\temp\18x18-02.jpg" />
+    <Content Include="Content\images\temp\18x18-03.jpg" />
+    <Content Include="Content\images\temp\18x18.jpg" />
+    <Content Include="Content\images\temp\2.jpg" />
+    <Content Include="Content\images\temp\25x25-01.gif" />
+    <Content Include="Content\images\temp\25x25-02.gif" />
+    <Content Include="Content\images\temp\25x25-03.gif" />
+    <Content Include="Content\images\temp\80x80-02.jpg" />
+    <Content Include="Content\images\temp\80x80-03.jpg" />
+    <Content Include="Content\images\temp\80x80-04.jpg" />
+    <Content Include="Content\images\temp\80x80-05.jpg" />
+    <Content Include="Content\images\temp\80x80.jpg" />
+    <Content Include="Content\images\temp\ads-tonghop.jpg" />
+    <Content Include="Content\images\temp\fun88.png" />
+    <Content Include="Content\images\temp\girl1.jpg" />
+    <Content Include="Content\images\temp\girl2.jpg" />
+    <Content Include="Content\images\temp\girl3.jpg" />
+    <Content Include="Content\images\temp\girl4.jpg" />
+    <Content Include="Content\images\temp\girl5.jpg" />
+    <Content Include="Content\images\temp\girl6.jpg" />
+    <Content Include="Content\images\temp\h1.jpg" />
+    <Content Include="Content\images\temp\h2.jpg" />
+    <Content Include="Content\images\temp\logohappy8.png" />
+    <Content Include="Content\images\temp\m88.png" />
+    <Content Include="Content\images\temp\Untitled-1.png" />
+    <Content Include="Content\images\tienich.png" />
+    <Content Include="Content\images\vaobong.jpg" />
+    <Content Include="Content\images\vaobong_slide1.png" />
+    <Content Include="Content\images\vaobong_slide2.png" />
+    <Content Include="Content\js\basic.js" />
+    <Content Include="Content\js\host.js" />
+    <Content Include="Content\js\jquery-1.11.1.min.js" />
+    <Content Include="Content\js\jquery.raty.js" />
+    <Content Include="Content\js\knockout.js" />
+    <Content Include="Content\js\livestream.js" />
+    <Content Include="Content\js\liveviewer.js" />
+    <Content Include="Content\js\models.js" />
+    <Content Include="Content\js\owl.carousel.min.js" />
+    <Content Include="Content\js\sopcast.js" />
+    <Content Include="Content\js\wow.min.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="robots.txt" />
+    <Content Include="Scripts\app.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="Properties\PublishProfiles\tienquang.pubxml" />
+    <None Include="Properties\PublishProfiles\tienquang_mb.pubxml" />
+    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Content\js\stickyfloat.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Piranha.Mvc\Piranha.Mvc.csproj">
+      <Project>{2068f6b1-fb81-43b2-9760-f5b68c32085a}</Project>
+      <Name>Piranha.Mvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Piranha\Piranha.csproj">
+      <Project>{73b6e71e-3255-40a1-93ef-5416dc71e940}</Project>
+      <Name>Piranha</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Manager\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Page\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Post\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\_ViewStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Sidebar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Page\Page.cshtml" />
+    <Content Include="Views\Page\Giaitri.cshtml" />
+    <Content Include="Views\Shared\SectionContent.cshtml" />
+    <Content Include="Views\Shared\SidebarNew.cshtml" />
+    <Content Include="Views\Post\Page.cshtml" />
+    <Content Include="Views\Shared\SidebarView.cshtml" />
+    <None Include="Properties\PublishProfiles\test.pubxml" />
+    <Content Include="Views\Shared\Advbar.cshtml" />
+    <Content Include="Views\Page\Tonghop.cshtml" />
+    <Content Include="Views\Page\Help.cshtml" />
+    <Content Include="Views\Shared\SidebarNews.cshtml" />
+    <Content Include="Views\Shared\MainNews.cshtml" />
+    <Content Include="Views\Shared\_LayoutBanner.cshtml" />
+    <Content Include="Views\Page\M88Guide.cshtml" />
+    <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <Content Include="Views\Page\Test.cshtml" />
+    <Content Include="Views\Page\SopcastLink.cshtml" />
+    <Content Include="Views\Page\LiveStream.cshtml" />
+    <Content Include="Views\Shared\_LiveLayout.cshtml" />
+    <Content Include="Views\Page\LiveStreamDetail.cshtml" />
+    <Content Include="Views\Page\TrustedHost.cshtml" />
+    <Content Include="Views\Page\TrustedHostv2.cshtml" />
+    <Content Include="Views\Page\_NewsPartial.cshtml" />
+    <Content Include="Views\Shared\SidebarView_TinTucCaCuoc.cshtml" />
+    <Content Include="Views\Shared\_Layout2.cshtml" />
+    <Content Include="Views\Shared\_LiveLayout2.cshtml" />
+    <Content Include="Views\Page\LiveStreamDetail2.cshtml" />
+    <Content Include="Views\Page\LiveStreamDetail3.cshtml" />
+    <Content Include="Views\Page\SopcastLink2.cshtml" />
+    <Content Include="Views\Page\TrustedHostv2_2.cshtml" />
+    <Content Include="Views\Page\HomePageView.cshtml" />
+    <None Include="Views\web.config.transform" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\images\largeicons\" />
+    <Folder Include="Content\images\logo\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>65034</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:12970/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

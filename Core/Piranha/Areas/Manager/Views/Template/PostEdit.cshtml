@@ -1,0 +1,151 @@
+﻿@model Piranha.Models.Manager.TemplateModels.PostEditModel
+@{
+    ViewBag.Selected = "Settings" ;
+    ViewBag.SelectedTab = "PostType" ;
+}
+@section Head {
+    <script type="text/javascript" src="~/res.ashx/areas/manager/content/js/jquery.template.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#Template_Name').focus();
+        });
+    </script>
+}
+@section Toolbar {
+@Html.Partial("Partial/Tabs")
+<div class="toolbar">
+    <div class="inner">
+        <ul>
+            @if (!Model.Template.IsLocked) {
+            <li><a class="save submit">@Piranha.Resources.Global.ToolbarSave</a></li>
+            <li><a href="@Url.Action("deletepost", new { id = Model.Template.Id })" class="delete">@Piranha.Resources.Global.ToolbarDelete</a></li>
+            }
+            <li><a href="@Url.Action("postlist")" class="back">@Piranha.Resources.Global.ToolbarBack</a></li>
+            <li><a href="@Url.Action("post", new { id = Model.Template.Id })" class="refresh">@Piranha.Resources.Global.ToolbarReload</a></li>
+        </ul>
+        <div class="clear"></div>
+    </div>
+</div>
+}
+@{ Html.BeginForm("post", "template") ; }
+<div>
+    @Html.HiddenFor(m => m.Template.Id)
+    @Html.HiddenFor(m => m.Template.PermalinkId)
+    @Html.HiddenFor(m => m.Template.IsNew)
+    @Html.HiddenFor(m => m.Template.Type)
+    @Html.HiddenFor(m => m.Template.Created)
+    @Html.HiddenFor(m => m.Template.Updated)
+    @Html.HiddenFor(m => m.Template.CreatedBy)
+    @Html.HiddenFor(m => m.Template.UpdatedBy)
+    @Html.HiddenFor(m => m.Permalink.IsNew)
+    @Html.HiddenFor(m => m.Permalink.Id)
+    @Html.HiddenFor(m => m.Permalink.Type)
+    @Html.HiddenFor(m => m.Permalink.Created)
+    @Html.HiddenFor(m => m.Permalink.CreatedBy)
+    @if (!Piranha.Application.Current.IsMvc) {
+    @Html.HiddenFor(m => m.Template.View)
+    @Html.HiddenFor(m => m.Template.ShowView)
+    }
+</div>
+<div class="grid_9">
+    <div class="box expandable">
+        <div class="title"><h2>@Piranha.Resources.Global.Information</h2></div>
+        <div class="inner">
+            <ul class="form">
+                <li>
+                    @Html.LabelFor(m => m.Template.Name)
+                    <div class="input">
+                        @Html.TextBoxFor(m => m.Template.Name)</div>
+                    @Html.ValidationMessageFor(m => m.Template.Name)
+                </li>
+                <li class="protected">
+                    @Html.LabelFor(m => m.Permalink)
+                	@if (!Model.Permalink.IsNew) {
+                    <p>@Piranha.WebPages.WebPiranha.GetSiteUrl()/@(Model.HandlerPrefix)@Url.GetPermalink(Model.Permalink.Name).ToLower()</p>
+                    } else {
+                    <p><i>@Piranha.Resources.Page.PermalinkDescription</i></p>
+                    }
+                    <div class="input">
+                        @Html.TextBoxFor(m => m.Permalink.Name)</div>
+                    @Html.ValidationMessageFor(m => m.Permalink)
+                    <a class="locked"></a>
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Template.Description)
+                    <div class="input">
+                        @Html.TextAreaFor(m => m.Template.Description, 
+                            new { @placeholder = Piranha.Resources.Global.Optional })</div>
+                </li>
+            </ul>
+            <ul class="form optional">               
+                <li>@Html.LabelFor(m => m.Template.Preview)
+                    <div class="input">
+                        @Html.TextAreaFor(m => m.Template.Preview, new { @rows = 8} )</div>
+                </li>                
+            </ul>
+        </div>
+    </div>
+    <div class="box">
+        <div class="title"><h2>@Piranha.Resources.Global.Advanced</h2></div>
+        <div class="inner">
+            <ul class="form">
+                <li>@Html.LabelFor(m => m.Template.Controller,
+                        Piranha.Application.Current.IsMvc ? Piranha.Resources.Post.Route : Piranha.Resources.Post.Template)
+                    <div class="input">
+                        @Html.TextBoxFor(m => m.Template.Controller, 
+                            new { @placeholder = "Post" })</div>
+                    <label>&nbsp;</label>
+                    <p>@Html.CheckBoxFor(m => m.Template.ShowController)
+                        @(Piranha.Application.Current.IsMvc ? Piranha.Resources.Template.PostRouteOverride : Piranha.Resources.Template.PostTemplateOverride)</p>
+                </li>
+                @if (Piranha.Application.Current.IsMvc) {
+                <li>@Html.LabelFor(m => m.Template.View)
+                    <div class="input">
+                        @Html.TextBoxFor(m => m.Template.View, new { @placeholder = "Index" })</div>
+                    <label>&nbsp;</label>
+                    <p>@Html.CheckBoxFor(m => m.Template.ShowView) @Piranha.Resources.Template.PostViewOverride</p>
+                </li>
+                }
+                <li>@Html.LabelFor(m => m.Template.ArchiveController)
+                    <div class="input">
+                        @Html.TextBoxFor(m => m.Template.ArchiveController, 
+                            new { @placeholder = Piranha.Resources.Global.Optional })</div>
+                    <label>&nbsp;</label>
+                    <p>@Html.CheckBoxFor(m => m.Template.ShowArchiveController) @Piranha.Resources.Template.PostRedirectOverride</p>
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Template.AllowRss)
+                    <p>@Html.CheckBoxFor(m => m.Template.AllowRss) (@Piranha.Resources.Template.AllowRssDescription)</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="grid_3">
+    @if (!Model.Template.IsNew && !String.IsNullOrEmpty(Model.Template.Preview.ToHtmlString())) {
+    <div class="box pagetemplate">
+        <div class="title"><h2>@Piranha.Resources.Page.HtmlPreview</h2></div>
+        <div class="inner">
+            <div class="edit">
+                @Model.Template.Preview
+            </div>
+        </div>
+    </div>
+    }
+    <div class="box">
+        <div class="title"><h2>@Piranha.Resources.Global.Properties</h2></div>
+        <div class="inner">
+            <div id="region_data"></div>
+            <ul id="properties" class="list buttons">
+                @foreach (var property in Model.Template.Properties) {
+                <li><span>@property</span><button class="btn delete right remove-region"></button></li>
+                }
+            </ul>
+            <div class="input">
+                <input id="po_name" type="text" placeholder="@Piranha.Resources.Template.PropertyPlaceholder" /></div>
+            <button id="po_add" class="btn right">@Piranha.Resources.Global.Add</button>
+            <div class="clear"></div>
+         </div>
+    </div>
+</div>
+@{ Html.EndForm() ; }
